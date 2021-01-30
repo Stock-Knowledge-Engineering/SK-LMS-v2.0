@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#dashboard {
+  display: block;
+}
+
+#dash-menu {
+  width: 20%;
+  background: #173245;
+  height: 100vh;
+  color: #ffffff;
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+}
+
+#mini-profile {
+  padding: 20px;
+}
+
+#mini-avatar {
+  width: 25%;
+  float: left;
+}
+
+#mini-name {
+  width: 73%;
+  float: right;
+}
+
+#mini-name-name {
+}
+
+#dashboard-menu ul li:hover {
+  background: #ffffff;
+  color: #173245;
+}
+
+#dash-content {
+  margin-left: 20%;
+  padding: 20px;
+}

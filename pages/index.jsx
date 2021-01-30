@@ -13,7 +13,8 @@ export default function Home() {
     {
       !user.isLogin && <Login />
     }
-    {user.isLogin && <MainLayout>
+    {user.isLogin && 
+      <MainLayout>
         <p>test</p>
       </MainLayout>}
     </>
