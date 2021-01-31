@@ -86,7 +86,11 @@ export default function MainLayout(props){
                     </ul>
                 </div>
                 <div id="dash-content">
-                    {props.children}
+                    <div id="dash-home" class="block">
+                        <div id="search" className="text-right">
+                            <input type="text" placeholder="Quick search..." />
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
