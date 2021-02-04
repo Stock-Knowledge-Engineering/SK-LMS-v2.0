@@ -8,7 +8,7 @@ export default function Start(){
     const [status, setStatus] = useState('login');
 
     return (
-        <div className="p-6 w-4/5 mx-auto bg-white rounded-xl shadow-md flex flex-col items-center space-x-4">
+        <div className="p-6 w-4/5 mx-auto mt-24 bg-white rounded-xl shadow-md flex flex-col items-center space-x-4">
         <div className="">
           <img src="/sk-logo.png" alt="ChitChat Logo" />
         </div>
