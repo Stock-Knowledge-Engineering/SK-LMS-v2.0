@@ -10,12 +10,31 @@ export default function Login(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [toLogin, setToLogin] = useState(false);
+    const [registraion, setRegistration] = useState('');
+    const [endpoint, setEndpoint] = useState('');
 
     const [loading, userData] = useLoginHook(
-      toLogin ? { username, password } : null
+      toLogin ? { username, password } : null, props.status.includes('admin') ? '/school-admin/login' : '/login'
     );
 
     const dispatch = useDispatch();
+
+    useEffect(()=>{
+      switch(props.status){
+        case 'admin-login':
+          setRegistration('school-registration');
+          setEndpoint('/admin/login')
+          break;
+        case 'school-login':
+          setRegistration('teacher-registration');
+          setEndpoint('/school-admin/login');
+          break;
+        default:
+          setRegistration('registration');
+          setEndpoint('/login');
+          break;      
+        }
+    },[])
     
     useEffect(() => {
       if (userData) {
@@ -53,7 +72,7 @@ export default function Login(props) {
             <br />
             <div className="flex space-x-4">
             <button onClick={(e) => setToLogin(true)} className="bg-blue-600 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200">Login</button>
-            <button onClick={(e) => props.changeStatus('admin-registration')} className="bg-yellow-400 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-yellow-200">Register</button>
+            <button onClick={(e) => props.changeStatus(registraion)} className="bg-yellow-400 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-yellow-200">Register</button>
             </div>
           </div>
       </>
