@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useLoginHook = (data) => {
+export const useLoginHook = (data, endpoint) => {
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState(false);
 
@@ -14,7 +14,7 @@ export const useLoginHook = (data) => {
   useEffect(() => {
     if (isLoading) {
       setSuccess(false);
-      fetch(`http://localhost:3001/admin/school/login`, {
+      fetch(`http://localhost:3001${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
