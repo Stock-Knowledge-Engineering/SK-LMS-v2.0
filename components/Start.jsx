@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import Login from './Login';
-import SchoolRegisteration from './SchoolRegisteration';
-
+import SchoolRegisteration from './SchoolRegistration';
+import Registration from './Registration';
 import {useUserManagementHook} from '../hooks/userManagementHook';
 
 export default function Start(props){
@@ -17,8 +17,9 @@ export default function Start(props){
           <div className="w-1/2">
             <img src="/images/hero.png" />
           </div>
-          {props.status == 'admin-login' && <Login changeStatus={props.changeStatus}/>}
-          {props.status == 'admin-registration' && <SchoolRegisteration changeStatus={props.changeStatus}/>}
+          {props.status.includes('login') && <Login status={props.status} changeStatus={props.changeStatus}/>}
+          {props.status == 'registration' && <Registration changeStatus={props.changeStatus}/>}
+          {props.status == 'school-registration' && <SchoolRegisteration changeStatus={props.changeStatus}/>}
         </div>
       </div>
     )
