@@ -12,8 +12,7 @@ export default function MainLayout(props){
       };
 
     const user = useSelector(state => state.UserReducer);
-    console.log(user);
-
+    
     return(
         <>
             <div id="dashboard">
