@@ -83,7 +83,7 @@ export default function SchoolRegistration(props) {
           !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email) && <FieldAlert message="Invalid email!" />
         } */}
         {
-          emailExist && <FieldAlert message="Email has already been taken!" />
+          emailExist && email != '' && <FieldAlert message="Email has already been taken!" />
         }
         <br />
         <input
