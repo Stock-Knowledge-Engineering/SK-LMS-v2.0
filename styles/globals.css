@@ -3,18 +3,11 @@
 @tailwind utilities;
 
 #dashboard {
-  display: block;
+  /* display: flex; */
 }
 
 #dash-menu {
-  width: 20%;
   background: #173245;
-  height: 100vh;
-  color: #ffffff;
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
 }
 
 #mini-profile {
@@ -40,6 +33,4 @@
 }
 
 #dash-content {
-  margin-left: 20%;
-  padding: 20px;
 }
