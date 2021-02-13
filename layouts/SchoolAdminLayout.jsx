@@ -1,4 +1,6 @@
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import Menu from '../components/Menu';
+import MiniProfile from '../components/MiniProfile';
 
 import {DoLogin} from "../redux/actions/UserAction";
 
@@ -11,24 +13,14 @@ export default function SchoolAdminLayout(props){
         localStorage.removeItem("user");
       };
 
-    const user = useSelector(state => state.UserReducer);
-    console.log(user);
-
     return(
         <>
-            <div id="dashboard">
-                <div id="dash-menu">
-                    <div id="mini-profile">
-                    <div id="mini-avatar">
-                        <img src="images/avatar.png" />
-                    </div>
-                    <div id="mini-name">
-                            <p>Welcome {user.data.firstname.charAt(0).toUpperCase() + user.data.firstname.slice(1)}!</p> 
-				            <div id="mini-name-name">School Administrator</div>
-                        </div>
-                    </div>
+            <div id="dashboard" className="flex">
+                <div id="dash-menu" className="text-white w-1/5 h-screen">
+                    <MiniProfile />
                     <div className="clear-both"></div>
-                    <ul className="px-4">
+                    <Menu />
+                    {/* <ul className="px-4">
                         <br />
                         <hr />
                         <br />
@@ -105,10 +97,10 @@ export default function SchoolAdminLayout(props){
                             </svg>
                             <a href="" className="inline-block">Logout</a>
                         </li>
-                    </ul>
+                    </ul> */}
                 </div>
-                <div id="dash-content">
-                    <div id="dash-home" className="block">
+                <div id="dash-content" className="p-4 w-4/5">
+                    <div id="dash-home">
                         <div id="search" className="text-right">
                             <input type="text" placeholder="Quick search..." />
                         </div>
