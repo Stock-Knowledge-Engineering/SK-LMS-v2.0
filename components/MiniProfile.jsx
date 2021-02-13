@@ -7,7 +7,7 @@ export default function MiniProfile(){
         <>
             <div id="mini-profile">
                 <div id="mini-avatar">
-                    <img src="images/avatar.png" />
+                    <img src="/images/avatar.png" />
                 </div>
                 <div id="mini-name">
                     <p>Welcome {user.data.firstname.charAt(0).toUpperCase() + user.data.firstname.slice(1)}!</p> 
