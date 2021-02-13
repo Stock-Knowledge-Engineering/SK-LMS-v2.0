@@ -1,4 +1,25 @@
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {DoLogin} from "../redux/actions/UserAction";
+
 export default function Menu() {
+  const dispatch = useDispatch();
+
+  const [homeLink, setHomeLink] = useState('');
+
+  const user = useSelector(state => state.UserReducer);
+
+  const Logout = () => {
+    dispatch(DoLogin(false, null));
+    localStorage.setItem("isLogin", false);
+    localStorage.removeItem("user");
+  };
+
+  useEffect(()=>{
+    if(user.data.title == 'school-admin')
+      setHomeLink('/admin/')
+  },[])
+
   return (
     <>
       <ul className="px-2">
@@ -20,7 +41,7 @@ export default function Menu() {
               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
             />
           </svg>
-          <a href="" className="inline-block">
+          <a href="/admin"className="inline-block">
             Home
           </a>
         </li>
@@ -93,6 +114,26 @@ export default function Menu() {
             Notifications
           </a>
         </li>
+        {user.data.title == 'school-admin' && <>
+          <li>
+            <a href="/admin/subjects" className="inline-block">Subject</a>
+          </li>
+          <li>
+            <a href="/admin/teachers" className="inline-block">Teacher</a>
+          </li>
+          <li>
+            <a href="/admin/grade-levels" className="inline-block">Grade Level</a>
+          </li>
+          <li>
+            <a href="/admin/rooms" className="inline-block">Room</a>
+          </li>
+          <li>
+            <a href="/admin/sections" className="inline-block">Section</a>
+          </li>
+          <li>
+            <a href="/admin/class-schedules" className="inline-block">Class Schedules</a>
+          </li>
+        </>}
         <br />
         <hr />
         <br />
@@ -139,7 +180,7 @@ export default function Menu() {
             Help
           </a>
         </li>
-        <li className="mb-2 flex hover:bg-white hover:text-black">
+        <li className="mb-2 flex hover:bg-white hover:text-black" onClick={e => {Logout()}}>
           <svg
             className="mr-4 h-6 w-6 inline-block self-center"
             xmlns="http://www.w3.org/2000/svg"
