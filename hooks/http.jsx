@@ -18,10 +18,8 @@ export const useHttp = (url, dependencies) => {
       .then(data => {
         setIsLoading(false);
         setFetchedData(data);
-        console.log(data);
       })
       .catch(err => {
-        console.log(err);
         setIsLoading(false);
       });
   }, dependencies);

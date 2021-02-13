@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { DoLogin } from "../redux/actions/UserAction";
 import {useState, useEffect} from 'react';
 import { useHttp } from "../hooks/http";
-import { useCreateSchool } from "../hooks/createSchool";
+import { usePostHttp } from "../hooks/postHttp";
 
 const FieldAlert = (props) => {
     const {message} = props;
@@ -44,7 +44,7 @@ export default function SchoolRegistration(props) {
 
   const [verifyingUsername, usernameExist] = useHttp(`http://localhost:3001/register/verify/username?value=${username}`, [username]);
   const [verifyingEmail, emailExist] = useHttp(`http://localhost:3001/school-admin/verify/email?value=${email}`, [email]);
-  const [creatingAccount, userData] = useCreateSchool(createAccount ? {username, email, password, firstName, middleName, lastName, mobileNumber, gender, schoolName, educationalLevel, schoolType, areaType, emailDomain} : null)
+  const [creatingAccount, userData] = usePostHttp(createAccount ? {username, email, password, firstName, middleName, lastName, mobileNumber, gender, schoolName, educationalLevel, schoolType, areaType, emailDomain} : null, '/admin/school/registration')
 
   const dispatch = useDispatch();
 
