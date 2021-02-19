@@ -37,7 +37,7 @@ export default function EnrolledStudentTable(props) {
   const [student, setStudent] = useState('');
 
   const [classschedulesLoading, classschedules] = useHttp(
-    fetchTeachers ? `http://localhost:3001/enrolled-students?schoolid=${user.data.school}&${user.data.title.toLowerCase() == 'teacher'? 'teacher_fullname=' + user.data.firstname +' '+ user.data.lastname:''}` : '',
+    fetchTeachers ? `/enrolled-students?schoolid=${user.data.school}&${user.data.title.toLowerCase() == 'teacher'? 'teacher_fullname=' + user.data.firstname +' '+ user.data.lastname:''}` : '',
     [fetchTeachers ? fetchTeachers : null]
   );
 

@@ -17,42 +17,42 @@ const Select = (props) => {
 
 export default function ClassScheduleEditModal(props){
     const [subjectDataLoading, subjectData] = useHttp(
-        props.classSchedule.subject ? `http://localhost:3001/subjects?title=${props.classSchedule.subject}` : '',
+        props.classSchedule.subject ? `/subjects?title=${props.classSchedule.subject}` : '',
         []
       );
 
     const [dayDataLoading, dayData] = useHttp(
-        props.classSchedule.day ? `http://localhost:3001/days?day=${props.classSchedule.day}` : '',
+        props.classSchedule.day ? `/days?day=${props.classSchedule.day}` : '',
         []
       );
 
     const [startDataLoading, startData] = useHttp(
-        props.classSchedule.start ? `http://localhost:3001/school-hours?time=${props.classSchedule.start}` : '',
+        props.classSchedule.start ? `/school-hours?time=${props.classSchedule.start}` : '',
         []
       );
 
     const [endDataLoading, endData] = useHttp(
-        props.classSchedule.end ? `http://localhost:3001/school-hours?time=${props.classSchedule.end}` : '',
+        props.classSchedule.end ? `/school-hours?time=${props.classSchedule.end}` : '',
         []
       );
       
     const [roomDataLoading, roomData] = useHttp(
-        props.classSchedule.room ? `http://localhost:3001/rooms?school=${props.schoolid}&name=${props.classSchedule.room}` : '',
+        props.classSchedule.room ? `/rooms?school=${props.schoolid}&name=${props.classSchedule.room}` : '',
         []
       );
       
     const [teacherDataLoading, teacherData] = useHttp(
-        props.classSchedule.room ? `http://localhost:3001/teachers?schoolid=${props.schoolid}&firstname=${props.classSchedule.firstname}&middlename=${props.classSchedule.middlename}&lastname=${props.classSchedule.lastname}` : '',
+        props.classSchedule.room ? `/teachers?schoolid=${props.schoolid}&firstname=${props.classSchedule.firstname}&middlename=${props.classSchedule.middlename}&lastname=${props.classSchedule.lastname}` : '',
         []
       );        
 
     const [sectionDataLoading, sectionData] = useHttp(
-        props.classSchedule.room ? `http://localhost:3001/sections?school=${props.schoolid}&name=${props.classSchedule.section}` : '',
+        props.classSchedule.room ? `/sections?school=${props.schoolid}&name=${props.classSchedule.section}` : '',
         []
       );
       
     const [gradeLevelLoading, gradeLevelData] = useHttp(
-        props.classSchedule.room ? `http://localhost:3001/grade-levels?school=${props.schoolid}&name=${props.classSchedule.gradelevel}` : '',
+        props.classSchedule.room ? `/grade-levels?school=${props.schoolid}&name=${props.classSchedule.gradelevel}` : '',
         []
       );      
 
@@ -69,31 +69,31 @@ export default function ClassScheduleEditModal(props){
 
     const [isLoading, data] = usePostHttp(toSubmit ? {schoolid: props.schoolid, day: day, room: room, teacher: teacher, mobile: subject, start: start, end: end, section: section, gradelevel: gradelevel } : null, `/class-schedule/edit`)
     const [daysLoading, days] = useHttp(
-        `http://localhost:3001/days`,
+        `/days`,
         []
       );
       const [roomsLoading, rooms] = useHttp(
-        `http://localhost:3001/rooms?school=${props.schoolid}`,
+        `/rooms?school=${props.schoolid}`,
         []
       );
       const [sectionsLoading, sections] = useHttp(
-        `http://localhost:3001/sections?school=${props.schoolid}`,
+        `/sections?school=${props.schoolid}`,
         []
       );
       const [teachersLoading, teachers] = useHttp(
-        `http://localhost:3001/teachers?schoolid=${props.schoolid}`,
+        `/teachers?schoolid=${props.schoolid}`,
         []
       );
       const [gradelevelsLoading, gradelevels] = useHttp(
-        `http://localhost:3001/grade-levels?school=${props.schoolid}`,
+        `/grade-levels?school=${props.schoolid}`,
         []
       );
       const [subjectsLoading, subjects] = useHttp(
-        `http://localhost:3001/subjects?school=${props.schoolid}`,
+        `/subjects?school=${props.schoolid}`,
         []
       );
       const [hoursLoading, hours] = useHttp(
-        `http://localhost:3001/school-hours`,
+        `/school-hours`,
         []
       );
 

@@ -29,7 +29,7 @@ export default function SubjectTable(props) {
   const [filterQuery, setFilterQuery] = useState('');
 
   const [subjectLoading, subjects] = useHttp(
-    fetchSubjects ? `http://localhost:3001/subjects?${id ? 'id='+id+'&' : ''}${title ? 'title='+title+'&' : ''}` : '',
+    fetchSubjects ? `/subjects?${id ? 'id='+id+'&' : ''}${title ? 'title='+title+'&' : ''}` : '',
     [fetchSubjects ? fetchSubjects : null]
   );
 

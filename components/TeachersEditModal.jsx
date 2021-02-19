@@ -17,7 +17,7 @@ export default function TeacherEditModal(props){
     const [isLoading, data] = usePostHttp(toSubmit ? {id: props.teacher.userid, password: password, firstname: firstName, middlename: middleName, lastname: lastName, email: email, mobile: mobileNumber, gender: gender } : null, `/teacher/edit`)
     
     const [gendersLoading, genders] = useHttp(
-        `http://localhost:3001/genders`,
+        `/genders`,
         []
       );
 

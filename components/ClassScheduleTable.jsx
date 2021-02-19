@@ -41,7 +41,7 @@ export default function ClassScheduleTable(props) {
   const [lastname, setLastName] = useState('');
 
   const [classschedulesLoading, classschedules] = useHttp(
-    fetchTeachers ? `http://localhost:3001/class-schedules?schoolid=${user.data.school}${user.data.title.toLowerCase() == 'teacher' ? `&teacherid=${user.data.id}`:''}${id ? '&id='+id: ''}${subject ? '&subject='+subject: ''}${start ? '&start='+start: ''}` : '',
+    fetchTeachers ? `/class-schedules?schoolid=${user.data.school}${user.data.title.toLowerCase() == 'teacher' ? `&teacherid=${user.data.id}`:''}${id ? '&id='+id: ''}${subject ? '&subject='+subject: ''}${start ? '&start='+start: ''}` : '',
     [fetchTeachers ? fetchTeachers : null]
   );
 

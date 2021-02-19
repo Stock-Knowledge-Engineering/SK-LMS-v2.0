@@ -24,27 +24,27 @@ export default function EnrolledStudentEditModal(props){
     const [disableSubmit, setDisableSubmit] = useState(false);
     
     const [subjectsLoading, subjects] = useHttp(
-        `http://localhost:3001/teacher/subjects?teacherid=${props.teacherid}`,
+        `/teacher/subjects?teacherid=${props.teacherid}`,
         []
       );
 
     const [gradelevelsLoading, gradelevels] = useHttp(
-      `http://localhost:3001/teacher/gradelevels?teacherid=${props.teacherid}&subject=${subject}`,
+      `/teacher/gradelevels?teacherid=${props.teacherid}&subject=${subject}`,
         [subject]
       );      
 
       const [sectionsLoading, sections] = useHttp(
-        `http://localhost:3001/teacher/sections?schoolid=${props.schoolid}&teacherid=${props.teacherid}&subject=${subject}&gradelevel=${gradelevel}`,
+        `/teacher/sections?schoolid=${props.schoolid}&teacherid=${props.teacherid}&subject=${subject}&gradelevel=${gradelevel}`,
         [subject, gradelevel]
       );
 
       const [studentsLoading, students] = useHttp(
-        `http://localhost:3001/students?schoolid=${props.schoolid}`,
+        `/students?schoolid=${props.schoolid}`,
         []
       );
 
       const [classSchedulesLoading, classSchedules] = useHttp(
-        `http://localhost:3001/class-schedules?schoolid=${props.schoolid}&teacherid=${props.teacherid}&gradelevel=${gradelevel}&section=${section}&subject=${subject}`,
+        `/class-schedules?schoolid=${props.schoolid}&teacherid=${props.teacherid}&gradelevel=${gradelevel}&section=${section}&subject=${subject}`,
         [section, subject]
       );
 

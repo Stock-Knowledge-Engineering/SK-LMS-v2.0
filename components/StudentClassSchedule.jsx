@@ -37,7 +37,7 @@ export default function StudentClassSchedule(props) {
   const [teacherFullname, setTeacherFullname] = useState('');
 
   const [classschedulesLoading, classschedules] = useHttp(
-    fetchTeachers ? `http://localhost:3001/enrolled-students?schoolid=${user.data.school}&studentid=${user.data.id}&student_fullname=${user.data.firstname} ${user.data.lastname}${id ? '&id='+id: ''}${subject ? '&subject='+subject: ''}${start ? '&start='+start: ''}` : '',
+    fetchTeachers ? `/enrolled-students?schoolid=${user.data.school}&studentid=${user.data.id}&student_fullname=${user.data.firstname} ${user.data.lastname}${id ? '&id='+id: ''}${subject ? '&subject='+subject: ''}${start ? '&start='+start: ''}` : '',
     [fetchTeachers ? fetchTeachers : null]
   );
 

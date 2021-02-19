@@ -36,8 +36,8 @@ export default function TeacherRegistration(props) {
 
   const [createAccount, setCreateAccount] = useState(false);
 
-  const [verifyingUsername, usernameExist] = useHttp(`http://localhost:3001/register/verify/username?value=${username}`, [username]);
-  const [verifyingEmail, emailExist] = useHttp(`http://localhost:3001/register/verify/email?value=${email}`, [email]);
+  const [verifyingUsername, usernameExist] = useHttp(`/register/verify/username?value=${username}`, [username]);
+  const [verifyingEmail, emailExist] = useHttp(`/register/verify/email?value=${email}`, [email]);
   const [creatingAccount, userData] = usePostHttp(createAccount ? {username, email, password, firstName, middleName, lastName, mobileNumber, gender} : null,'/register/student')
 
   const dispatch = useDispatch();

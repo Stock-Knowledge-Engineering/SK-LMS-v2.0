@@ -16,31 +16,31 @@ export default function ClassScheduleAddModal(props){
 
     const [isLoading, data] = usePostHttp(toSubmit ? {schoolid: props.schoolid, day: day, room: room, teacher: teacher, subject: subject, start: start, end: end, section: section, gradelevel: gradelevel } : null, `/class-schedule/add`)
     const [daysLoading, days] = useHttp(
-        `http://localhost:3001/days`,
+        `/days`,
         []
       );
       const [roomsLoading, rooms] = useHttp(
-        `http://localhost:3001/rooms?school=${props.schoolid}`,
+        `/rooms?school=${props.schoolid}`,
         []
       );
       const [sectionsLoading, sections] = useHttp(
-        `http://localhost:3001/sections?school=${props.schoolid}`,
+        `/sections?school=${props.schoolid}`,
         []
       );
       const [teachersLoading, teachers] = useHttp(
-        `http://localhost:3001/teachers?schoolid=${props.schoolid}`,
+        `/teachers?schoolid=${props.schoolid}`,
         []
       );
       const [gradelevelsLoading, gradelevels] = useHttp(
-        `http://localhost:3001/grade-levels?school=${props.schoolid}`,
+        `/grade-levels?school=${props.schoolid}`,
         []
       );
       const [subjectsLoading, subjects] = useHttp(
-        `http://localhost:3001/subjects?school=${props.schoolid}`,
+        `/subjects?school=${props.schoolid}`,
         []
       );
       const [hoursLoading, hours] = useHttp(
-        `http://localhost:3001/school-hours`,
+        `/school-hours`,
         []
       );
 
