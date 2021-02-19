@@ -134,6 +134,26 @@ export default function Menu() {
             <a href="/admin/class-schedules" className="inline-block">Class Schedules</a>
           </li>
         </>}
+
+        {
+          user.data.title.toLowerCase() == 'teacher' &&
+          <>
+          <li>
+            <a href="/enrolled-students" className="inline-block">Enrolled Students</a>
+          </li>
+          <li>
+            <a href="/class-schedules" className="inline-block">Class Schedules</a>
+          </li>
+          </>
+        }
+        {
+          user.data.title.toLowerCase() == 'student' &&
+          <>
+            <li>
+              <a href="/class-schedules" className="inline-block">Class Schedules</a>
+            </li>
+          </>
+        }
         <br />
         <hr />
         <br />
