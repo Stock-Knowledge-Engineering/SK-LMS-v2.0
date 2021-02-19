@@ -23,9 +23,9 @@ export default function SectionAddModal(props){
                         </button>
                     </div>
                     <div className="bg-white p-4 flex flex-wrap justify-around content-evenly">
-                        <input className="m-2" value={name} onChange={e => {setName(e.target.value)}} type="text" placeholder="First Name" />
-                        <input className="m-2" value={gradelevel} onChange={e => {setGradeLevel(e.target.value)}} type="text" placeholder="Middle Name"/>
-                        <input className="m-2" value={room} onChange={e => {setRoom(e.target.value)}}type="text" placeholder="Last Name" />
+                        <input className="m-2" value={name} onChange={e => {setName(e.target.value)}} type="text" placeholder="Name" />
+                        <input className="m-2" value={gradelevel} onChange={e => {setGradeLevel(e.target.value)}} type="text" placeholder="Grade Level"/>
+                        <input className="m-2" value={room} onChange={e => {setRoom(e.target.value)}}type="text" placeholder="Room" />
                     </div>
                     <div className="bg-white w-full p-4 flex justify-end relative">
                         <button onClick={e => setToSubmit(true)} className="border p-2 text-white bg-green-400 text-center text-xl">Submit</button>
