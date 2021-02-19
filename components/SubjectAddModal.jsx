@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { usePostHttp } from "../hooks/postHttp";
 
 export default function SubjectAddModal(props){
+    const user = useSelector(state => state.UserReducer);
+
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [gradelevel, setGradeLevel] = useState('');
 
     const [toSubmit, setToSubmit] = useState(false);
 
-    const [isLoading, data] = usePostHttp(toSubmit ? { name: name, description: description, gradelevel: gradelevel} : null, `/subject/add`)
+    const [isLoading, data] = usePostHttp(toSubmit ? { name: name, description: description, gradelevel: gradelevel, schoolid: user.data.school} : null, `/subject/add`)
 
     useEffect(() => {
         if(data)
@@ -29,7 +32,7 @@ export default function SubjectAddModal(props){
                         <input value={description} onChange={e => setDescription(e.target.value)} type="text" placeholder="Subject Descripttion"/>
                         <input value={gradelevel} onChange={e => setGradeLevel(e.target.value)} type="text" placeholder="Grade Level" />
                     </div>
-                    <div className="w-full p-4 flex justify-end relative">
+                    <div className="w-full p-4 bg-white flex justify-end relative">
                         <button onClick={e => setToSubmit(true)} className="border p-2 text-white bg-green-400 text-center text-xl">Submit</button>
                     </div>
                 </div>
