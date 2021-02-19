@@ -39,7 +39,7 @@ export default function Index() {
               </button>
             </div>
             <GradeLevelTable editData={editData} isAddModalOpen = {isAddModalOpen} isEditModalOpen = {isEditModalOpen}/>
-            {isAddModalOpen && <GradeLevelAddModal schoolid={user.data.school_id} showAddModal={showAddModal}/>}
+            {isAddModalOpen && <GradeLevelAddModal schoolid={user.data.school} showAddModal={showAddModal}/>}
             {isEditModalOpen && <GradeLevelEditModal gradelevel={gradelevel} showEditModal={showEditModal}/>}
           </div>
         </SchoolAdminLayout>

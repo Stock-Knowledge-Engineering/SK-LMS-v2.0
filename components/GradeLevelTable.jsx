@@ -27,7 +27,7 @@ export default function GradeLevelTable(props) {
   const [name, setName] = useState('');
 
   const [gradeLevelsLoading, gradelevels] = useHttp(
-    fetchGradeLevels ? `http://localhost:3001/grade-levels?school=${user.data.school_id}${id?'&id='+id:''}${name?'&name='+name:''}` : '',
+    fetchGradeLevels ? `http://localhost:3001/grade-levels?school=${user.data.school}${id?'&id='+id:''}${name?'&name='+name:''}` : '',
     [fetchGradeLevels ? fetchGradeLevels : null]
   );
 

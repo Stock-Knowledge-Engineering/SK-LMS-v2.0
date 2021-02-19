@@ -27,7 +27,7 @@ export default function RoomTable(props) {
   const [name, setName] = useState('');
 
   const [roomsLoading, rooms] = useHttp(
-    fetchRooms ? `http://localhost:3001/rooms?school=${user.data.school_id}${id?'&id='+id:''}${name?'&name='+name:''}` : '',
+    fetchRooms ? `http://localhost:3001/rooms?school=${user.data.school}${id?'&id='+id:''}${name?'&name='+name:''}` : '',
     [fetchRooms ? fetchRooms : null]
   );
 

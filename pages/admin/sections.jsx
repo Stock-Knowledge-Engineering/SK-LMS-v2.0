@@ -44,8 +44,8 @@ export default function Index() {
               </button>
             </div>
             <SectionTable editData={editData} isAddModalOpen = {isAddModalOpen} isEditModalOpen = {isEditModalOpen} />
-            {isAddModalOpen && <SectionAddModal schoolid={user.data.school_id} showAddModal={showAddModal}/>}
-            {isEditModalOpen && <SectionEditModal section={section} school={user.data.school_id} showEditModal={showEditModal}/>}
+            {isAddModalOpen && <SectionAddModal schoolid={user.data.school} showAddModal={showAddModal}/>}
+            {isEditModalOpen && <SectionEditModal section={section} school={user.data.school} showEditModal={showEditModal}/>}
           </div>
         </SchoolAdminLayout>
       )}

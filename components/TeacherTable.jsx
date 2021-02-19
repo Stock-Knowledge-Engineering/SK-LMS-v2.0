@@ -33,7 +33,7 @@ export default function TeacherTable(props) {
   const [gradelevel, setGradeLevel] = useState('');
 
   const [teacherLoading, teachers] = useHttp(
-    fetchTeachers ? `http://localhost:3001/teachers?schoolid=${user.data.school_id}${id ? '&id='+id: ''}${firstname ? '&firstname='+firstname: ''}${middlename ? '&middlename='+middlename: ''}` : '',
+    fetchTeachers ? `http://localhost:3001/teachers?schoolid=${user.data.school}${id ? '&id='+id: ''}${firstname ? '&firstname='+firstname: ''}${middlename ? '&middlename='+middlename: ''}` : '',
     [fetchTeachers ? fetchTeachers : null]
   );
 

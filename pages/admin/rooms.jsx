@@ -40,7 +40,7 @@ export default function Index() {
               </button>
             </div>
             <RoomTable editData={editData} isAddModalOpen = {isAddModalOpen} isEditModalOpen = {isEditModalOpen}/>
-            {isAddModalOpen && <RoomAddModal schoolid={user.data.school_id} showAddModal={showAddModal}/>}
+            {isAddModalOpen && <RoomAddModal schoolid={user.data.school} showAddModal={showAddModal}/>}
             {isEditModalOpen && <RoomEditModal room={room} showEditModal={showEditModal}/>}
           </div>
         </SchoolAdminLayout>

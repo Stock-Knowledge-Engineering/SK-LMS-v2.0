@@ -31,7 +31,7 @@ export default function SectionTable(props) {
   const [room, setRoom] = useState('');
 
   const [teacherLoading, teachers] = useHttp(
-    fetchTeachers ? `http://localhost:3001/sections?school=${user.data.school_id}` : '',
+    fetchTeachers ? `http://localhost:3001/sections?school=${user.data.school}` : '',
     [fetchTeachers ? fetchTeachers : null]
   );
 
