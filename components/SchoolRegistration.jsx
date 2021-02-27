@@ -5,6 +5,9 @@ import { DoLogin } from "../redux/actions/UserAction";
 import {useState, useEffect} from 'react';
 import { useHttp } from "../hooks/http";
 import { usePostHttp } from "../hooks/postHttp";
+import CustomInput from "./CustomInput";
+import PasswordInput from "./PasswordInput";
+import { useRouter } from "next/dist/client/router";
 
 const FieldAlert = (props) => {
     const {message} = props;
@@ -20,6 +23,7 @@ const FieldAlert = (props) => {
 }
 
 export default function SchoolRegistration(props) {
+  const router = useRouter();
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -37,6 +41,7 @@ export default function SchoolRegistration(props) {
   const [areaType, setAreaType] = useState('');
   const [emailDomain, setEmailDomain] = useState('');
 
+  const [showPassword, setShowPassword] = useState(false);
   const [validPassword, SetValidPassword] = useState('');
   const [disableConfirm, setDisableConfirm] = useState(true);
 
@@ -49,11 +54,11 @@ export default function SchoolRegistration(props) {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    if(!usernameExist && !emailExist && password == confirmPassword && firstName && middleName && lastName && mobileNumber && gender)
+    if(!usernameExist && !emailExist && password == confirmPassword && firstName && middleName && lastName && mobileNumber && gender && schoolName, educationalLevel, schoolType, areaType, emailDomain)
       setDisableConfirm(false);
     else
       setDisableConfirm(true);
-  },[username, password,confirmPassword, email, firstName, middleName, lastName, mobileNumber, gender])
+  },[username, password,confirmPassword, email, firstName, middleName, lastName, mobileNumber, gender, schoolName, educationalLevel, schoolType, areaType, emailDomain])
 
   useEffect(() => {
     if (userData && !creatingAccount) {
@@ -79,9 +84,6 @@ export default function SchoolRegistration(props) {
           value={email}
           onChange={e => { setEmail(e.target.value) }}
         />
-        {/* {
-          !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email) && <FieldAlert message="Invalid email!" />
-        } */}
         {
           emailExist && email != '' && <FieldAlert message="Email has already been taken!" />
         }
@@ -96,36 +98,8 @@ export default function SchoolRegistration(props) {
         {
           usernameExist &&  <FieldAlert message="Username is already taken!" />
         }
-
         <br />
-        <input
-          type="password"
-          name="password"
-          className="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          placeholder="Password"
-          value={password}
-          onChange={e => { setPassword(e.target.value) }}
-        />
-        {!validPassword && <div
-          className="w-3/4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
-          role="alert"
-        >
-          <strong className="font-bold">Password Strenght: {/(\w|\d|\W){8,}/.test(password) ? 'Strong' : 'Weak'}</strong>
-          { !/(a-z&A-Z|\d|\W){8,}/.test(password) && <ul className="list-disc text-sm p-2">
-            {
-              !/([A-ZÑ])+/.test(password) && <li>Password must contain atleast 1 upper case letters (A - Z)</li>
-            }
-            {
-              !/([a-zñ])+/.test(password) && <li>Password must contain atleast 1 lower case letters (a - z)</li>
-            }
-                        {
-              !/\d/.test(password) && <li>Password must contain atleast 1 number (0 - 9)</li>
-            }
-            {!/\W/.test(password) && <li>Password must contain atleast 1 non-alphanumeric symbol (e.g. '@$%@(|'))</li>}
-            {!/(\W|\d|\w){8,}/.test(password) && <li>Password must be 8 characters long</li>}
-            
-          </ul>}
-          </div>}
+          <PasswordInput value={password} setValue={setPassword}/>
         <br />
         <input
           type="password"
@@ -137,42 +111,14 @@ export default function SchoolRegistration(props) {
         />
         {password != confirmPassword && <FieldAlert message="Password does not match!" /> }
         <br />
-        <input
-          type="text"
-          name="firstName"
-          className="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          placeholder="First name"
-          value={firstName}
-          onChange={e => {setFirstName(e.target.value)}}
-        />
-        <br />
-        <input
-          type="text"
-          name="middleName"
-          className="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          placeholder="Middle name"
-          value={middleName}
-          onChange={e => {setMiddleName(e.target.value)}}
-        />
-        <br />
-        <input
-          type="text"
-          name="lastName"
-          className="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          placeholder="Last name"
-          value={lastName}
-          onChange={e => {setLastName(e.target.value)}}
-        />
-        <br />
-        <input
-          type="text"
-          name="mobileNo"
-          className="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          placeholder="Mobile Number"
-          value={mobileNumber}
-          onChange={e => {setMobileNumber(e.target.value)}}
+        <CustomInput placeholder="First Name" type="alphabet" value={firstName} setValue={setFirstName} />
 
-        />
+        <br />
+        <CustomInput placeholder="Middle Name" type="alphabet" value={middleName} setValue={setMiddleName} />
+        <br />
+        <CustomInput placeholder="Last Name" type="alphabet" value={lastName} setValue={setLastName} />
+        <br />
+        <CustomInput type="number" placeholder="Mobile Number" value={mobileNumber} setValue={setMobileNumber} />
         <br />
         <h6 className="text-xl font-bold text-gray-700">Gender:</h6>
         <div onChange={e => setGender(e.target.value)}>
@@ -182,14 +128,7 @@ export default function SchoolRegistration(props) {
         <br />
         <h4 className="text-2xl font-bold text-gray-900">School Information</h4>
         <br />
-        <input 
-          className="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          type="text" 
-          name="schoolName" 
-          placeholder="School name"
-          value={schoolName}
-          onChange={e => {setSchoolName(e.target.value)}}
-        />
+        <CustomInput placeholder="School Name" type="alphabet" value={schoolName} setValue={setSchoolName} />
         <br />
         <select className="w-3/4 border border-gray-200 p-2 focus:outline-none focus:border-gray-500" onChange={e => setEducationalLevel(e.target.value)}>
                 <option value="select">----Select Educational Level----</option>
@@ -231,7 +170,7 @@ export default function SchoolRegistration(props) {
             Confirm
           </button>
           <button
-            onClick={(e) => props.changeStatus("admin-login")}
+            onClick={(e) => router.push('/login')}
             className="bg-blue-500 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-300"
           >
             Login
