@@ -28,18 +28,13 @@ export default function Home() {
       showEditModal(true);
   }
 
-  useEffect(() => {
-    if(user.isLogin && user.data.title.toLowerCase() == 'school-admin')
-      router.push("/admin");
-  },[user.isLogin])
-
   return (
     <>
     {
       !user.isLogin && <Start status={status} changeStatus={setStatus}/>
     }
     {
-      user.isLogin && user.data.title.toLowerCase() != 'school-admin' && 
+      user.isLogin && user.data.title.toLowerCase() == 'teacher' && 
       <MainLayout>
         <br />
           <div className="flex flex-col relative ">
