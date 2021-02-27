@@ -1,3 +1,4 @@
+import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useHttp } from "../hooks/http";
@@ -24,6 +25,7 @@ const Row = (props) => {
 };
 
 export default function EnrolledStudentTable(props) {
+  const router = useRouter();
   const user = useSelector((state) => state.UserReducer);
 
   const [fetchTeachers, setFetchTeachers] = useState(true);
@@ -62,6 +64,12 @@ export default function EnrolledStudentTable(props) {
   useEffect(()=>{
     (!props.isEditModalOpen) ? setFetchTeachers(true) : setFetchTeachers(false);
   },[props.isEditModalOpen])
+
+  useEffect(() => {
+    if(user.isLogin && user.data.title.toLowerCase() != 'teacher'){
+      router.push('/')
+    }
+  }, [user.isLogin]);
 
 
   return (
