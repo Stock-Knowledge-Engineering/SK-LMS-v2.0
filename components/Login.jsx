@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { DoLogin } from "../redux/actions/UserAction";
 
 import {useLoginHook} from '../hooks/loginHook';
+import FieldAlert from './FieldAlert';
 
 export default function Login(props) {
     const [username, setUsername] = useState('');
@@ -14,8 +15,10 @@ export default function Login(props) {
     const [endpoint, setEndpoint] = useState('');
 
     const [loading, userData] = useLoginHook(
-      toLogin ? { username, password } : null, props.status.includes('admin') ? '/school-admin/login' : '/login'
+      toLogin ? { username, password } : null, endpoint
     );
+
+    const [invalidCredential, setInvalidCredential] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -34,16 +37,21 @@ export default function Login(props) {
           setEndpoint('/login');
           break;      
         }
+      if(props.page == 'school'){
+        // setRegistration('school-registration');
+        setEndpoint('/school/login')
+      }
     },[])
     
     useEffect(() => {
-      if (userData) {
-        dispatch(DoLogin(true, userData[0]));
+      if (userData.success) {
+        dispatch(DoLogin(true, userData.result));
       }
       if (typeof userData != "boolean" && !userData.success) {
-        // setShowError(true);
+        setInvalidCredential(true);
         setToLogin(false);
       }
+      // console.log(userData);
     }, [userData]);  
 
     return (
@@ -51,6 +59,7 @@ export default function Login(props) {
           <div className="w-1/2">
             <h1 className="w-full text-5xl font-bold text-blue-900 text-left">Login</h1>
             <br />
+            {invalidCredential && <FieldAlert message="Invalid username or password"/>}
             <input 
               type="text" 
               className="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="Username" 
@@ -72,7 +81,19 @@ export default function Login(props) {
             <br />
             <div className="flex space-x-4">
             <button onClick={(e) => setToLogin(true)} className="bg-blue-600 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200">Login</button>
-            <button onClick={(e) => props.changeStatus(registraion)} className="bg-yellow-400 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-yellow-200">Register</button>
+            {
+              props.page == 'login' && props.status == 'login' && <Link href={props.page == 'admin' ? '/admin/registration':'/registration'}>
+              <button className="bg-yellow-400 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-yellow-200">Register</button>
+            </Link>
+            }
+            {
+              props.status == 'school-registration' && <Link href="/admin/registration">
+              <button className="bg-yellow-400 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-yellow-200">Register</button>
+            </Link>
+            }
+            {/* <Link href={props.page == 'admin' ? '/admin/registration':'/registration'}>
+              <button className="bg-yellow-400 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-yellow-200">Register</button>
+            </Link> */}
             </div>
           </div>
       </>
