@@ -182,12 +182,13 @@ export default function TeacherRegistration(props) {
           >
             Confirm
           </button>
-          <button
-            onClick={(e) => props.changeStatus("login")}
+            <Link href="/login">
+            <button
             className="bg-blue-500 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-300"
           >
             Login
           </button>
+            </Link>
         </div>
       </div>
     </>
