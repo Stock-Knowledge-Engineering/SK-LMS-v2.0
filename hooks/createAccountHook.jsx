@@ -6,7 +6,7 @@ export const useCreateAccount = (data) => {
 
   useEffect(() => {
     if (data && !isSuccess) {
-      console.log("creating account");
+      // console.log("creating account");
       setLoading(true);
     }
     // if (data && !isLoading && !isSuccess) setLoading(true);

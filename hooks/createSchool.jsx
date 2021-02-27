@@ -6,7 +6,7 @@ export const useCreateSchool = (data) => {
 
   useEffect(() => {
     if (data && !isSuccess) {
-      console.log("creating school");
+      // console.log("creating school");
       setLoading(true);
     }
     // if (data && !isLoading && !isSuccess) setLoading(true);

@@ -33,7 +33,7 @@ export const useUserManagementHook = () => {
 
   useEffect(() => {
     if (user.isLogin) {
-      console.log('creating local data');
+      // console.log('creating local data');
       localStorage.setItem("isLogin", true);
       localStorage.setItem("user", JSON.stringify(user.data));
     }
