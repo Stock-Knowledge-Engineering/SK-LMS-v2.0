@@ -1,9 +1,11 @@
+import { Router, useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {DoLogin} from "../redux/actions/UserAction";
 
 export default function Menu() {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [homeLink, setHomeLink] = useState('');
 
@@ -13,6 +15,8 @@ export default function Menu() {
     dispatch(DoLogin(false, null));
     localStorage.setItem("isLogin", false);
     localStorage.removeItem("user");
+
+    router.push('/');
   };
 
   useEffect(()=>{
@@ -116,22 +120,22 @@ export default function Menu() {
         </li>
         {user.data.title == 'school-admin' && <>
           <li>
-            <a href="/admin/subjects" className="inline-block">Subject</a>
+            <a href="/school/subjects" className="inline-block">Subject</a>
           </li>
           <li>
-            <a href="/admin/teachers" className="inline-block">Teacher</a>
+            <a href="/school/teachers" className="inline-block">Teacher</a>
           </li>
           <li>
-            <a href="/admin/grade-levels" className="inline-block">Grade Level</a>
+            <a href="/school/grade-levels" className="inline-block">Grade Level</a>
           </li>
           <li>
-            <a href="/admin/rooms" className="inline-block">Room</a>
+            <a href="/school/rooms" className="inline-block">Room</a>
           </li>
           <li>
-            <a href="/admin/sections" className="inline-block">Section</a>
+            <a href="/school/sections" className="inline-block">Section</a>
           </li>
           <li>
-            <a href="/admin/class-schedules" className="inline-block">Class Schedules</a>
+            <a href="/school/class-schedules" className="inline-block">Class Schedules</a>
           </li>
         </>}
 
@@ -151,6 +155,14 @@ export default function Menu() {
           <>
             <li>
               <a href="/class-schedules" className="inline-block">Class Schedules</a>
+            </li>
+          </>
+        }
+        {
+          user.data.title.toLowerCase() == 'administrator' &&
+          <>
+            <li>
+              <a href="/admin/invite-school" className="inline-block">Invite School</a>
             </li>
           </>
         }
