@@ -127,7 +127,7 @@ export default function SchoolRegistration(props) {
         <br />
         <h4 className="text-2xl font-bold text-gray-900">School Information</h4>
         <br />
-        <CustomInput placeholder="School Name" type="alphabet" value={schoolName} setValue={setSchoolName} />
+        <TextField placeholder="School Name" value={schoolName} setValue={setSchoolName} />
         <br />
         <select className="w-3/4 border border-gray-200 p-2 focus:outline-none focus:border-gray-500" onChange={e => setEducationalLevel(e.target.value)}>
                 <option value="select">----Select Educational Level----</option>
