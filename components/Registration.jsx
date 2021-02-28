@@ -6,6 +6,10 @@ import {useState, useEffect} from 'react';
 import { useHttp } from "../hooks/http";
 import { usePostHttp } from "../hooks/postHttp";
 
+import PasswordInput from '../components/PasswordInput';
+import NumberField from '../components/NumberField';
+import TextField from "./TextField";
+
 const FieldAlert = (props) => {
     const {message} = props;
     return (
@@ -92,34 +96,8 @@ export default function TeacherRegistration(props) {
         }
 
         <br />
-        <input
-          type="password"
-          name="password"
-          className="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          placeholder="Password"
-          value={password}
-          onChange={e => { setPassword(e.target.value) }}
-        />
-        {!validPassword && <div
-          className="w-3/4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
-          role="alert"
-        >
-          <strong className="font-bold">Password Strenght: {/(\w|\d|\W){8,}/.test(password) ? 'Strong' : 'Weak'}</strong>
-          { !/(a-z&A-Z|\d|\W){8,}/.test(password) && <ul className="list-disc text-sm p-2">
-            {
-              !/([A-ZÑ])+/.test(password) && <li>Password must contain atleast 1 upper case letters (A - Z)</li>
-            }
-            {
-              !/([a-zñ])+/.test(password) && <li>Password must contain atleast 1 lower case letters (a - z)</li>
-            }
-                        {
-              !/\d/.test(password) && <li>Password must contain atleast 1 number (0 - 9)</li>
-            }
-            {!/\W/.test(password) && <li>Password must contain atleast 1 non-alphanumeric symbol (e.g. '@$%@(|'))</li>}
-            {!/(\W|\d|\w){8,}/.test(password) && <li>Password must be 8 characters long</li>}
-            
-          </ul>}
-          </div>}
+        <PasswordInput value={password} setValue={setPassword}/>
+        
         <br />
         <input
           type="password"
@@ -131,41 +109,13 @@ export default function TeacherRegistration(props) {
         />
         {password != confirmPassword && <FieldAlert message="Password does not match!" /> }
         <br />
-        <input
-          type="text"
-          name="firstName"
-          className="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          placeholder="First name"
-          value={firstName}
-          onChange={e => {setFirstName(e.target.value)}}
-        />
+        <TextField placeholder="First Name" value={firstName} setValue={setFirstName} />
         <br />
-        <input
-          type="text"
-          name="middleName"
-          className="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          placeholder="Middle name"
-          value={middleName}
-          onChange={e => {setMiddleName(e.target.value)}}
-        />
+        <TextField placeholder="Middle Name" value={middleName} setValue={setMiddleName} />
         <br />
-        <input
-          type="text"
-          name="lastName"
-          className="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          placeholder="Last name"
-          value={lastName}
-          onChange={e => {setLastName(e.target.value)}}
-        />
+        <TextField placeholder="Last Name" value={lastName} setValue={setLastName} />
         <br />
-        <input
-          type="text"
-          name="mobileNo"
-          className="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          placeholder="Mobile Number"
-          value={mobileNumber}
-          onChange={e => {setMobileNumber(e.target.value)}}
-        />
+        <NumberField placeholder="Mobile Number" value={mobileNumber} setValue={setMobileNumber} />
         <br />
         <h6 className="text-xl font-bold text-gray-700">Gender:</h6>
         <div onChange={e => setGender(e.target.value)}>
