@@ -8,6 +8,7 @@ import { useUserManagementHook } from "../../hooks/userManagementHook";
 import ClassScheduleAddModal from "../../components/ClassScheduleAddModal";
 import ClassScheduleTable from "../../components/ClassScheduleTable";
 import ClassScheduleEditModal from "../../components/ClassScheduleEditModal";
+import { useRouter } from "next/dist/client/router";
 
 export default function Index() {
   const [status, setStatus] = useState("admin-login");
