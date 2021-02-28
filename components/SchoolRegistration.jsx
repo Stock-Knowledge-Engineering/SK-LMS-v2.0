@@ -1,11 +1,9 @@
-import Link from "next/link";
 import { useDispatch } from "react-redux";
 
 import { DoLogin } from "../redux/actions/UserAction";
 import {useState, useEffect} from 'react';
 import { useHttp } from "../hooks/http";
 import { usePostHttp } from "../hooks/postHttp";
-import CustomInput from "./CustomInput";
 import PasswordInput from "./PasswordInput";
 import { useRouter } from "next/dist/client/router";
 import TextField from "./TextField";
