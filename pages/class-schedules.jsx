@@ -56,7 +56,7 @@ export default function Home() {
             {
               user.data.title.toLowerCase() == 'teacher' && <ClassScheduleTable editData={editData} isAddModalOpen = {isAddModalOpen} isEditModalOpen = {isEditModalOpen} />
             }
-                        {
+            {
               user.data.title.toLowerCase() == 'student' && <StudentClassSchedule editData={editData} isAddModalOpen = {isAddModalOpen} isEditModalOpen = {isEditModalOpen} />
             }
             {/* {isAddModalOpen && <EnrolledStudentAddModal teacherid={user.data.id} schoolid={user.data.school} showAddModal={showAddModal}/>} */}
