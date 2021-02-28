@@ -8,6 +8,8 @@ import { usePostHttp } from "../hooks/postHttp";
 import CustomInput from "./CustomInput";
 import PasswordInput from "./PasswordInput";
 import { useRouter } from "next/dist/client/router";
+import TextField from "./TextField";
+import NumberField from "./NumberField";
 
 const FieldAlert = (props) => {
     const {message} = props;
@@ -111,14 +113,13 @@ export default function SchoolRegistration(props) {
         />
         {password != confirmPassword && <FieldAlert message="Password does not match!" /> }
         <br />
-        <CustomInput placeholder="First Name" type="alphabet" value={firstName} setValue={setFirstName} />
-
+        <TextField placeholder="First Name" value={firstName} setValue={setFirstName} />
         <br />
-        <CustomInput placeholder="Middle Name" type="alphabet" value={middleName} setValue={setMiddleName} />
+        <TextField placeholder="Middle Name" value={middleName} setValue={setMiddleName} />
         <br />
-        <CustomInput placeholder="Last Name" type="alphabet" value={lastName} setValue={setLastName} />
+        <TextField placeholder="Last Name" value={lastName} setValue={setLastName} />
         <br />
-        <CustomInput type="number" placeholder="Mobile Number" value={mobileNumber} setValue={setMobileNumber} />
+        <NumberField placeholder="Mobile Number" value={mobileNumber} setValue={setMobileNumber} />
         <br />
         <h6 className="text-xl font-bold text-gray-700">Gender:</h6>
         <div onChange={e => setGender(e.target.value)}>
