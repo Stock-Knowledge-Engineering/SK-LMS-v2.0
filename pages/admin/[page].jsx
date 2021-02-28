@@ -38,13 +38,10 @@ export default function Page(props) {
   )
 }
 
-
-
 export async function getStaticPaths(){
     return {
         paths:[
             {params: {page: 'login'}},
-            {params: {page: 'registration'}}, 
             {params: {page: 'forgot-password'}},
             {params: {page: 'invite'}}
         ],
