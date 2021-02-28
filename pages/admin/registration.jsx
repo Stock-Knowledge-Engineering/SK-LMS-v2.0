@@ -17,7 +17,7 @@ export default function Code(props) {
   const router = useRouter();
 
   useEffect(() => {
-    if(user.data && user.data.title.toLowerCase() == 'teacher')
+    if(user.data && user.data.title.toLowerCase() == 'teacher' || user.data.title.toLowerCase() == 'student' )
       router.push("/");
     if(user.data && user.data.title.toLowerCase() == 'school-admin')
       router.push("/school");
