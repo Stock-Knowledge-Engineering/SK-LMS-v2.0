@@ -42,7 +42,7 @@ export default function ClassScheduleEditModal(props){
       );
       
     const [teacherDataLoading, teacherData] = useHttp(
-        props.classSchedule.room ? `/teachers?schoolid=${props.schoolid}&firstname=${props.classSchedule.firstname}&middlename=${props.classSchedule.middlename}&lastname=${props.classSchedule.lastname}` : '',
+        props.classSchedule.room ? `/teachers?school=${props.schoolid}&firstname=${props.classSchedule.firstname}&middlename=${props.classSchedule.middlename}&lastname=${props.classSchedule.lastname}` : '',
         []
       );        
 
@@ -81,7 +81,7 @@ export default function ClassScheduleEditModal(props){
         []
       );
       const [teachersLoading, teachers] = useHttp(
-        `/teachers?schoolid=${props.schoolid}`,
+        `/teachers?school=${props.schoolid}`,
         []
       );
       const [gradelevelsLoading, gradelevels] = useHttp(

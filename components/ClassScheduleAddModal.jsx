@@ -28,7 +28,7 @@ export default function ClassScheduleAddModal(props){
         []
       );
       const [teachersLoading, teachers] = useHttp(
-        `/teachers?schoolid=${props.schoolid}`,
+        `/teachers?school=${props.schoolid}`,
         []
       );
       const [gradelevelsLoading, gradelevels] = useHttp(
