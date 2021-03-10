@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from "react"
-import { useEventListener } from "../hooks/useEventListener"
 
 export default function NavBar(){
     const ref = useRef(null);
