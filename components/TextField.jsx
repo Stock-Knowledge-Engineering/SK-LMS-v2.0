@@ -7,7 +7,7 @@ export default function TextField(props){
     const [invalidInput, setInvalidInput] = useState(false);
 
     useEffect(()=>{
-        if(props.value.match(/^[A-Za-z]*/)[0] != props.value){
+        if(props.value.match(/^[A-Za-z ]*/)[0] != props.value){
             setInvalidInput(true);
         }
         else
