@@ -166,6 +166,9 @@ export default function Menu() {
             </li>
           </>
         }
+        <li>
+          <a href="/topics" className="inline-block">Topics</a>
+        </li>
         <br />
         <hr />
         <br />
