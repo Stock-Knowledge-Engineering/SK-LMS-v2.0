@@ -12,7 +12,25 @@ module.exports = {
       '3': '0.3',
       '4': '0.4'
     },
-    extend: {},
+    top:{
+      '1': '0.1',
+      '2': '0.2',
+      '3': '0.3',
+      '4': '0.4'
+    },
+    screens:{
+      'xs' : '375px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
+    extend: {
+      width: {
+        'height':'100vh'
+      }
+    },
   },
   variants: {
     extend: {},
