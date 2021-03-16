@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#dashboard {
-  /* display: flex; */
-}
-
 #dash-menu {
   background: #173245;
 }
@@ -24,9 +20,6 @@
   float: right;
 }
 
-#mini-name-name {
-}
-
 #dashboard-menu ul li:hover {
   background: #ffffff;
   color: #173245;
@@ -35,5 +28,5 @@
 .hero,
 .bg-nav {
   background-color: #fbab7e;
-  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+  background-image: linear-gradient(62deg, #62b4ff 0%, #0080f6 100%);
 }
