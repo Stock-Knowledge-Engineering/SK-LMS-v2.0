@@ -10,7 +10,7 @@ import {useUserManagementHook} from '../hooks/userManagementHook';
 import { useRouter } from 'next/dist/client/router';
 import EnrolledStudentTable from '../components/EnrolledStudentTable';
 import TopicsTable from '../components/TopicsTable';
-import TopicsAddModal from '../components/TopicsAddmodal';
+import TopicsAddModal from '../components/TopicsAddModal';
 import TopicsEditModal from '../components/TopicsEditModal';
 
 export default function Home() {
