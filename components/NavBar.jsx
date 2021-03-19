@@ -40,10 +40,10 @@ export default function NavBar(props){
         <>
           <div style={{borderRadius: visibility < 0.3 || props.page != 'home' ? '0' : '0 0 100% 100%'}} ref={ref} className={`md:flex xs:hidden hero w-full p-4 ${props.page != 'home' ? 'h-20' :'h-96'} bg-nav justify-${visibility < 0.3 ? "between" : "center"} items-center ${fixNavBar && !props.loginModalOpen ? 'fixed top-0' : ''} z-40`}>
             {visibility < 0.3 && 
-              <div className="lg:w-1/4 flex items-center text-xl text-white md:w-2/12">
+              <a href="/" className="lg:w-1/4 flex items-center text-xl text-white md:w-2/12">
                 <img src="/images/logo-white.svg" />
                 <h4 className="lg:flex md:hidden">Stock <span className="font-bold">Knowledge</span></h4>
-              </div>
+              </a>
             }
               <div className={`lg:w-3/4 md:w-full flex items-center text-white text-3xl font-bold`}>
                 <ul ref={menuRef} className="flex justify-around w-full lg:text-base md:text-xs">
