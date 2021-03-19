@@ -51,7 +51,7 @@ const MobileNavbar = (props) => {
         <div ref={ref} className={`${float ? 'fixed' : ''} hero flex flex-col items-center md:hidden xs:block xs:w-height z-50`}>
             <div className="w-full px-2 py-4 flex text-white justify-between">
                 <a href="#home" className="flex items-center text-xl text-white">
-                    <img src="images/logo-white.svg" />
+                    <img src="/images/logo-white.svg" />
                     <h4 className="lg:flex md:hidden text-4xl">Stock <span className="font-bold">Knowledge</span></h4>
                 </a >
                 <svg onClick={(e) => setDisplayMenu(!displayMenu)} className="w-16 h-16 border p-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
