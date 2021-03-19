@@ -14,7 +14,7 @@ import CarouselLayout from "../components/Carousel/CarouselLayout";
 import TestimonialLayout from "../components/Testimonial/TestimonialLayout";
 import LoginModal from "../components/HomePage/LoginModal";
 import ArticleCarouselLayout from "../components/ArticlesCarousel/ArticleCarouselLayout";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 
 
 export default function Home(props) {

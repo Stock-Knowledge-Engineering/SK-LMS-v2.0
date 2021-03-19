@@ -1,5 +1,5 @@
 import ArticleCarouselLayout from "../../components/ArticlesCarousel/ArticleCarouselLayout"
-import Footer from "../../components/footer"
+import Footer from "../../components/Footer"
 import MobileNavbar from "../../components/MobileNavBar"
 import NavBar from "../../components/NavBar"
 
