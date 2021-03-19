@@ -10,38 +10,48 @@ import { useUserManagementHook } from "../hooks/userManagementHook";
 import { useRouter } from "next/dist/client/router";
 import NavBar from "../components/NavBar";
 import MobileNavBar from "../components/MobileNavBar";
+import CarouselLayout from "../components/Carousel/CarouselLayout";
+import TestimonialLayout from "../components/Testimonial/TestimonialLayout";
+import LoginModal from "../components/HomePage/LoginModal";
+import ArticleCarouselLayout from "../components/ArticlesCarousel/ArticleCarouselLayout";
+import Footer from "../components/footer";
+
 
 export default function Home(props) {
+
   useUserManagementHook();
 
-  const [status, setStatus] = useState("login");
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
   const user = useSelector((state) => state.UserReducer);
   const router = useRouter();
 
   return (
     <>
+      {loginModalOpen && <LoginModal showModal={setLoginModalOpen}/>}
       <MobileNavBar />
       <div id="home" className="h-screen hero relative sm:w-full xs:w-height">
-        <div className="flex items-center text-white xs:hidden">
-          <img className="" src="images/logo.png" />
-          <h1 className="text-6xl font-bold">Stock Knowledge</h1>
+        <div className="md:flex items-center text-white xs:hidden justify-between">
+          <div className="flex items-center">
+            <img src="images/logo.png" />
+            <h1 className="text-6xl font-bold">Stock Knowledge</h1>
+          </div>
+          <button onClick={e => {setLoginModalOpen(true)}} className="bg-green-500 rounded-full font-bold text-xl text-white mr-10 py-4 px-12">Login</button>
         </div>
         <div className="flex w-full h-1/2">
           <div className="w-1/2 pl-10 pt-10">
-            <h1 className="text-8xl font-bold text-white md:text-6xl xs:text-5xl">
-              Bringing together innovation and education
+            <h1 className="lg:text-8xl font-bold text-white md:text-6xl xs:text-5xl">
+            Learn to Play. <br />
+            Play to Learn.
             </h1>
             <br />
             <p className="text-3xl text-white md:text-xl">
-              When technology and teaching work <br />
-              hand in hand, we get better results.
+            Stock Knowledge brings innovation and education together to provide accessible experiential learning technology that students love.
             </p>
             <br />
             <br />
-            
             <br />
             <a className="rounded-full bg-blue-500 font-bold text-xl text-white py-4 px-12">
-              Request for a demo
+              Request a demo
             </a>
           </div>
           <div className="relative w-1/2 xs:mt-10">
@@ -53,7 +63,7 @@ export default function Home(props) {
               }}
             ></div>
             <div
-              className="w-3/4 h-full absolute animate__animated animate__slow animate__shakeY animate__infinite"
+              className="w-3/4 h-full absolute"
               style={{
                 background: "url('images/hero-2.svg') no-repeat",
                 top: "50%",
@@ -68,7 +78,7 @@ export default function Home(props) {
               }}
             ></div>
             <div
-              className="w-3/4 h-full absolute animate__animated animate__slow animate__shakeY animate__infinite"
+              className="w-3/4 h-full absolute"
               style={{
                 background: "url('images/hero-3.svg') no-repeat",
                 top: "0%",
@@ -95,7 +105,7 @@ export default function Home(props) {
           </div>
         </div>
       </div>
-      <NavBar />
+      <NavBar showModal={setLoginModalOpen} loginModalOpen={loginModalOpen} page={"home"}/>
       <br />
       <span></span>
       <div className="md:w-full xs:w-height p-6 h-1/4">
@@ -104,8 +114,7 @@ export default function Home(props) {
         </h1>
         <br />
         <h4 className="text-xl text-center">
-          Every learning module is customized to adapt each student’s unique
-          learning styles and pacing.
+        Our solutions aim to fulfill the needs of next generation learners in the country and across the globe
         </h4>
         <br />
       </div>
@@ -113,18 +122,18 @@ export default function Home(props) {
         <div className="md:w-1/2 flex justify-end px-14">
           <img src="images/vr-couch-1.svg" />
         </div>
-        <div className="md:w-1/2 px-14 xs:text-center">
+        <div className="md:w-1/2 px-14 md:text-left xs:text-center">
           <h4 className="text-4xl font-bold text-blue-500">
-            LMS with Gamification
+            Fully-Immersive Digital Experience
           </h4>
-          <p className="text-xl">Studying is more fun and engaging.</p>
+          <p className="text-xl">Enabling students to interact and immerse their learning experience in their own digital space</p>
         </div>
       </div>
       <div className="md:w-full md:flex-row xs:w-height xs:flex-col-reverse p-6 h-1/4 flex items-center">
         <div className="md:w-1/2 px-14 md:text-right xs:text-center">
-          <h4 className="text-4xl font-bold text-blue-500">Extended Reality</h4>
+          <h4 className="text-4xl font-bold text-blue-500">Gamification</h4>
           <p className="text-xl">
-            The use of AR / VR for more immersive learning.
+            Assimilating new information and testing new knowledge in a fun and engaging way
           </p>
         </div>
         <div className="md:w-1/2 px-14">
@@ -135,10 +144,10 @@ export default function Home(props) {
         <div className="md:w-1/2 flex justify-end px-14">
           <img src="images/sol-3.svg" />
         </div>
-        <div className="md:w-1/2 px-14 xs:text-center">
-          <h4 className="text-4xl font-bold text-blue-500">Online Education</h4>
+        <div className="md:w-1/2 px-14 md:text-left  xs:text-center">
+          <h4 className="text-4xl font-bold text-blue-500">Device Accessibility</h4>
           <p className="text-xl">
-            Convenient access of courses anytime, anywhere.
+          Delivering the highest-quality learning experiences accessible by basic devices
           </p>
         </div>
       </div>
@@ -148,7 +157,7 @@ export default function Home(props) {
             Adaptive Learning
           </h4>
           <p className="text-xl">
-            Effectively adapt each learner’s style and pace.
+          Using algorithms to deliver customized learning activities that address each student’s unique needs
           </p>
         </div>
         <div className="md:w-1/2 px-14">
@@ -169,18 +178,13 @@ export default function Home(props) {
           <br />
           <br />
           <p className="lg:text-2xl md:text-lg xs:text-2xl">
-            Stock Knowledge was founded in September 2016 by Anna Marie Benzon,
-            a physicist and educator.
+            Educator and physicist Anna Marie Benzon launched Stock Knowledge to focus on how young learners could foster better appreciation for their school subjects after realizing that traditional methods were not as engaging anymore in the age of the internet.
             <br />
             <br />
-            Today, our team is composed of scientists, engineers, educators, and
-            entrepreneurs to ensure that every element of the learning program
-            is delivered seamlessly from concept to completion.
+            Keeping on track to its mission of instituting its innovative platform into the local academic sector, Stock Knowledge recently entered into agreements with the Department of Education (DEpEd) of Manila and Makati to gather more insights from students and further develop the platform’s viability into the education mainstream with the help of investors and venture capitalists around the world.        
             <br />
             <br />
-            Owing to its forward-looking approach to the 21st educational
-            technologies, Stock Knowledge positioned itself to be one of the
-            most promising startups internationally.
+            Still in its early stages, Stock Knowledge has marked its reputation as one of the Philippines’ premier educational technology corporations that is committed to making a real difference in the industry for the benefit of students and educators around the world. 
           </p>
         </div>
         <div className="lg:w-1/2 relative space-y-10 p-20 md:w-full">
@@ -188,209 +192,58 @@ export default function Home(props) {
             <h6 className="text-2xl font-bold text-blue-400">Mission</h6>
             <br />
             <p>
-              Empower Learners and educators by creating accessible,
-              cutting-edge digital tools.
+            Empower learners and educators by creating accessible, cutting-edge digital tools.
             </p>
           </div>
           <div className="py-2 px-4 w-full border text-gray-500 bg-white rounded-lg h-36">
             <h6 className="text-2xl font-bold text-blue-400">Vision</h6>
             <br />
             <p>
-              Be the leading EdTech company in today's digital transformation
-              age.
+              Be the leading EdTech company in today's digital transformation age.
             </p>
           </div>
           <div className="py-2 px-4 w-full border text-gray-500 bg-white rounded-lg h-36">
             <h6 className="text-2xl font-bold text-blue-400">Core Values</h6>
             <br />
             <p>
-              We are a mission-driven team that takes pride in efficient and
-              ethical work, anchored on the highest degree of Excellence,
-              Efficiency, Integrity, Creativity, and Loyalty.
+            We are a mission-driven team that takes pride in efficient and ethical work, anchored on the highest degree of Excellence, Efficiency, Integrity, Creativity, and Loyalty.
             </p>
           </div>
         </div>
       </div>
       <div id="sme" className="md:w-full xs:w-height p-6 h-1/4 bg-blue-50 rounded-b-full">
         <h1 className="text-center w-full text-7xl font-bold text-gray-600 mt-32">
-          Our Subject Matter Experts
+          Our Team
         </h1>
         <br />
         <h4 className="text-xl text-center text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Behind the team are empowered individuals comprising scientists, engineers, educators, and entrepreneurs who were meticulously selected to perform and align with the Corporation’s mission, vision, values and culture. Each member of Stock Knowledge possesses the initiative to focus on the needs and best interests of its clients, while collectively working to ensure that each facet of the learning programs is delivered efficiently from conceptualization to realization, paving the way to better education for all. 
         </h4>
-        <div className="flex w-full justify-around mt-32 lg:px-10 lg:flex-row lg:space-y-0 xs:flex-col xs:items-center md:space-y-4">
-          <div className="w-80 h-96 rounded-3xl relative">
-            <div className="h-3/4 border bg-white absolute inset-x-0 bottom-0"></div>
-            <div className="rounded-full absolute inset-0">
-              <img className="m-auto" src="images/sme-1.svg" />
-              <h3 className="mt-8 ml-12 text-xl font-bold text-blue-500">
-                Dr. Carlos Baldo
-              </h3>
-              <p className="mt-1 ml-12 text-gray-500">
-                PhD in Physics
-                <br />
-                University of the Philippines
-              </p>
-            </div>
-          </div>
-          <div className="w-80 h-96 rounded-3xl relative">
-            <div className="h-3/4 border bg-white absolute inset-x-0 bottom-0"></div>
-            <div className="rounded-full absolute inset-0">
-              <img className="m-auto" src="images/sme-2.svg" />
-              <h3 className="mt-8 ml-12 text-xl font-bold text-blue-500">
-                Mr. Joseph Bandoy
-              </h3>
-              <p className="mt-1 ml-12 text-gray-500">
-                PhD in Medical Engineering (Cand.)
-                <br />
-                Gwangju Insitute of Science and Technology
-              </p>
-            </div>
-          </div>
-          <div className="w-80 h-96 rounded-3xl relative">
-            <div className="h-3/4 border bg-white absolute inset-x-0 bottom-0"></div>
-            <div className="rounded-full absolute inset-0">
-              <img className="m-auto" src="images/sme-3.svg" />
-              <h3 className="mt-8 ml-12 text-xl font-bold text-blue-500">
-                Dr. Resmond Reano
-              </h3>
-              <p className="mt-1 ml-12 text-gray-500">
-                PhD in Chemical Engineering
-                <br />
-                University of the Philippines
-              </p>
-            </div>
-          </div>
-        </div>
+        <CarouselLayout />
         <br />
       </div>
       <div className="md:w-full xs:w-height space-y-14 mt-32">
-        <h1 id="testimonial" className="text-center w-full text-7xl font-bold text-gray-600">
-          What our Clients Say
+        <h1 id="testimonial" className="text-center mb-32 w-full text-7xl font-bold text-gray-600">
+          What our Partners Say
         </h1>
-        <div className="m-auto md:w-3/4 xs:w-height flex xs:items-center md:items-center md:justify-center xs:flex-col">
-          <div className="relative p-10 md:w-1/2 xs:w-3/4 bg-blue-200 h-80 flex flex-col items-center text-left text-white rounded-l-xl" style={{background: 'linear-gradient(224.06deg, #62B4FF 0%, #0080F6 99.64%)'}}>
-            <h4 className="w-full text-xl font-bold">Testimonials</h4>
-            <p className="leading-loose">
-              Lorem ipsum dolor sit amet, consectetur aydipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <div className="absolute flex bottom-10 left-8">
-              <svg className="h-6 w-6 opacity-50 hover:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              <svg className="h-6 w-6 opacity-50 hover:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          </div>
-          <div className="md:w-1/2 xs:w-3/4 h-80 bg-gray-50 flex items-center rounded-r-xl">
-            <div className="bg-white h-72 w-full mr-4 px-8 py-4 space-y-4 rounded-r-xl">
-              <div className="w-full flex space-x-3">
-                <img className="w-16 rounded-full" src="images/article1.svg" />
-                <div>
-                  <h6 className="text-xl font-bold text-blue-500">Test test</h6>
-                  <p className="text-blue-300 text-sm">College Student</p>
-                </div>
-              </div>
-              <p className="leading-loose text-gray-400 lg:text-lg md:text-sm">
-                "Stock Knowledge is very helpful and useful. It gives detailed information. The site is very creative and reliable. One of the most powerful educational website I know. I get high grades in Physics because of this"
-              </p>
-            </div>
-          </div>
-        </div>
+          <TestimonialLayout />
       </div>
-      <div className="md:w-full xs:w-height xs:items-center flex bg-blue-100 mt-32 p-4 xs:flex-col">
+      <div className="md:w-full xs:w-height xs:items-center flex bg-blue-100 mt-32 p-4 sm:flex-row xs:flex-col">
         <h6 id="sponsor" className="md:w-1/4 xs:text-center text-4xl font-bold md:text-left md:my-16 md:ml-28">
           Our
           <br />
           Sponsors
         </h6>
         <div className="w-3/4 flex justify-around flex-wrap">
-          <img src="images/aim.svg" />
-          <img src="images/animo labs.svg" />
-          <img src="images/QBO.svg" />
-          <img src="images/equals.svg" />
-          <img src="images/she trades.svg" />
+          <img className="w-40" src="/images/unicef.svg" />
+          <img className="" src="/images/QBO.svg" />
+          <img className="" src="/images/aim.svg" />
+          <img className="w-24" src="/images/deped-manila.svg" />
+          <img className="w-24" src="/images/deped-makati.svg" />
         </div>
       </div>
       <div id="article" className="mt-32">
-        <h1  className="text-center md:w-full xs:w-height text-7xl font-bold text-gray-600">
-          Articles
-        </h1>
-      </div>
-      <div className="flex md:w-full xs:w-height justify-around mt-32 mb-16">
-        <div>
-          <img className="w-3/4 m-auto" src="images/article1.svg" />
-          <h3 className="mt-8 ml-12 text-xl font-bold">
-            Learning in the Digital Age
-          </h3>
-          <div className="flex items-end mt-1 ml-12 text-blue-500">
-            <p className="">Read More</p>
-            <svg
-              className="h-5"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </div>
-        </div>
-        <div>
-          <img className="w-3/4 m-auto" src="images/article1.svg" />
-          <h3 className="mt-8 ml-12 text-xl font-bold">
-            Learning in the Digital Age
-          </h3>
-          <div className="flex items-end mt-1 ml-12 text-blue-500">
-            <p className="">Read More</p>
-            <svg
-              className="h-5"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </div>
-        </div>
-        <div>
-          <img className="w-3/4 m-auto" src="images/article1.svg" />
-          <h3 className="mt-8 ml-12 text-xl font-bold">
-            Learning in the Digital Age
-          </h3>
-          <div className="flex items-end mt-1 ml-12 text-blue-500">
-            <p className="">Read More</p>
-            <svg
-              className="h-5"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </div>
-        </div>
+        <ArticleCarouselLayout />
       </div>
       <div id="contactus" className="md:w-full xs:w-height p-6 h-1/4 bg-blue-50 rounded-b-full">
         <h1 className="text-center w-full text-7xl font-bold text-gray-600 mt-16">
@@ -398,12 +251,9 @@ export default function Home(props) {
         </h1>
         <br />
         <h4 className="text-xl text-center text-gray-500">
-          Send us a message for a demo to set-up your courses via the use of our
-          adaptive gamified extended reality technologies. You can also send a
-          message if you are interested to join us, we are currently looking for
-          sales and marketing officers.{" "}
+        Send us a message if you’re interested to partner with us! 
         </h4>
-        <div className="flex w-full xs:flex-col xs:space-y-10 xs:items-center md:justify-around mt-32 space-x-10 px-10">
+        <div className="flex w-full sm:flex-row xs:flex-col xs:space-y-10 xs:items-center md:justify-around my-16 space-x-10 px-10">
           <div className="md:w-1/2 xs:w-full">
             <form className="space-y-4">
               <div>
@@ -493,63 +343,7 @@ export default function Home(props) {
           </div>
         </div>
       </div>
-      <div
-        className="md:w-full xs:w-height p-8 space-y-4"
-        style={{
-          background: `linear-gradient(268.4deg, #62B4FF 0.19%, #0080F6 97.81%)`,
-        }}
-      >
-        <div className="w-full flex align-center justify-between">
-          <a href="#home" className="w-1/4 flex items-center text-xl text-white">
-            <img src="images/logo-white.svg" />
-            <h4>
-              Stock <span className="font-bold">Knowledge</span>
-            </h4>
-          </a>
-          <div className="w-3/4 flex items-center justify-end text-md text-white space-x-5">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms</a>
-            <div className="flex align-center space-x-4">
-              <img src="images/facebook.svg" />
-              <img src="images/twitter.svg" />
-              <img src="images/instagram.svg" />
-              <img src="images/youtube.svg" />
-            </div>
-          </div>
-        </div>
-        <hr />
-        <div className="flex align-center lg:text-sm md:text-xs text-white xs:flex-col xs:items-center xs:space-y-4">
-          <ul className="flex justify-around md:w-3/4 xs:flex-col xs:text-center">
-          <li>
-                <a href="#home">Home</a>
-            </li>
-          <li>
-                <a href="#solution">Our Solutions</a>
-            </li>
-            <li>
-                <a href="#story">Our Story</a>
-            </li>
-            <li>
-                <a href="#sme">Our SME</a>
-            </li>
-            <li>
-                <a href="#testimonial">Testimonials</a>
-            </li>
-            <li>
-                <a href="#sponsor">Sponsors</a>
-            </li>
-            <li>
-                <a href="#article">Article</a>
-            </li>
-            <li>
-                <a href="#contactus">Contact Us</a>
-            </li>
-          </ul>
-          <div className="md:w-1/4 flex align-center justify-end">
-            <p className="">© 2021 Stock Knowledge. All rights reserved.</p>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </>
   );
 }
