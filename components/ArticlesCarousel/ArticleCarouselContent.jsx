@@ -9,7 +9,7 @@ const ArticleCarouselContent = (props) => {
             <div key={article.id} className="w-80 space-y-4">
               <img src={article.image} />
               <div className="text-left">
-                <h4 className="font-bold">{article.header}</h4>
+                <a href={article.link} className="font-bold">{article.header}</a>
                 <a href={article.link} className="flex items-end text-blue-500">
                   <p className="">Read More</p>
                   <svg

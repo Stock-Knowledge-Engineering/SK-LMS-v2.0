@@ -10,13 +10,13 @@ export const useArticlesHook = () => {
         "id": 0,
         "image": "/images/articles/new-look-same-goal/header-img.svg",
         "header": "New look, Same Goal",
-        "link": "/articles/a"
+        "link": "/articles/new-look-same-goals"
       },
       {
         "id": 1,
         "image": "/images/articles/learning-in-the-digital-age/header-img.svg",
         "header": "Learning in the Digital Age",
-        "link": "/articles/b"
+        "link": "/articles/learning-in-the-digital-age"
       },
       {
         "id": 2,
