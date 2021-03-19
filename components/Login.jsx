@@ -45,7 +45,7 @@ export default function Login(props) {
     
     useEffect(() => {
       if (userData.success) {
-        dispatch(DoLogin(true, userData.result));
+        dispatch(DoLogin(true, userData.result[0]));
       }
       if (typeof userData != "boolean" && !userData.success) {
         setInvalidCredential(true);
