@@ -1,12 +1,9 @@
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Start from "../../components/Start";
 import { useSelector } from "react-redux";
 
 import SchoolAdminLayout from "../../layouts/SchoolAdminLayout";
 import { useUserManagementHook } from "../../hooks/userManagementHook";
-import SubjectAddModal from "../../components/SubjectAddModal";
-import SubjectEditModal from "../../components/SubjectEditModal";
 import TeacherTable from '../../components/TeacherTable';
 import TeacherEditModal from "../../components/TeachersEditModal";
 import TeacherAddModal from "../../components/TeacherAddModal";
