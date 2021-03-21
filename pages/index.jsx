@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Head from 'next/head';
+
 import { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
@@ -27,24 +29,27 @@ export default function Home(props) {
 
   return (
     <>
+      <Head>
+        <title>Stock Knowledge</title>
+      </Head>
       {loginModalOpen && <LoginModal showModal={setLoginModalOpen}/>}
       <MobileNavBar />
-      <div id="home" className="h-screen hero relative sm:w-full xs:w-height">
-        <div className="md:flex items-center text-white xs:hidden justify-between">
-          <div className="flex items-center">
-            <img src="images/logo.png" />
-            <h1 className="text-6xl font-bold">Stock Knowledge</h1>
+      <div id="home" className="hero h-screen relative sm:w-full xs:w-height">
+        <div className="md:flex items-center xs:hidden justify-between">
+          <div className="flex items-center ml-10 mt-20">
+            <img className="w-32" src="images/logo.png" />
+            <h1 className="text-6xl text-white">Stock <span className="font-bold">Knowledge</span></h1>
           </div>
           <button onClick={e => {setLoginModalOpen(true)}} className="bg-green-500 rounded-full font-bold text-xl text-white mr-10 py-4 px-12">Login</button>
         </div>
-        <div className="flex w-full h-1/2">
-          <div className="w-1/2 pl-10 pt-10">
-            <h1 className="lg:text-8xl font-bold text-white md:text-6xl xs:text-5xl">
+        <div className="flex w-full h-1/2 mt-40">
+          <div className="w-1/2 pl-10 pt-10 text-white">
+            <h1 className="lg:text-8xl font-bold md:text-6xl xs:text-5xl">
             Learn to Play. <br />
             Play to Learn.
             </h1>
             <br />
-            <p className="text-3xl text-white md:text-xl">
+            <p className="text-3xl md:text-xl">
             Stock Knowledge brings innovation and education together to provide accessible experiential learning technology that students love.
             </p>
             <br />
@@ -62,6 +67,7 @@ export default function Home(props) {
                 left: "10%",
               }}
             ></div>
+              
             <div
               className="w-3/4 h-full absolute"
               style={{
@@ -232,12 +238,12 @@ export default function Home(props) {
         <h6 id="sponsor" className="md:w-1/4 xs:text-center text-4xl font-bold md:text-left md:my-16 md:ml-28">
           Our
           <br />
-          Sponsors
+          Partners
         </h6>
         <div className="w-3/4 flex justify-around flex-wrap">
           <img className="w-40" src="/images/unicef.svg" />
           <img className="" src="/images/QBO.svg" />
-          <img className="" src="/images/aim.svg" />
+          <img className="" src="/images/AIM.svg" />
           <img className="w-24" src="/images/deped-manila.svg" />
           <img className="w-24" src="/images/deped-makati.svg" />
         </div>
@@ -325,10 +331,10 @@ export default function Home(props) {
                 />
               </svg>
               <a
-                href="mailto:stock.knowledge7@gmail.com "
-                className="text-gray-500"
+                className="text-gray-500 w-1/2"
               >
-                stock.knowledge7@gmail.com
+                QBO Innovation Hub, Ground Floor, DTI International Building, 375 Sen. 
+Gil J. Puyat Avenue., Makati City, Metro Manila, 1209 Philippines
               </a>
             </div>
 
