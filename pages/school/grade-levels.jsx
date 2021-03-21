@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 import SchoolAdminLayout from "../../layouts/SchoolAdminLayout";
 import { useUserManagementHook } from "../../hooks/userManagementHook";
-import SubjectAddModal from "../../components/SubjectAddModal";
 import GradeLevelTable from "../../components/GradeLevelTable";
 import GradeLevelEditModal from "../../components/GradeLevelEditModal";
 import GradeLevelAddModal from '../../components/GradeLevelAddModal';
