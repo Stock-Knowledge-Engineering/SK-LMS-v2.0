@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
 
@@ -36,7 +36,10 @@ export default function Home(props) {
             <img className="w-32" src="images/logo.png" />
             <h1 className="text-6xl text-white">Stock <span className="font-bold">Knowledge</span></h1>
           </div>
-          <button onClick={e => {setLoginModalOpen(true)}} className="bg-green-500 rounded-full font-bold text-xl text-white mr-10 py-4 px-12">Login</button>
+          {user.isLogin ? 
+            <h1 className="text-6xl text-white mr-10 mt-20">{`Hi, ${user.data.firstname} ${user.data.lastname}`}</h1> :
+            <button onClick={e => {setLoginModalOpen(true)}} className="bg-green-500 rounded-full font-bold text-xl text-white mr-10 py-4 px-12">Login</button>
+          }
         </div>
         <div className="flex w-full h-1/2 mt-40">
           <div className="w-1/2 pl-10 pt-10 text-white">
@@ -52,7 +55,7 @@ export default function Home(props) {
             <br />
             <br />
             <a className="rounded-full bg-blue-500 font-bold text-xl text-white py-4 px-12">
-              Request a demo
+              {user.isLogin ? 'Go to LMS' : 'Request a demo'}
             </a>
           </div>
           <div className="relative w-1/2 xs:mt-10">

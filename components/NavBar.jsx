@@ -1,7 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react"
+import { useSelector } from "react-redux";
 
 export default function NavBar(props){
     const ref = useRef(null);
+
+    const user = useSelector(state => state.UserReducer);
+
     const menuRef = useRef(null);
     const [visibility, setVisibility] = useState(null)
     const [fixNavBar, setFixNavBar] = useState(false);
@@ -72,7 +76,7 @@ export default function NavBar(props){
                     <a href="/#contactus">Contact Us</a>
                   </li>
                 </ul>
-                <button onClick={e => {props.showModal(true)}} className="bg-green-500 rounded-full font-bold text-base text-white py-2 px-4">Login</button>
+                <button onClick={e => {props.showModal(true)}} className="bg-green-500 rounded-full font-bold text-base text-white py-2 px-4">{user.isLogin ? 'LMS' : 'Login' }</button>
               </div>
               {/* {visibility < 0.3 && 
                 <button className="bg-yellow-400 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-yellow-200">Register</button>
