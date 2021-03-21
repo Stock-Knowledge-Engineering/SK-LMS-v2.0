@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useHttp } from "../hooks/http";
-import { usePostHttp } from "../hooks/postHttp";
+import { useSelector } from "react-redux";
 
 const Row = (props) => {
   const {subject} = props;
@@ -20,16 +20,17 @@ const Row = (props) => {
 };
 
 export default function SubjectTable(props) {
+  const user = useSelector((state) => state.UserReducer);
+
   const [fetchSubjects, setFetchSubjects] = useState(true);
 
   const [id, setId] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [gradelevel, setGradeLevel] = useState('');
-  const [filterQuery, setFilterQuery] = useState('');
 
   const [subjectLoading, subjects] = useHttp(
-    fetchSubjects ? `/subjects?${id ? 'id='+id+'&' : ''}${title ? 'title='+title+'&' : ''}` : '',
+    fetchSubjects ? `/subjects?school=${user.data.school}&${id ? 'id='+id+'&' : ''}${title ? 'title='+title+'&' : ''}` : '',
     [fetchSubjects ? fetchSubjects : null]
   );
 
