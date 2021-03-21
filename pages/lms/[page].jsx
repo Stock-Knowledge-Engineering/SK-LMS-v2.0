@@ -18,7 +18,7 @@ export default function Page(props) {
 
   useEffect(() => {
     if(user.data && user.data.title.toLowerCase() == 'teacher' || user.data && user.data.title.toLowerCase() == 'student')
-      router.push("/");
+      router.push("/lms");
     if(user.data && user.data.title.toLowerCase() == 'school-admin')
       router.push("/school");
   },[user])
