@@ -34,14 +34,14 @@ export default function Home(props) {
         <div className="md:flex items-center xs:hidden justify-between">
           <div className="flex items-center ml-10 mt-20">
             <img className="w-32" src="images/logo.png" />
-            <h1 className="text-6xl text-white">Stock <span className="font-bold">Knowledge</span></h1>
+            <h1 className="lg:text-6xl md:text-4xl  text-white">Stock <span className="font-bold">Knowledge</span></h1>
           </div>
           {user.isLogin ? 
-            <h1 className="text-6xl text-white mr-10 mt-20">{`Hi, ${user.data.firstname} ${user.data.lastname}`}</h1> :
+            <h1 className="lg:text-6xl md:text-4xl xs:hidden md:block text-white mr-10 mt-20">{`Hi, ${user.data.firstname} ${user.data.lastname}`}</h1> :
             <button onClick={e => {setLoginModalOpen(true)}} className="bg-green-500 rounded-full font-bold text-xl text-white mr-10 py-4 px-12">Login</button>
           }
         </div>
-        <div className="flex w-full h-1/2 mt-40">
+        <div className="flex w-full h-1/2 lg:mt-20 xs:mt-0">
           <div className="w-1/2 pl-10 pt-10 text-white">
             <h1 className="lg:text-8xl font-bold md:text-6xl xs:text-5xl">
             Learn to Play. <br />
