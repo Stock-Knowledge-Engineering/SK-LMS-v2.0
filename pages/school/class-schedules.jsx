@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Start from "../../components/Start";
 import { useSelector } from "react-redux";
 

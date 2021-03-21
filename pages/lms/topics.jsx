@@ -1,5 +1,4 @@
-import Link from 'next/link'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import {useSelector} from 'react-redux'
 import MainLayout from '../../layouts/MainLayout';
@@ -8,7 +7,6 @@ import Start from '../../components/Start';
 
 import {useUserManagementHook} from '../../hooks/userManagementHook';
 import { useRouter } from 'next/dist/client/router';
-import EnrolledStudentTable from '../../components/EnrolledStudentTable';
 import TopicsTable from '../../components/TopicsTable';
 import TopicsAddModal from '../../components/TopicsAddModal';
 import TopicsEditModal from '../../components/TopicsEditModal';
