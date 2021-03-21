@@ -2,11 +2,11 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react';
 
 import {useSelector} from 'react-redux'
-import MainLayout from '../layouts/MainLayout';
+import MainLayout from '../../layouts/MainLayout';
 
-import Start from '../components/Start';
+import Start from '../../components/Start';
 
-import {useUserManagementHook} from '../hooks/userManagementHook';
+import {useUserManagementHook} from '../../hooks/userManagementHook';
 import { useRouter } from 'next/dist/client/router';
 
 export default function Page(props) {
