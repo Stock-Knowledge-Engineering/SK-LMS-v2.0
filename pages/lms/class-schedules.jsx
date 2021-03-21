@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
-import {useSelector} from 'react-redux'
+import {useSelector} from 'react-redux';
 import MainLayout from '../../layouts/MainLayout';
 
-import Start from '../components/Start';
+import Start from '../../components/Start';
 
-import {useUserManagementHook} from '../hooks/userManagementHook';
+import {useUserManagementHook} from '../../hooks/userManagementHook';
 import { useRouter } from 'next/dist/client/router';
-import ClassScheduleTable from '../components/ClassScheduleTable';
-import StudentClassSchedule from '../components/StudentClassSchedule';
+import ClassScheduleTable from '../../components/ClassScheduleTable';
+import StudentClassSchedule from '../../components/StudentClassSchedule';
 
 export default function Home() {
   useUserManagementHook();

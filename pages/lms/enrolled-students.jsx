@@ -1,16 +1,15 @@
-import Link from 'next/link'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import {useSelector} from 'react-redux';
 import MainLayout from '../../layouts/MainLayout';
 
-import Start from '../components/Start';
+import Start from '../../components/Start';
 
-import {useUserManagementHook} from '../hooks/userManagementHook';
+import {useUserManagementHook} from '../../hooks/userManagementHook';
 import { useRouter } from 'next/dist/client/router';
-import EnrolledStudentEditModal from '../components/EnrolledStudentEditModal';
-import EnrolledStudentAddModal from '../components/EnrolledStudentAddModal';
-import EnrolledStudentTable from '../components/EnrolledStudentTable';
+import EnrolledStudentEditModal from '../../components/EnrolledStudentEditModal';
+import EnrolledStudentAddModal from '../../components/EnrolledStudentAddModal';
+import EnrolledStudentTable from '../../components/EnrolledStudentTable';
 
 export default function Home() {
   useUserManagementHook();
