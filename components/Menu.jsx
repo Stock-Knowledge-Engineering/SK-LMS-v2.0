@@ -16,7 +16,7 @@ export default function Menu() {
     localStorage.setItem("isLogin", false);
     localStorage.removeItem("user");
 
-    router.push('/');
+    router.push('/lms');
   };
 
   useEffect(()=>{
