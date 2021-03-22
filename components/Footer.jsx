@@ -7,8 +7,8 @@ const Footer = (props) => {
       }}
     >
       <div className="w-full flex align-center justify-between">
-        <a href="#home" className="w-1/4 flex items-center text-xl text-white">
-          <img src="/images/logo-white.svg" />
+        <a href="#home" className="w-1/4 flex items-center text-xl text-white space-x-2">
+          <img className="w-12" src="/images/logo-white.svg" />
           <h4>
             Stock <span className="font-bold">Knowledge</span>
           </h4>
@@ -46,7 +46,7 @@ const Footer = (props) => {
             <a href="#sponsor">Partners</a>
           </li>
           <li>
-            <a href="#article">Article</a>
+            <a href="#article">Articles</a>
           </li>
           <li>
             <a href="#contactus">Contact Us</a>
