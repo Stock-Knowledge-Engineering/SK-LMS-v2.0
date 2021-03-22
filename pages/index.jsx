@@ -30,25 +30,25 @@ export default function Home(props) {
       </Head>
       {loginModalOpen && <LoginModal showModal={setLoginModalOpen}/>}
       <MobileNavBar />
-      <div id="home" className="hero h-screen relative sm:w-full xs:w-height">
+      <div id="home" className="h-screen relative sm:w-full xs:w-height">
         <div className="md:flex items-center xs:hidden justify-between">
           <div className="flex items-center ml-10 mt-20">
             <img className="w-32" src="images/logo.png" />
-            <h1 className="lg:text-6xl md:text-4xl  text-white">Stock <span className="font-bold">Knowledge</span></h1>
+            <h1 className="lg:text-6xl md:text-4xl  text-gray-700">Stock <span className="text-blue-400 font-bold">Knowledge</span></h1>
           </div>
           {user.isLogin ? 
-            <h1 className="lg:text-6xl md:text-4xl xs:hidden md:block text-white mr-10 mt-20">{`Hi, ${user.data.firstname} ${user.data.lastname}`}</h1> :
+            <h1 className="lg:text-6xl md:text-4xl xs:hidden md:block text-gray-700 mr-10 mt-20">{`Hi, ${user.data.firstname} ${user.data.lastname}`}</h1> :
             <button onClick={e => {setLoginModalOpen(true)}} className="bg-green-500 rounded-full font-bold text-xl text-white mr-10 py-4 px-12">Login</button>
           }
         </div>
         <div className="flex w-full h-1/2 lg:mt-20 xs:mt-0">
-          <div className="w-1/2 pl-10 pt-10 text-white">
+          <div className="w-1/2 pl-10 pt-10 text-black">
             <h1 className="lg:text-8xl font-bold md:text-6xl xs:text-5xl">
             Learn to Play. <br />
             Play to Learn.
             </h1>
             <br />
-            <p className="text-3xl md:text-xl">
+            <p className="text-3xl md:text-xl text-gray-700">
             Stock Knowledge brings innovation and education together to provide accessible experiential learning technology that students love.
             </p>
             <br />
