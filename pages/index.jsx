@@ -48,9 +48,9 @@ export default function Home(props) {
             Play to Learn.
             </h1>
             <br />
-            <p className="text-3xl md:text-xl text-gray-700">
+            <h2 className="xl:text-4xl lg:text-2xl md:text-xl text-gray-700">
             Stock Knowledge brings innovation and education together to provide accessible experiential learning technology that students love.
-            </p>
+            </h2>
             <br />
             <br />
             <br />
