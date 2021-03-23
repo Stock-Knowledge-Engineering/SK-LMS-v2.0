@@ -1,3 +1,5 @@
+const { colors } = require('tailwindcss/defaulttheme');
+
 module.exports = {
   // purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
@@ -25,6 +27,12 @@ module.exports = {
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
+    },
+    colors: {
+      ...colors,
+      heading: '#2b2b2b',
+      subheading: '#616161',
+      skBlue: '#0080F6'
     },
     extend: {
       width: {
