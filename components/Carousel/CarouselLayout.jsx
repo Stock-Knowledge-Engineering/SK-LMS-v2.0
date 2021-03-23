@@ -1,5 +1,6 @@
 
 import { useEffect, useCallback, useState } from "react";
+import { keyframes } from "tailwindcss/defaulttheme";
 import { useCarouselHook } from "../../hooks/carouselHook";
 
 import CarouselContent from "./CarouselContent";
@@ -17,8 +18,16 @@ export default function CarouselLayout(props) {
   }, [slides]);
 
   useEffect(() => {
-    // if (carouselStatus) console.log(carouselStatus);
+    if(carouselStatus)
+      setTimeout(() => {play(carouselStatus, slides.length-1)}, 3000)
   }, [carouselStatus]);
+
+  const play = async (status, length) => {
+    let _current = await getNext(status.current, length);
+    let _next = await getNext(status.next, length);
+    let _prev = await getNext(status.prev, length);
+    setCarouselStatus({ current: _current, next: _next, prev: _prev });
+  }
 
   const nextSlide = useCallback(
     async (status, length) => {
@@ -63,6 +72,8 @@ export default function CarouselLayout(props) {
     <div className="mt-32 relative w-full lg:px-64 md:px-20">
       {slides && slides.length > 0 && (
         <CarouselContent
+          current={carouselStatus && carouselStatus.current}
+          slides={slides}
           slide={slides && carouselStatus && slides[carouselStatus.current]}
         />
       )}

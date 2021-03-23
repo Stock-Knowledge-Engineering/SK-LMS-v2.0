@@ -1,8 +1,11 @@
 const CarouselContent = (props) => {
-  const { slide } = props;
+  console.log(current)
+  const { slide, slides, current } = props;
   return (
-    <div className="relative overflow-hidden w-full text-center">
-      {slide && (
+    <div className="relative flex overflow-hidden w-full text-center animate__animated animate__fadeIn">
+      {slides && slides.map( (e, i) => {
+        return <img className={e.id == current ? `block animate__animated animate__fadeIn` : `hidden`} key={e.id} src={e.image} />
+      })
         // <div
         //   className="bg-teal-200"
         //   style={{
@@ -13,8 +16,9 @@ const CarouselContent = (props) => {
         // >
         //   {slide && slide.header}
         // </div>
-        <img src={slide.image} />
-      )}
+        // <img src={slide.image} />
+
+      }
     </div>
   );
 };
