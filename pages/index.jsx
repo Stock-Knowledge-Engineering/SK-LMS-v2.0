@@ -27,6 +27,8 @@ export default function Home(props) {
     <>
       <Head>
         <title>Stock Knowledge</title>
+        <meta charSet="UTF-8" />
+        {/* <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
       </Head>
       {loginModalOpen && <LoginModal showModal={setLoginModalOpen}/>}
       <MobileNavBar />
@@ -34,21 +36,21 @@ export default function Home(props) {
         <div className="md:flex items-center xs:hidden justify-between">
           <div className="flex items-center ml-10 mt-20">
             <img className="w-32" src="images/logo.png" />
-            <h1 className="lg:text-6xl md:text-4xl  text-gray-700">Stock <span className="text-blue-400 font-bold">Knowledge</span></h1>
+            <h1 className="lg:text-6xl md:text-4xl text-heading">Stock <span className="text-skBlue font-bold">Knowledge</span></h1>
           </div>
           {user.isLogin ? 
-            <h1 className="lg:text-6xl md:text-4xl xs:hidden md:block text-gray-700 mr-10 mt-20">{`Hi, ${user.data.firstname} ${user.data.lastname}`}</h1> :
+            <h1 className="lg:text-6xl md:text-4xl xs:hidden md:block text-heading mr-10 mt-20">{`Hi, ${user.data.firstname} ${user.data.lastname}`}</h1> :
             <button onClick={e => {setLoginModalOpen(true)}} className="bg-green-500 rounded-full font-bold text-xl text-white mr-10 py-4 px-12">Login</button>
           }
         </div>
         <div className="flex w-full h-1/2 lg:mt-20 xs:mt-0">
-          <div className="w-1/2 pl-10 pt-10 text-black">
-            <h1 className="lg:text-8xl font-bold md:text-6xl xs:text-5xl">
+          <div className="w-1/2 pl-10 pt-10">
+            <h1 className="lg:text-8xl font-bold text-heading md:text-6xl xs:text-5xl">
             Learn to Play. <br />
             Play to Learn.
             </h1>
             <br />
-            <h2 className="xl:text-4xl lg:text-2xl md:text-xl text-gray-700">
+            <h2 className="xl:text-4xl lg:text-2xl md:text-xl text-subheading">
             Stock Knowledge brings innovation and education together to provide accessible experiential learning technology that students love.
             </h2>
             <br />
@@ -114,12 +116,12 @@ export default function Home(props) {
       <br />
       <span></span>
       <div className="md:w-full xs:w-height p-6 h-1/4">
-        <h1 id="solution"  className="text-center w-full text-7xl font-bold text-gray-600">
+        <h1 id="solution"  className="text-center w-full text-7xl font-bold text-heading">
           Our Solutions
         </h1>
         <br />
-        <h4 className="text-xl text-center">
-        Our solutions aim to fulfill the needs of next generation learners in the country and across the globe
+        <h4 className="text-xl text-center text-subheading">
+          Our solutions aim to fulfill the needs of next generation learners in the country and across the globe
         </h4>
         <br />
       </div>
@@ -193,21 +195,21 @@ export default function Home(props) {
           </p>
         </div>
         <div className="lg:w-1/2 relative space-y-10 p-20 md:w-full">
-          <div className="py-2 px-4 w-full border text-gray-500 bg-white rounded-lg h-36">
+          <div className="py-2 px-4 w-full border text-subheading bg-white rounded-lg h-36">
             <h6 className="text-2xl font-bold text-blue-400">Mission</h6>
             <br />
             <p>
             Empower learners and educators by creating accessible, cutting-edge digital tools.
             </p>
           </div>
-          <div className="py-2 px-4 w-full border text-gray-500 bg-white rounded-lg h-36">
+          <div className="py-2 px-4 w-full border text-subheading bg-white rounded-lg h-36">
             <h6 className="text-2xl font-bold text-blue-400">Vision</h6>
             <br />
             <p>
               Be the leading EdTech company in today's digital transformation age.
             </p>
           </div>
-          <div className="py-2 px-4 w-full border text-gray-500 bg-white rounded-lg h-36">
+          <div className="py-2 px-4 w-full border text-subheading bg-white rounded-lg h-36">
             <h6 className="text-2xl font-bold text-blue-400">Core Values</h6>
             <br />
             <p>
@@ -217,24 +219,24 @@ export default function Home(props) {
         </div>
       </div>
       <div id="sme" className="md:w-full xs:w-height p-6 h-1/4 bg-blue-50 rounded-b-full">
-        <h1 className="text-center w-full text-7xl font-bold text-gray-600 mt-32">
+        <h1 className="text-center w-full text-7xl font-bold text-heading mt-32">
           Our Team
         </h1>
         <br />
-        <h4 className="text-xl text-center text-gray-500">
-        Behind the team are empowered individuals comprising scientists, engineers, educators, and entrepreneurs who were meticulously selected to perform and align with the Corporation’s mission, vision, values and culture. Each member of Stock Knowledge possesses the initiative to focus on the needs and best interests of its clients, while collectively working to ensure that each facet of the learning programs is delivered efficiently from conceptualization to realization, paving the way to better education for all. 
+        <h4 className="text-xl text-center text-subheading">
+          Behind the team are empowered individuals comprising scientists, engineers, educators, and entrepreneurs who were meticulously selected to perform and align with the Corporation’s mission, vision, values and culture. Each member of Stock Knowledge possesses the initiative to focus on the needs and best interests of its clients, while collectively working to ensure that each facet of the learning programs is delivered efficiently from conceptualization to realization, paving the way to better education for all. 
         </h4>
         <CarouselLayout />
         <br />
       </div>
       <div className="md:w-full xs:w-height space-y-14 mt-32">
-        <h1 id="testimonial" className="text-center mb-32 w-full text-7xl font-bold text-gray-600">
+        <h1 id="testimonial" className="text-center md:mb-32 xs:mb-10 w-full text-7xl font-bold text-heading">
           What our Partners Say
         </h1>
           <TestimonialLayout />
       </div>
       <div className="md:w-full xs:w-height xs:items-center flex bg-blue-100 mt-32 p-4 sm:flex-row xs:flex-col">
-        <h6 id="sponsor" className="md:w-1/4 xs:text-center text-4xl font-bold md:text-left md:my-16 md:ml-28">
+        <h6 id="sponsor" className="md:w-1/4 xs:text-center text-4xl text-heading font-bold md:text-left md:my-16 md:ml-28">
           Our
           <br />
           Partners
@@ -251,36 +253,36 @@ export default function Home(props) {
         <ArticleCarouselLayout />
       </div>
       <div id="contactus" className="md:w-full xs:w-height p-6 h-1/4 bg-blue-50 rounded-b-full">
-        <h1 className="text-center w-full text-7xl font-bold text-gray-600 mt-16">
+        <h1 className="text-center w-full text-7xl font-bold text-heading mt-16">
           Send us a message
         </h1>
         <br />
-        <h4 className="text-xl text-center text-gray-500">
+        <h4 className="text-xl text-center text-subheading">
         Send us a message if you’re interested to partner with us! 
         </h4>
         <div className="flex w-full sm:flex-row xs:flex-col xs:space-y-10 xs:items-center md:justify-around my-16 space-x-10 px-10">
           <div className="md:w-1/2 xs:w-full">
             <form className="space-y-4">
               <div>
-                <label className="text-lg font-bold">Name:</label>
+                <label className="text-lg font-bold text-subheading">Name:</label>
                 <input
-                  className="w-full"
+                  className="w-full text-subheading"
                   type="text"
                   placeholder="Ex. Juan Dela Cruz"
                 />
               </div>
               <div>
-                <label className="text-lg font-bold">Email:</label>
+                <label className="text-lg font-bold text-subheading">Email:</label>
                 <input
-                  className="w-full"
+                  className="w-full border-subheading"
                   type="text"
                   placeholder="something@website.com"
                 />
               </div>
               <div>
-                <label className="text-lg font-bold">Message:</label>
+                <label className="text-lg font-bold text-subheading">Message:</label>
                 <br />
-                <textarea className="w-full"></textarea>
+                <textarea className="w-full text-subheading"></textarea>
               </div>
               <input className="w-full h-10 bg-blue-500 rounded-full text-white uppercase" type="submit" value="Send a message" />
             </form>
@@ -295,7 +297,7 @@ export default function Home(props) {
               >
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
               </svg>
-              <p className="text-gray-500">(+63)927-885-3760</p>
+              <p className="text-subheading">(+63)927-885-3760</p>
             </div>
 
             <div className="flex items-center text-blue-500 space-x-2">
@@ -310,7 +312,7 @@ export default function Home(props) {
               </svg>
               <a
                 href="mailto:stock.knowledge7@gmail.com "
-                className="text-gray-500"
+                className="text-skBlue"
               >
                 stock.knowledge7@gmail.com
               </a>
@@ -330,7 +332,7 @@ export default function Home(props) {
                 />
               </svg>
               <a
-                className="text-gray-500 w-1/2"
+                className="text-subheading w-1/2"
               >
                 QBO Innovation Hub, Ground Floor, DTI International Building, 375 Sen. 
 Gil J. Puyat Avenue., Makati City, Metro Manila, 1209 Philippines
