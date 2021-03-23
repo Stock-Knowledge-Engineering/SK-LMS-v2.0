@@ -58,7 +58,7 @@ export default function ArticleCarouselLayout(props) {
 
   return (
     <>
-        <h1  className="text-center md:w-full xs:w-height text-5xl font-bold text-gray-600 mt-20 mb-10">
+        <h1  className="text-center md:w-full xs:w-height text-5xl font-bold text-heading mt-20 mb-10">
           Articles
         </h1>
       <div className="mb-32 relative md:w-full xs:w-height lg:px-64 md:px-2">
