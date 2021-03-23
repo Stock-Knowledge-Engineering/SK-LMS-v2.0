@@ -62,34 +62,19 @@ export default function TestimonialLayout(props) {
   };
 
   return (
-    <div className="relative lg:w-3/4 md:w-11/12 xs:w-3/4 h-80 bg-gray-50 m-auto flex items-center rounded-xl">
+    <div className="relative lg:w-3/4 md:w-11/12 xs:w-3/4 xs:mb-60 h-80 m-auto flex md:flex-row xs:flex-col items-center rounded-xl">
     {testimonials && testimonials.length > 0 && (
       <TestimonialContent
+        testimonials={testimonials}
         testimonial={testimonials && testimonialStatus && testimonials[testimonialStatus.current]}
       />
     )}
-      <TestimonialControl 
+      {/* <TestimonialControl 
         status={testimonialStatus && testimonialStatus}
         length={testimonials && testimonials.length}
         next={nextTestimonial}
         prev={prevTestimonial}
-      />
+      /> */}
     </div>
-    // <div className="relative w-full px-96">
-    //   {testimonials && testimonials.length > 0 && (
-    //     <CarouselContent
-    //       testimonial={testimonials && testimonialStatus && testimonials[testimonialStatus.current]}
-    //     />
-    //   )}
-
-    //   <CarouseControl
-    //     status={testimonialStatus && testimonialStatus}
-    //     length={testimonials && testimonials.length}
-    //     next={nextTestimonial}
-    //     prev={prevTestimonial}
-    //   />
-
-    
-    // </div>
   );
 }
