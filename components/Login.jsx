@@ -74,7 +74,7 @@ export default function Login(props) {
               onChange={e => {setPassword(e.target.value)}}
               />
             <br />
-            <Link href="/forgot-password">
+            <Link href="/lms/forgot-password">
               <a className="text-blue-900">Forgot password?</a>
             </Link>
             <br />
@@ -82,7 +82,7 @@ export default function Login(props) {
             <div className="flex space-x-4">
             <button onClick={(e) => setToLogin(true)} className="bg-blue-600 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200">Login</button>
             {
-              props.page == 'login' && props.status == 'login' && <Link href={props.page == 'admin' ? '/admin/registration':'/registration'}>
+              props.page == 'login' && props.status == 'login' && <Link href={props.page == 'admin' ? '/admin/registration':'/lms/registration'}>
               <button className="bg-yellow-400 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-yellow-200">Register</button>
             </Link>
             }
