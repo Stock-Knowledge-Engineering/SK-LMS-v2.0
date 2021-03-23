@@ -11,7 +11,7 @@ export default function PasswordInput(props){
     
 
     useEffect(()=>{
-        if(!/([A-ZÑ])+/.test(props.value))
+        if(/([A-ZÑ])+/.test(props.value))
             setContainCapital(true);
         else
             setContainCapital(false);
@@ -36,6 +36,10 @@ export default function PasswordInput(props){
         else    
             setContainValidLenght(false);
         
+        let a = {containCapital, containLowerCase, containNumber, containSpecialCharacter, containValidLenght}
+        
+        console.log(a);
+
         if(containCapital && containLowerCase && containNumber && containSpecialCharacter && containValidLenght)
             SetValidPassword(true)
         else
