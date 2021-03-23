@@ -1,6 +1,5 @@
 
 import { useEffect, useCallback, useState } from "react";
-import { keyframes } from "tailwindcss/defaulttheme";
 import { useCarouselHook } from "../../hooks/carouselHook";
 
 import CarouselContent from "./CarouselContent";
