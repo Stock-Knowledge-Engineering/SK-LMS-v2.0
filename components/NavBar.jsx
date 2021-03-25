@@ -61,7 +61,7 @@ export default function NavBar(props){
                       <a href="/#story">Story</a>
                   </li>
                   <li>
-                    <a href="/#sme">SME</a>
+                    <a href="/#team">Team</a>
                   </li>
                   <li>
                     <a href="/#testimonial">Testimonials</a>

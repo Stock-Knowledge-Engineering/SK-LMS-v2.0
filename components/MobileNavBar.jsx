@@ -13,7 +13,7 @@ const Menu = (props) => {
                 <a href="#story">Our Story</a>
             </li>
             <li>
-                <a href="#sme">Our SME</a>
+                <a href="#team">Our Team</a>
             </li>
             <li>
                 <a href="#testimonial">Testimonials</a>
