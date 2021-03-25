@@ -252,7 +252,6 @@ const handleStatus = (id, name) => {
             placeholder="3D Attributes"
           />}
           {mode && <label>Hotspots</label>}
-          {mode == 1 && hotspots.length > 0  && console.log(hotspots)}
           {mode == 1 && hotspots.length > 0  && hotspots.map((elm, i) => {
             return <ModeOneHotspot id={i} elm={elm} key={i} hotspots={hotspots} setHotspots={setHotspots} />
           })}
