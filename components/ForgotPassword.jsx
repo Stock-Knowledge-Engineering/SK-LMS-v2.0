@@ -2,56 +2,80 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import FieldAlert from "./FieldAlert";
-import {useHttp} from '../hooks/http';
-import {usePostHttp} from '../hooks/postHttp';
+import EmailField from "./EmailField";
+import { useHttp } from "../hooks/http";
+import { usePostHttp } from "../hooks/postHttp";
 
 export default function ForgotPassword(props) {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
-  const [disableSubmit, setDisableSubmit] = useState(true);
   const [toSubmit, setToSubmit] = useState(false);
-
-  const [verifyingEmail, validEmail] = useHttp(email ? `/register/verify/email?value=${email}` : '', [email]);
-  const [isLoading, data] = usePostHttp(toSubmit ? {email: email} : null, '/account/forgot-password');
-
-
-  useEffect(()=> {
-    if(validEmail && validEmail.success)
-      setDisableSubmit(false);
-    else
-      setDisableSubmit(true);
-  },[validEmail])
-
-  //priority
+  const [emailExist, setEmailExist] = useState("");
+  const [isLoading, data] = usePostHttp(
+    toSubmit ? { email: email } : null,
+    "/account/forgot-password"
+  );
 
   return (
     <>
-      <div className="w-1/2">
-        <h1 className="w-full text-5xl font-bold text-blue-900 text-left">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="w-full flex items-center flex-col overflow-y-auto"
+      >
+        <div className="lg:w-96 md:w-80 flex items-center">
+          <img className="w-16 " src="/images/logo.png" />
+          <p className="text-gray-500 text-3xl">
+            Stock <span className="text-skBlue font-bold">Knowledge</span>
+          </p>
+        </div>
+        <label className="w-full mt-10 mb-2 text-left font-bold text-4xl text-heading">
           Forgot Password
-        </h1>
-        <br />
-       {validEmail && !validEmail.success && <>
-        <FieldAlert message="Email doesn't exist!" />
-        <br />
-        </>} 
-        <input
-          className="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          type="text"
-          placeholder="Please enter your email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-        <br />
-        <button
-          onClick={(e) => setToSubmit(true)}
-          className={`${disableSubmit ? "opacity-50 cursor-not-allowed": "hover:bg-green-700" } bg-green-600 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-green-200`}
-          disabled={disableSubmit}
-        >
-          Submit
-        </button>
-      </div>
+        </label>
+        {isLoading && (
+          <label className="w-full mt-10 mb-2 text-left text-subheading">
+            {" "}
+            Loading....
+          </label>
+        )}
+        {!data.success && !isLoading && (
+          <>
+            <EmailField
+              placeholder="Email"
+              value={email}
+              setValue={setEmail}
+              setEmailExist={setEmailExist}
+            />
+            {!emailExist && email != "" && (
+              <FieldAlert message="Email address does not exist!" />
+            )}
+            <input
+              className={`bg-skBlue text-white text-2xl font-bold w-3/4 mt-10 py-3 rounded-full ${
+                emailExist ? "cursor-pointer" : "bg-opacity-50"
+              }`}
+              type="submit"
+              value="Submit"
+              onClick={(e) => setToSubmit(true)}
+              disabled={emailExist ? false : true}
+            />
+          </>
+        )}
+        {
+          data.success && (
+            <>
+              <label className="w-full mt-10 mb-2 text-left text-subheading">
+                We sent a link to your email for resetting your account password.
+              </label>
+            </>
+          )
+        }
+        <a className="text-subheading mt-6">
+          Already have an account?{" "}
+          <Link href="/lms/login">
+            <span className="text-skBlue font-bold cursor-pointer">Login.</span>
+          </Link>
+        </a>
+      </form>
     </>
   );
 }
