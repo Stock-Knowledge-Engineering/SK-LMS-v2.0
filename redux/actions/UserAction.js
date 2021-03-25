@@ -1,71 +1,18 @@
-const DoLogin = (isLogin, user) => {
+const DoLogin = (isLogin, user, remember) => {
     return {
       type: "DO_LOGIN",
       payload: {
         isLogin: isLogin,
         data: user,
+        remember: remember
       },
     };
   };
   
-  const UpdateUserInformation = (
-    firstname,
-    middlename,
-    lastname,
-    email,
-    telno,
-    mobileno
-  ) => {
+  const DoAccountVerification = (verified) => {
     return {
-      type: "UPDATE_PERSONAL_INFORMATION",
-      payload: {
-        firstname,
-        middlename,
-        lastname,
-        email,
-        telno,
-        mobileno,
-      },
-    };
-  };
-  
-  const UpdateShippingInformation = (
-    address1,
-    address2,
-    city,
-    province,
-    zipcode
-  ) => {
-    return {
-      type: "UPDATE_SHIPPING_INFORMATION",
-      payload: {
-        address1,
-        address2,
-        city,
-        province,
-        zipcode,
-      },
-    };
-  };
-  
-  const ToUpdatePersonalInformation = (toUpdate) => {
-    return {
-      type: "TO_UPDATE_PERSONAL_INFORMATION",
-      payload: toUpdate,
-    };
-  };
-  
-  const ToUpdateShippingInformation = (toUpdate) => {
-    return {
-      type: "TO_UPDATE_SHIPPING_INFORMATION",
-      payload: toUpdate,
-    };
-  };
-  
-  const ToUpdate = (toUpdate) => {
-    return {
-      type: "TO_UPDATE",
-      payload: toUpdate,
+      type: "DO_ACCOUNT_VERIFICATION",
+      payload: verified,
     };
   };
   
@@ -81,11 +28,7 @@ const DoLogin = (isLogin, user) => {
   
   export {
     DoLogin,
-    UpdateUserInformation,
-    UpdateShippingInformation,
-    ToUpdatePersonalInformation,
-    ToUpdateShippingInformation,
-    ToUpdate,
+    DoAccountVerification,
     UserLogout,
   };
   

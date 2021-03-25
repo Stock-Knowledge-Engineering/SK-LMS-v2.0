@@ -1,6 +1,9 @@
+import { data } from "autoprefixer";
+
 const initState = {
     isLogin: false,
     data: null,
+    remember: false,
     updatePersonalInformation: false,
     updateShippingInformation: false,
   };
@@ -12,49 +15,18 @@ const initState = {
           ...state,
           isLogin: action.payload.isLogin,
           data: action.payload.data,
+          remember: action.payload.remember
         };
-      case "UPDATE_PERSONAL_INFORMATION":
+
+      case 'DO_ACCOUNT_VERIFICATION':
         return {
           ...state,
           data: {
             ...state.data,
-            firstname: action.payload.firstname,
-            middlename: action.payload.middlename,
-            lastname: action.payload.lastname,
-            email: action.payload.email,
-            telno: action.payload.telno,
-            mobileno: action.payload.mobileno,
-          },
+            verified: action.payload
+          }
         };
-      case "UPDATE_SHIPPING_INFORMATION":
-        return {
-          ...state,
-          data: {
-            ...state.data,
-            address1: action.payload.address1,
-            address2: action.payload.address2,
-            city: action.payload.city,
-            province: action.payload.province,
-            zipcode: action.payload.zipcode,
-          },
-        };
-      case "TO_UPDATE_PERSONAL_INFORMATION":
-        return {
-          ...state,
-          updatePersonalInformation: action.payload,
-        };
-  
-      case "TO_UPDATE_SHIPPING_INFORMATION":
-        return {
-          ...state,
-          updateShippingInformation: action.payload,
-        };
-      case "TO_UPDATE":
-        return {
-          ...state,
-          updatePersonalInformation: action.payload,
-          updateShippingInformation: action.payload,
-        };
+        
       case "USER_LOGOUT":
         return {
           ...state,
