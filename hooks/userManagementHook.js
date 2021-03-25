@@ -14,12 +14,21 @@ export const useUserManagementHook = () => {
   const [deviceData, setDeviceData] = useState(null);
 
   useEffect(() => {
-    if (!localStorage.getItem("isLogin"))
-      localStorage.setItem("isLogin", false);
+    // if (!localStorage.getItem("isLogin"))
+    //   localStorage.setItem("isLogin", false);
 
-    if (localStorage.getItem("user"))
-      dispatch(DoLogin(true, JSON.parse(localStorage.getItem("user"))));
-
+    if (
+      localStorage.getItem("user") &&
+      localStorage.getItem("isLogin") == "true"
+    ) {
+      dispatch(
+        DoLogin(
+          true,
+          JSON.parse(localStorage.getItem("user")),
+          JSON.parse(localStorage.getItem("remember"))
+        )
+      );
+    }
     if (!localStorage.getItem("guestId"))
       setDeviceData({
         os: window.navigator.oscpu,
@@ -36,12 +45,10 @@ export const useUserManagementHook = () => {
       // console.log('creating local data');
       localStorage.setItem("isLogin", true);
       localStorage.setItem("user", JSON.stringify(user.data));
+      localStorage.setItem("remember", false);
     }
-    if (!user.isLogin && !localStorage.getItem("isLogin")) {
-      //   localStorage.setItem("isLogin", false);
-      //   localStorage.removeItem("user");
-    }
-  }, [user.isLogin]);
+
+  }, [user]);
 
   // useEffect(() => {
   //   socket.on("visitor", (data) => {
