@@ -1,19 +1,19 @@
 const Footer = (props) => {
   return (
     <div
-      className="md:w-full xs:w-height p-8 space-y-4"
+      className="lg:w-full md:w-full reno:w-full sm:w-screen xs:w-screen p-8 space-y-4"
       style={{
         background: `linear-gradient(268.4deg, #62B4FF 0.19%, #0080F6 97.81%)`,
       }}
     >
-      <div className="w-full flex align-center justify-between">
-        <a href="#home" className="w-1/4 flex items-center text-xl text-white space-x-2">
-          <img className="w-12" src="/images/logo-white.svg" />
-          <h4>
+      <div className="w-full flex lg:align-center md:align-center reno:align-center lg:flex-row md:flex-row reno:flex-row sm:flex-col xs:flex-col justify-between">
+        <a href="#home" className="lg:w-1/2 md:w-1/2 reno:w-1/2 sm:w-full xs:w-full sm:items-center xs:items-center sm:justify-center xs:justify-center flex items-center text-xl text-white space-x-2">
+          <img className="w-auto" src="/images/logo-white.svg" />
+          <h4 className="lg:w-full md:w-full reno:w-full">
             Stock <span className="font-bold">Knowledge</span>
           </h4>
         </a>
-        <div className="w-3/4 flex items-center justify-end text-md text-white space-x-5">
+        <div className="lg:w-3/4 md:w-3/4 reno:w-3/4 sm:w-full xs:w-full flex items-center justify-end text-md text-white space-x-5">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms</a>
           <div className="flex align-center space-x-4">
@@ -25,8 +25,8 @@ const Footer = (props) => {
         </div>
       </div>
       <hr />
-      <div className="flex align-center lg:text-sm md:text-xs text-white lg:flex-row xs:flex-col xs:items-center xs:space-y-4">
-        <ul className="flex justify-around md:w-3/4 sm:flex-row xs:flex-col xs:text-center">
+      <div className="flex align-center lg:text-sm md:text-xs text-white lg:flex-row md:flex-col reno:flex-col xs:flex-col xs:items-center md:space-y-4 reno:space-y-4">
+        <ul className="flex justify-around md:w-full md:flex-row xs:flex-col xs:text-center">
           <li>
             <a href="#home">Home</a>
           </li>
@@ -52,7 +52,7 @@ const Footer = (props) => {
             <a href="#contactus">Contact Us</a>
           </li>
         </ul>
-        <div className="lg:w-1/4 xs:w-full flex align-center lg:justify-end md:justify-center">
+        <div className="lg:w-1/4 md:w-1/4 reno:w-full xs:w-full flex align-center lg:justify-end md:justify-center reno:justify-center sm:justify-center xs:justify-center sm:text-sm xs:text-sm">
           <p className="">© 2021 Stock Knowledge. All rights reserved.</p>
         </div>
       </div>
