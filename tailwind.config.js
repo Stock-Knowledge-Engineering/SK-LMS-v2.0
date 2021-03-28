@@ -1,4 +1,4 @@
-const { colors } = require('tailwindcss/defaultTheme');
+const { colors, screens } = require('tailwindcss/defaultTheme');
 
 module.exports = {
   // purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
@@ -21,12 +21,13 @@ module.exports = {
       '4': '0.4'
     },
     screens:{
-      'xs' : '375px',
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px',
+      'xs' : {'min':'375px', 'max':'639px'},
+      'sm': {'min':'640px', 'max':'767px'},
+      'md': {'min':'768px', 'max':'1023px'},
+      '1080': '1920px',
+      'lg': {'min': '1024px', 'max': '1079px'},
+      'reno': {'min':'1080px', 'max': '1279px'},
+      ...screens
     },
     colors: {
       ...colors,
@@ -41,7 +42,8 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),
