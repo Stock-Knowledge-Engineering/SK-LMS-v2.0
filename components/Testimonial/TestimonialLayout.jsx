@@ -62,7 +62,7 @@ export default function TestimonialLayout(props) {
   };
 
   return (
-    <div className="relative lg:w-3/4 md:w-11/12 xs:w-3/4 xs:mb-60 h-80 m-auto flex md:flex-row xs:flex-col items-center rounded-xl">
+    <div className="relative lg:w-3/4 md:w-11/12 xs:w-11/12 xs:mb-60 lg:h-80 reno:h-80 md:h-80 sm:h-auto xs:h-auto m-auto flex lg:flex-row md:flex-col reno:flex-col xs:flex-col items-center rounded-xl">
     {testimonials && testimonials.length > 0 && (
       <TestimonialContent
         testimonials={testimonials}
