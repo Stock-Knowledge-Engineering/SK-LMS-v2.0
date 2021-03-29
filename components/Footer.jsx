@@ -28,31 +28,31 @@ const Footer = (props) => {
       <div className="flex align-center lg:text-sm md:text-xs text-white lg:flex-row md:flex-col reno:flex-col xs:flex-col xs:items-center md:space-y-4 reno:space-y-4">
         <ul className="flex justify-around md:w-full md:flex-row xs:flex-col xs:text-center">
           <li>
-            <a href="#home">Home</a>
+            <a href="/#home">Home</a>
           </li>
           <li>
-            <a href="#solution">Our Solutions</a>
+            <a href="/#solution">Our Solutions</a>
           </li>
           <li>
             <a href="#story">Our Story</a>
           </li>
           <li>
-            <a href="#team">Our Team</a>
+            <a href="/#team">Our Team</a>
           </li>
           <li>
-            <a href="#testimonial">Testimonials</a>
+            <a href="/#testimonial">Testimonials</a>
           </li>
           <li>
-            <a href="#sponsor">Partners</a>
+            <a href="/#partners">Partners</a>
           </li>
           <li>
-            <a href="#article">Articles</a>
+            <a href="/#articles">Articles</a>
           </li>
           <li>
-            <a href="#contactus">Contact Us</a>
+            <a href="/#contactus">Contact Us</a>
           </li>
         </ul>
-        <div className="lg:w-1/4 md:w-1/4 reno:w-full xs:w-full flex align-center lg:justify-end md:justify-center reno:justify-center sm:justify-center xs:justify-center sm:text-sm xs:text-sm">
+        <div className="lg:w-1/4 md:w-full reno:w-full xs:w-full flex align-center lg:justify-end md:justify-center reno:justify-center sm:justify-center xs:justify-center sm:text-sm xs:text-sm">
           <p className="">© 2021 Stock Knowledge. All rights reserved.</p>
         </div>
       </div>
