@@ -29,7 +29,7 @@ export const useArticlesHook = () => {
         "id": 3,
         "image": "/images/articles/stock-knowledge-at-rise/header-img.svg",
         "header": "Stock Knowledge at RISE",
-        "link": "/articles/stock-knowledge-at-Rise"
+        "link": "/articles/stock-knowledge-at-rise"
       },
       {
         "id": 4,
