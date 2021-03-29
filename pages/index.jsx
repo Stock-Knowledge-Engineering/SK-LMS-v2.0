@@ -1,5 +1,5 @@
 import Head from "next/head";
-
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
@@ -62,23 +62,35 @@ export default function Home(props) {
               <a href="/#testimonial">Testimonials</a>
             </li>
             <li>
-              <a href="/#sponsor">Partners</a>
+              <a href="/#partners">Partners</a>
             </li>
             <li>
-              <a href="/#article">Articles</a>
+              <a href="/#articles">Articles</a>
             </li>
             <li>
               <a href="/#contactus">Contact Us</a>
             </li>
           </ul>
-          <button
-            onClick={(e) => {
-              setLoginModalOpen(true);
-            }}
-            className="bg-green-500 rounded-full font-bold text-base text-white py-2 px-4"
-          >
-            {user.isLogin ? "LMS" : "Login"}
-          </button>
+          {!user.isLogin && (
+            <button
+              onClick={(e) => {
+                setLoginModalOpen(true);
+              }}
+              className="bg-skBlue rounded-full font-bold text-base text-white py-2 px-4"
+            >
+              Login
+            </button>
+          )}
+          {user.isLogin && (
+            <button
+              onClick={(e) => {
+                router.push("/lms");
+              }}
+              className="bg-skBlue rounded-full font-bold text-base text-white py-2 px-4"
+            >
+              LMS
+            </button>
+          )}
         </div>
         {/* {visibility < 0.3 && 
                 <button className="bg-yellow-400 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-yellow-200">Register</button>
@@ -100,12 +112,29 @@ export default function Home(props) {
             <br />
             <br />
             <br />
-            <a className="rounded-full bg-blue-500 font-bold text-xl text-white py-4 px-12">
-              {user.isLogin ? "Go to LMS" : "Request a demo"}
-            </a>
+            {!user.isLogin && (
+              <Link href="/#contactus">
+                <a className="rounded-full bg-skBlue font-bold xl:text-xl lg:text-xl reno:text-xl md:text-md sm:text-xl xs:text-xl text-white py-4 px-12">
+                  Request a demo
+                </a>
+              </Link>
+            )}
+            {user.isLogin && (
+              <button
+                onClick={(e) => {
+                  router.push("/lms");
+                }}
+                className="rounded-full bg-skBlue font-bold xl:text-xl lg:text-xl reno:text-xl md:text-md sm:text-xl xs:text-xl text-white py-4 px-12"
+              >
+                Go to LMS
+              </button>
+            )}
           </div>
-          <div className="w-1/2 sm:w-full xs:w-full md:mt-0 xs:mt-10">
-            <img className="md:w-full reno:w-full sm:w-full xs:w-full" src="/images/illustration.png" />
+          <div className="xl:w-1/2 lg:w-1/2 md:w-1/2 reno:w-1/2 sm:w-full xs:w-full md:mt-0 xs:mt-10">
+            <img
+              className="md:w-full reno:w-full sm:w-full xs:w-full"
+              src="/images/illustration.png"
+            />
           </div>
         </div>
       </div>
@@ -247,7 +276,7 @@ export default function Home(props) {
         </div>
       </div>
       <div
-        id="sme"
+        id="team"
         className="md:w-full xs:w-screen p-6 h-1/4 bg-blue-50 rounded-b-full"
       >
         <h1 className="text-center w-full lg:text-6xl md:text-6xl reno:text-6xl sm:text-4xl xs:text-4xl font-semibold text-heading lg:mt-32 md:mt-32 reno:mt-32 lg:mt-16 lg:mt-16">
@@ -267,25 +296,25 @@ export default function Home(props) {
         <CarouselLayout />
         <br />
       </div>
-      <div className="lg:w-full md:w-full reno:w-full sm:w-screen xs:w-screen space-y-14 lg:mt-32 md:mt-32 reno:mt-32 lg:mt-16 lg:mt-16">
-        <h1
-          id="testimonial"
-          className="text-center w-full lg:text-6xl md:text-6xl reno:text-6xl sm:text-4xl xs:text-4xl font-semibold text-heading lg:mt-32 md:mt-32 reno:mt-32 lg:mt-16 lg:mt-16"
-        >
+      <div
+        id="testimonial"
+        className="lg:w-full md:w-full reno:w-full sm:w-screen xs:w-screen space-y-14 lg:mt-32 md:mt-32 reno:mt-32 lg:mt-16 lg:mt-16"
+      >
+        <h1 className="text-center w-full lg:text-6xl md:text-6xl reno:text-6xl sm:text-4xl xs:text-4xl font-semibold text-heading lg:mt-32 md:mt-32 reno:mt-32 lg:mt-16 lg:mt-16">
           What our Partners Say
         </h1>
         <TestimonialLayout />
       </div>
       <div className="lg:w-full md:w-full reno:w-full sm:w-screen xs:w-screen lg:items-center reno:items-start md:items-start sm:items-start xs:items-start flex bg-blue-100 lg:mt-32 md:mt-32 reno:mt-32 sm:mt-16 xs:mt-16 p-4 lg:flex-row reno:flex-col md:flex-col sm:flex-col xs:flex-col">
         <h6
-          id="sponsor"
+          id="partners"
           className="lg:text-left lg:w-auto xs:w-full lg:text-6xl reno:text-6xl md:text-6xl sm:text-4xl xs:text-4xl font-semibold text-heading p-10"
         >
-          <span className="reno:block lg:hidden">
-          Our Partners
-          </span>
+          <span className="reno:block lg:hidden">Our Partners</span>
           <span className="lg:block reno:hidden md:hidden sm:hidden xs:hidden">
-          Our<br />Partners
+            Our
+            <br />
+            Partners
           </span>
         </h6>
         <div className="lg:w-3/4 reno:w-full md:w-full sm:w-full xs:w-full lg:px-0 md:px-20 reno:px-52 flex justify-around flex-wrap lg:pb-0 reno:pb-10 md:pb-10 sm:pb-10 xs:pb-10">
@@ -296,7 +325,10 @@ export default function Home(props) {
           <img className="w-24" src="/images/deped-makati.svg" />
         </div>
       </div>
-      <div id="article" className="lg:w-full md:w-full reno:w-full sm:w-screen xs:w-screen"> 
+      <div
+        id="articles"
+        className="lg:w-full md:w-full reno:w-full sm:w-screen xs:w-screen"
+      >
         <ArticleCarouselLayout />
       </div>
       <div
@@ -352,7 +384,7 @@ export default function Home(props) {
               <svg
                 className="lg:h-4 lg:w-4 md:h-6 md:w-6 reno:h-6 reno:w-6 sm:h-6 sm:w-6 xs:h-6 xs:w-6"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20" 
+                viewBox="0 0 20 20"
                 fill="currentColor"
               >
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
