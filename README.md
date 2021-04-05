@@ -5,6 +5,11 @@
 
 Head over to [NodeJS official website](https://nodejs.org).
 
+### Change directory!!
+Don't forget to change directory to the cloned repository.
+MacOS/Linus, use terminal and command prompt for windows.
+
+    cd /to/cloned/repo
 
 ### Clone this repo.
 If you are running macOS or Ubuntu, you can clone this repository by opening terminal and run
