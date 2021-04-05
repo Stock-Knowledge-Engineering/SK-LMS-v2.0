@@ -5,12 +5,6 @@
 
 Head over to [NodeJS official website](https://nodejs.org).
 
-### Change directory!!
-Don't forget to change directory to the cloned repository.
-MacOS/Linus, use terminal and command prompt for windows.
-
-    cd /to/cloned/repo
-
 ### Clone this repo.
 If you are running macOS or Ubuntu, you can clone this repository by opening terminal and run
 
@@ -19,6 +13,12 @@ If you are running macOS or Ubuntu, you can clone this repository by opening ter
 and if your on windows, open command prompt and run
 
     git clone https://github.com/Stock-Knowledge-Engineering/SK-LMS-v2.0.git
+    
+### Change directory!!
+Don't forget to change directory to the cloned repository.
+MacOS/Linus, use terminal and command prompt for windows.
+
+    cd /to/cloned/repo    
     
 ### Install depedencies..
 For this project, I am using NextJS a ReactJS framework, TailwindCSS, 
@@ -40,8 +40,6 @@ You want to deploy it, right? Ok, you need to build the project first. Run this 
 
     npm run build
  
-Now, it now ready for deployment, so hit
+Now, it is now ready for deployment, so hit
 
     npm run start
-
-##### Written by Adrian Manuel Cleofe, a Fullstack engineer at Stock Knowledge.
