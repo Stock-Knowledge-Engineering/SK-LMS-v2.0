@@ -42,7 +42,7 @@ export default function PasswordInput(props) {
 
   return (
     <>
-      <div className="lg:w-3/4 md:w-full mt-2 flex rounded-xl">
+      <div className="lg:w-3/4 md:w-3/4 sm:w-full xs:w-3/4 mt-2 flex rounded-xl">
         <input
           ref={passwordRef}
           type={showPassword ? "text" : "password"}

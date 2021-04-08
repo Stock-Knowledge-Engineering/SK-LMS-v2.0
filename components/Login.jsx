@@ -65,7 +65,7 @@ export default function Login(props) {
             Stock <span className="text-blue-500 font-bold">Knowledge</span>
           </p>
         </div>
-        <label className="w-full mt-10 text-left font-bold text-4xl text-gray-700">
+        <label className="lg:w-full md:w-full self-start xs:px-4 mt-10 text-left font-bold text-4xl text-gray-700">
           Login
         </label>
         {invalidCredential && <FieldAlert message="Invalid Username or Password" />}
@@ -82,17 +82,17 @@ export default function Login(props) {
           onChange={(e) => {
             setPassword(e.target.value);
           }}
-          className="lg:w-11/12 md:w-11/12 mt-2 px-2 border-none bg-gray-100 rounded-xl"
+          className="w-11/12 mt-2 px-2 border-none bg-gray-100 rounded-xl"
           name="password"
           type="password"
           placeholder="Password"
         />
         <div className="w-11/12 mt-2 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <input value={remember} onChange={e => setRemember(e.target.checked)} type="checkbox" name="rememberpassowrd" />
+            {/* <input value={remember} onChange={e => setRemember(e.target.checked)} type="checkbox" name="rememberpassowrd" />
             <label className="text-gray-500" htmlFor="rememberpassword">
               Remember me?
-            </label>
+            </label> */}
           </div>
           <Link href="/lms/forgot-password">
             <a className="font-bold text-skBlue">Forgot Password?</a>

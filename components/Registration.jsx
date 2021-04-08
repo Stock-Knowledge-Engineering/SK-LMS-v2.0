@@ -108,17 +108,17 @@ export default function TeacherRegistration(props) {
             Stock <span className="text-blue-500 font-bold">Knowledge</span>
           </p>
         </div>
-        <label className="w-full mt-10 text-left font-bold text-4xl text-heading">
+        <label className="lg:w-full md:w-11/12 mt-10 text-left font-bold text-4xl text-heading">
           Sign Up
         </label>        
         <TextField placeholder="First Name" value={firstName} setValue={setFirstName} />
         <TextField placeholder="Middle Name" value={middleName} setValue={setMiddleName} />
         <TextField placeholder="Last Name" value={lastName} setValue={setLastName} />
-        <label className="w-3/4 mt-2 text-left text-xl text-subheading">
+        <label className="lg:w-3/4 md:w-3/4 sm:w-full xs:w-3/4 mt-2 text-left text-xl text-subheading">
           Gender:
         </label>
         <div
-          className="w-3/4 text-subheading"
+          className="lg:w-3/4 md:w-3/4 sm:w-full xs:w-3/4 text-subheading"
           onChange={(e) => setGender(e.target.value)}
         >
           <input type="radio" name="gender" value="male" /> Male &nbsp; &nbsp;
@@ -133,7 +133,7 @@ export default function TeacherRegistration(props) {
           onChange={(e) => {
             setUsername(e.target.value);
           }}
-          className="lg:w-3/4 md:w-full mt-2 border-none bg-gray-100 rounded-xl"
+          className="lg:w-3/4 md:w-3/4 sm:w-full xs:w-3/4 mt-2 border-none bg-gray-100 rounded-xl"
           name="username"
           type="text"
           placeholder="Username"
@@ -142,7 +142,7 @@ export default function TeacherRegistration(props) {
         <input
           type="password"
           name="confirmPassword"
-          className="block w-3/4 mt-2 rounded-xl bg-gray-100 border-none"
+          className="block lg:w-3/4 md:w-3/4 sm:w-full mt-2 rounded-xl bg-gray-100 border-none"
           placeholder="Re-enter your password"
           value={confirmPassword}
           onChange={e => {setConfirmPassword(e.target.value)}}

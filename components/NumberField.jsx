@@ -18,7 +18,7 @@ export default function NumberField(props){
         <>
         <input
           type="text"
-          className="lg:w-3/4 md:w-full mt-2 border-none bg-gray-100 rounded-xl"
+          className="lg:w-3/4 sm:w-full md:w-3/4 xs:w-3/4 mt-2 border-none bg-gray-100 rounded-xl"
           placeholder={props.placeholder}
           value={props.value} onChange={e => props.setValue(e.target.value)} 
           />

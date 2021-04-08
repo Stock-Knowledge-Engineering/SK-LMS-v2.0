@@ -29,7 +29,7 @@ export default function ForgotPassword(props) {
             Stock <span className="text-skBlue font-bold">Knowledge</span>
           </p>
         </div>
-        <label className="w-full mt-10 mb-2 text-left font-bold text-4xl text-heading">
+        <label className="lg:w-full md:px-4 reno:w-full sm:w-full xs:px-4 mt-10 mb-2 text-left font-bold text-4xl text-heading">
           Forgot Password
         </label>
         {isLoading && (
@@ -63,7 +63,7 @@ export default function ForgotPassword(props) {
         {
           data.success && (
             <>
-              <label className="w-full mt-10 mb-2 text-left text-subheading">
+              <label className="lg:w-full md:px-4 reno:w-full sm:w-full xs:px-4 mt-10 mb-2 text-left text-subheading">
                 We sent a link to your email for resetting your account password.
               </label>
             </>

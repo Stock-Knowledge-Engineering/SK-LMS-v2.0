@@ -15,7 +15,7 @@ export default function EmailField(props){
     return(
         <>
         <input
-          className="lg:w-3/4 md:w-full mt-2 mb-2 border-none rounded-xl bg-gray-100"
+          className="lg:w-3/4 sm:w-full xs:w-3/4 md:w-3/4 mt-2 mb-2 border-none rounded-xl bg-gray-100"
           type="text"
           placeholder={props.placeholder}
           value={props.value} 

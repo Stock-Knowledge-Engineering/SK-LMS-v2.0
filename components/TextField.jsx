@@ -19,7 +19,7 @@ export default function TextField(props){
         <>
         <input
           type="text"
-          className="lg:w-3/4 md:w-full border-none mt-2 rounded-xl bg-gray-100"
+          className="lg:w-3/4 md:w-3/4 sm:w-full xs:w-3/4 border-none mt-2 rounded-xl bg-gray-100"
           placeholder={props.placeholder}
           value={props.value} onChange={e => props.setValue(e.target.value)} 
           />

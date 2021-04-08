@@ -13,7 +13,7 @@ const Footer = (props) => {
             Stock <span className="font-bold">Knowledge</span>
           </h4>
         </a>
-        <div className="lg:w-3/4 md:w-3/4 reno:w-3/4 sm:w-full xs:w-full flex items-center justify-end text-md text-white space-x-5">
+        <div className="lg:w-3/4 md:w-3/4 reno:w-3/4 sm:w-full xs:w-full flex items-center lg:justify-end md:justify-end reno:justify-center sm:justify-center xs:justify-center text-md text-white space-x-5">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms</a>
           <div className="flex align-center space-x-4">
@@ -25,7 +25,7 @@ const Footer = (props) => {
         </div>
       </div>
       <hr />
-      <div className="flex align-center lg:text-sm md:text-xs text-white lg:flex-row md:flex-col reno:flex-col xs:flex-col xs:items-center md:space-y-4 reno:space-y-4">
+      <div className="flex align-center lg:text-sm md:text-xs text-white lg:flex-row md:flex-col reno:flex-col sm:flex-col xs:flex-col xs:items-center md:space-y-4 reno:space-y-4">
         <ul className="flex justify-around md:w-full md:flex-row xs:flex-col xs:text-center">
           <li>
             <a href="/#home">Home</a>

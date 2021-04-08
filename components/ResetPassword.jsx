@@ -50,7 +50,7 @@ export default function ResetPassword(props) {
             Stock <span className="text-blue-500 font-bold">Knowledge</span>
           </p>
         </div>
-        <label className="w-full mt-10 text-left font-bold text-4xl text-heading">
+        <label className="lg:w-full md:w-full reno:w-full sm:w-full xs:px-4 mt-10 text-left font-bold text-4xl text-heading">
           Reset Password
         </label>        
         <PasswordInput value={password} setValue={setPassword} />
