@@ -1,41 +1,70 @@
-import Link from 'next/link'
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import {useSelector} from 'react-redux'
-import MainLayout from '../../layouts/MainLayout';
+import { useSelector } from "react-redux";
+import MainLayout from "../../layouts/MainLayout";
 
-import Start from '../../components/Start';
+import Start from "../../components/Start";
 
-import {useUserManagementHook} from '../../hooks/userManagementHook';
-import { useRouter } from 'next/dist/client/router';
+import { SocketContext, socket } from "../../context/socket";
+
+import { useUserManagementHook } from "../../hooks/userManagementHook";
+import { useRouter } from "next/dist/client/router";
 
 export default function Index(props) {
-
   useUserManagementHook();
-  const [status, setStatus] = useState('login');
-  const user = useSelector(state => state.UserReducer);
+  const [status, setStatus] = useState("login");
+  const [onlineUserCount, setOnlineUserCount] = useState(0);
+
+  const user = useSelector((state) => state.UserReducer);
   const router = useRouter();
+  useEffect(() => {
+    if (
+      (user.data && user.data.title.toLowerCase() == "teacher") ||
+      (user.data && user.data.title.toLowerCase() == "student")
+    )
+      router.push("/lms");
+    if (user.data && user.data.title.toLowerCase() == "school-admin")
+      router.push("/school");
+
+  }, [user]);
 
   useEffect(() => {
-    if(user.data && user.data.title.toLowerCase() == 'teacher' || user.data && user.data.title.toLowerCase() == 'student')
-      router.push("/lms");
-    if(user.data && user.data.title.toLowerCase() == 'school-admin')
-      router.push("/school");
-  },[user])
+    if (user.isLogin && user.data) {
+      let data = { id: user.data.id, username: user.data.username, type: user.data.usertype};
+      data ? socket.emit("CONNECT", data) : null;
+    }
+
+    socket.emit("ONLINE_USER_COUNT");
+
+    socket.on("ONLINE_USER_COUNT", (data) => {
+      setOnlineUserCount(data);
+    });
+  });
+
+   
 
   return (
-    <>
-    {
-      !user.isLogin && <Start code={router.query.code} page="login" status={status} changeStatus={setStatus}/>
-    }
-    {
-      user.data && !user.data.verified && <Start userid={user.data.userid} page={`verify-account`} />
-    }
-    {
-      user.isLogin && user.data.verified && <MainLayout>
-        <h1>Dashboard is in development!</h1>
-      </MainLayout>
-    }
-    </>
-  )
+    <SocketContext.Provider value={socket}>
+      <>
+        {!user.isLogin && (
+          <Start
+            code={router.query.code}
+            page="login"
+            status={status}
+            changeStatus={setStatus}
+          />
+        )}
+        {user.data && !user.data.verified && (
+          <Start userid={user.data.userid} page={`verify-account`} />
+        )}
+        {user.isLogin && user.data.verified && (
+          <MainLayout>
+            <h1>
+              Current Online User: <b>{onlineUserCount}</b>
+            </h1>
+          </MainLayout>
+        )}
+      </>
+    </SocketContext.Provider>
+  );
 }
