@@ -1,5 +1,5 @@
 import {useRef, useState, useEffect, useCallback} from 'react';
-
+import Link from 'next/link';
 const Menu = (props) => {
     return (
         <ul onClick={e => {props.showMenu(false)}} className="hero top-15 py-8 h-screen w-screen text-center text-4xl text-white uppercase font-bold space-y-6">
@@ -22,10 +22,15 @@ const Menu = (props) => {
                 <a href="#sponsor">Partners</a>
             </li>
             <li>
-                <a href="#article">Article</a>
+                <a href="#article">Articles</a>
             </li>
             <li>
                 <a href="#contactus">Contact Us</a>
+            </li>
+            <li>
+                <Link href="/lms/login">
+                    <a href="/lms/login">Login</a>
+                </Link>
             </li>
         </ul>
     )
@@ -48,7 +53,7 @@ const MobileNavbar = (props) => {
     },[])
 
     return (
-        <div ref={ref} className={`${float ? 'fixed' : ''} bg-white flex flex-col items-center md:hidden xs:block xs:w-screen z-50`}>
+        <div ref={ref} className={`${float ? 'fixed' : ''} bg-white flex flex-col items-center md:hidden xs:block sm:w-full xs:w-full z-50`}>
             <div className="w-full px-2 py-4 flex text-white justify-between">
                 <a href="#home" className="flex items-center text-2xl text-white space-x-2">
                     <img className="w-14" src="/images/logo.png" />
