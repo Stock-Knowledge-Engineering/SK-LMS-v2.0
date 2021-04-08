@@ -1,28 +1,44 @@
 import { Router, useRouter } from "next/dist/client/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {DoLogin} from "../redux/actions/UserAction";
+import { SocketContext } from "../context/socket";
+import { usePostHttp } from "../hooks/postHttp";
+import { DoLogin } from "../redux/actions/UserAction";
 
 export default function Menu() {
+  const socket = useContext(SocketContext);
+
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const [homeLink, setHomeLink] = useState('');
+  const [toLogout, setToLogout] = useState(false);
+  const [homeLink, setHomeLink] = useState("");
 
-  const user = useSelector(state => state.UserReducer);
+  const user = useSelector((state) => state.UserReducer);
+
+  const [logoutLoading, logoutSuccess] = usePostHttp(
+    toLogout ? { userid: user.data.userid } : null,
+    "/logout"
+  );
 
   const Logout = () => {
-    dispatch(DoLogin(false, null));
-    localStorage.setItem("isLogin", false);
-    localStorage.removeItem("user");
-
-    router.push('/lms');
+    setToLogout(true);
   };
 
-  useEffect(()=>{
-    if(user.data.title == 'school-admin')
-      setHomeLink('/admin/')
-  },[])
+  useEffect(() => {
+    if (user.data.title == "school-admin") setHomeLink("/admin/");
+  }, []);
+
+  useEffect(() => {
+    if (logoutSuccess.success){
+      socket.emit('LOGOUT', {userid: user.data.id})
+
+      dispatch(DoLogin(false, null));
+      localStorage.setItem("isLogin", false);
+      localStorage.removeItem("user");
+      router.push("/lms")
+    };
+  }, [logoutSuccess]);
 
   return (
     <>
@@ -45,7 +61,7 @@ export default function Menu() {
               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
             />
           </svg>
-          <a href="/admin"className="inline-block">
+          <a href="/admin" className="inline-block">
             Home
           </a>
         </li>
@@ -118,56 +134,77 @@ export default function Menu() {
             Notifications
           </a>
         </li>
-        {user.data.title == 'school-admin' && <>
-          <li>
-            <a href="/school/subjects" className="inline-block">Subject</a>
-          </li>
-          <li>
-            <a href="/school/teachers" className="inline-block">Teacher</a>
-          </li>
-          <li>
-            <a href="/school/grade-levels" className="inline-block">Grade Level</a>
-          </li>
-          <li>
-            <a href="/school/rooms" className="inline-block">Room</a>
-          </li>
-          <li>
-            <a href="/school/sections" className="inline-block">Section</a>
-          </li>
-          <li>
-            <a href="/school/class-schedules" className="inline-block">Class Schedules</a>
-          </li>
-        </>}
+        {user.data.title == "school-admin" && (
+          <>
+            <li>
+              <a href="/school/subjects" className="inline-block">
+                Subject
+              </a>
+            </li>
+            <li>
+              <a href="/school/teachers" className="inline-block">
+                Teacher
+              </a>
+            </li>
+            <li>
+              <a href="/school/grade-levels" className="inline-block">
+                Grade Level
+              </a>
+            </li>
+            <li>
+              <a href="/school/rooms" className="inline-block">
+                Room
+              </a>
+            </li>
+            <li>
+              <a href="/school/sections" className="inline-block">
+                Section
+              </a>
+            </li>
+            <li>
+              <a href="/school/class-schedules" className="inline-block">
+                Class Schedules
+              </a>
+            </li>
+          </>
+        )}
 
-        {
-          user.data.title.toLowerCase() == 'teacher' &&
-          <>
-          <li>
-            <a href="/enrolled-students" className="inline-block">Enrolled Students</a>
-          </li>
-          <li>
-            <a href="/class-schedules" className="inline-block">Class Schedules</a>
-          </li>
-          </>
-        }
-        {
-          user.data.title.toLowerCase() == 'student' &&
+        {user.data.title.toLowerCase() == "teacher" && (
           <>
             <li>
-              <a href="/class-schedules" className="inline-block">Class Schedules</a>
+              <a href="/enrolled-students" className="inline-block">
+                Enrolled Students
+              </a>
+            </li>
+            <li>
+              <a href="/class-schedules" className="inline-block">
+                Class Schedules
+              </a>
             </li>
           </>
-        }
-        {
-          user.data.title.toLowerCase() == 'administrator' &&
+        )}
+        {user.data.title.toLowerCase() == "student" && (
           <>
             <li>
-              <a href="/admin/invite-school" className="inline-block">Invite School</a>
+              <a href="/class-schedules" className="inline-block">
+                Class Schedules
+              </a>
             </li>
           </>
-        }
+        )}
+        {user.data.title.toLowerCase() == "administrator" && (
+          <>
+            <li>
+              <a href="/admin/invite-school" className="inline-block">
+                Invite School
+              </a>
+            </li>
+          </>
+        )}
         <li>
-          <a href="/topics" className="inline-block">Topics</a>
+          <a href="/topics" className="inline-block">
+            Topics
+          </a>
         </li>
         <br />
         <hr />
@@ -215,7 +252,12 @@ export default function Menu() {
             Help
           </a>
         </li>
-        <li className="mb-2 flex hover:bg-white hover:text-black" onClick={e => {Logout()}}>
+        <li
+          className="mb-2 flex hover:bg-white hover:text-black"
+          onClick={(e) => {
+            Logout();
+          }}
+        >
           <svg
             className="mr-4 h-6 w-6 inline-block self-center"
             xmlns="http://www.w3.org/2000/svg"
@@ -230,7 +272,12 @@ export default function Menu() {
               d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
             />
           </svg>
-          <a onClick={e => {Logout()}} className="inline-block cursor-pointer">
+          <a
+            onClick={(e) => {
+              Logout();
+            }}
+            className="inline-block cursor-pointer"
+          >
             Logout
           </a>
         </li>
