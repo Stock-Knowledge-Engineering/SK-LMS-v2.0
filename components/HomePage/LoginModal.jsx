@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLoginHook } from "../../hooks/loginHook";
 import { usePostHttp } from "../../hooks/postHttp";
-import {DoLogin} from '../../redux/actions/UserAction';
+import { DoLogin } from "../../redux/actions/UserAction";
 
 const LoginModal = (props) => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const LoginModal = (props) => {
       // setInvalidCredential(true);
       setToLogin(false);
     }
-  },[userData])
+  }, [userData]);
 
   return (
     <div
@@ -40,12 +41,11 @@ const LoginModal = (props) => {
     >
       <div className="w-11/12 bg-white h-4/5 inset-0 m-auto flex rounded-2xl  animate__animated animate__fadeInDown">
         <div
-          style={{ background: `linear-gradient(white, rgb(0, 128, 246))` }}
-          className="rounded-l-2xl w-1/2 bg-blue-400 relative overflow-hidden"
+          className="rounded-l-2xl w-1/2 relative overflow-hidden"
         >
           <img
-            className="absolute w-full h-full rounded-2xl"
-            src="/images/bg-home-modal.svg"
+            className="w-full h-full rounded-2xl"
+            src="/images/secondary-hero.svg"
           />
         </div>
         <div className="w-1/2 relative">
@@ -64,10 +64,11 @@ const LoginModal = (props) => {
               d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <form onSubmit={e => handleSubmit(e)} className="w-full h-full flex justify-center align-center">
-            <div
-              className="flex items-center"
-            >
+          <form
+            onSubmit={(e) => handleSubmit(e)}
+            className="w-full h-full flex justify-center align-center"
+          >
+            <div className="flex items-center">
               <div className="w-full flex items-center flex-col">
                 <div className="lg:w-96 md:w-80 flex items-center">
                   <img className="w-16 " src="/images/logo.png" />
@@ -97,13 +98,13 @@ const LoginModal = (props) => {
                   type="password"
                   placeholder="Password"
                 />
-                <div className="w-full mt-2 flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
+                <div className="w-full mt-2 flex items-center justify-end">
+                  {/* <div className="flex items-center space-x-2">
                     <input type="checkbox" name="rememberpassowrd" />
                     <label className="text-gray-500" for="rememberpassword">
                       Remember me?
                     </label>
-                  </div>
+                  </div> */}
                   <a className="font-bold text-blue-500">Forgot Password?</a>
                 </div>
                 <input
@@ -111,10 +112,12 @@ const LoginModal = (props) => {
                   type="submit"
                   value="Login"
                 />
-                <a className="text-gray-500 mt-6" href="">
-                  Don't have an account?{" "}
-                  <span className="text-blue-400 font-bold">Sign Up.</span>
-                </a>
+                <Link href="/lms/sign-up">
+                  <a className="text-gray-500 mt-6">
+                    Don't have an account?{" "}
+                    <span className="text-blue-400 font-bold">Sign Up.</span>
+                  </a>
+                </Link>
               </div>
             </div>
           </form>
