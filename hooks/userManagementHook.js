@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
-// import socketIOClient from "socket.io-client";
 import { useSelector, useDispatch } from "react-redux";
 
 import { DoLogin } from "../redux/actions/UserAction";
-
-const ENDPOINT = "http://localhost:3001";
-// const socket = socketIOClient(ENDPOINT);
 
 export const useUserManagementHook = () => {
   const dispatch = useDispatch();
@@ -47,13 +43,5 @@ export const useUserManagementHook = () => {
       localStorage.setItem("user", JSON.stringify(user.data));
       localStorage.setItem("remember", false);
     }
-
   }, [user]);
-
-  // useEffect(() => {
-  //   socket.on("visitor", (data) => {
-  //     if (!localStorage.getItem("guestId"))
-  //       localStorage.setItem("guestId", JSON.stringify(data));
-  //   });
-  // });
 };
