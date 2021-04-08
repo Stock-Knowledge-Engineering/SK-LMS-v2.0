@@ -5,7 +5,7 @@ export const useLoginHook = (data, endpoint) => {
   const [isSuccess, setSuccess] = useState(false);
 
   useEffect(() => {
-    if (data) {
+    if (data && !isLoading) {
       setLoading(true);
     }
     // if (data && !isLoading && !isSuccess) setLoading(true);
