@@ -31,7 +31,7 @@ export default function Home(props) {
       {loginModalOpen && <LoginModal showModal={setLoginModalOpen} />}
       <MobileNavBar />
       <div
-        className={`md:flex xs:hidden lg:w-full reno:w-full md:w-full sm:w-screen xs:w-screen p-4 h-20 justify-between items-center`}
+        className={`md:flex sm:hidden xs:hidden lg:w-full reno:w-full md:w-full sm:w-screen xs:w-screen p-4 h-20 justify-between items-center`}
       >
         <a
           href="/"
@@ -133,7 +133,7 @@ export default function Home(props) {
           <div className="xl:w-1/2 lg:w-1/2 md:w-1/2 reno:w-1/2 sm:w-full xs:w-full md:mt-0 xs:mt-10">
             <img
               className="md:w-full reno:w-full sm:w-full xs:w-full"
-              src="/images/illustration.png"
+              src="/images/main-hero(2).svg"
             />
           </div>
         </div>
@@ -156,7 +156,7 @@ export default function Home(props) {
       </div>
       <div className="md:w-full xs:w-screen md:flex-row xs:flex-col p-6 h-1/4 flex items-center">
         <div className="md:w-1/2 flex justify-end px-14">
-          <img src="images/vr-couch-1.svg" />
+          <img src="images/fullyimmersive.svg" />
         </div>
         <div className="md:w-1/2 px-14 md:text-left xs:text-center">
           <h4 className="text-4xl font-bold text-blue-500">
@@ -177,12 +177,12 @@ export default function Home(props) {
           </p>
         </div>
         <div className="md:w-1/2 px-14">
-          <img src="images/sol-2.svg" />
+          <img src="images/gamification.svg" />
         </div>
       </div>
       <div className="md:w-full md:flex-row xs:w-screen xs:flex-col p-6 h-1/4 flex items-center">
         <div className="md:w-1/2 flex justify-end px-14">
-          <img src="images/sol-3.svg" />
+          <img src="images/device.svg" />
         </div>
         <div className="md:w-1/2 px-14 md:text-left  xs:text-center">
           <h4 className="text-4xl font-bold text-blue-500">
@@ -205,11 +205,11 @@ export default function Home(props) {
           </p>
         </div>
         <div className="md:w-1/2 px-14">
-          <img src="images/sol-4.svg" />
+          <img src="images/adaptive.svg" />
         </div>
       </div>
       <div
-        className="md:w-full md:flex-row sm:w-screen xs:w-screen lg:h-1/4 md:h-1/4 xs:h-auto reno:h-1/4 flex mt-32 lg:flex-row md:flex-col reno:flex-col xs:flex-col"
+        className="md:w-full md:flex-row sm:w-screen xs:w-screen lg:h-1/4 md:h-1/4 xs:h-auto reno:h-1/4 flex mt-32 lg:flex-row md:flex-col reno:flex-col sm:flex-col xs:flex-col"
         style={{
           background:
             "url('images/bg-cta-1.svg') rgba(24, 79, 136, 0.5) no-repeat",
@@ -219,7 +219,7 @@ export default function Home(props) {
       >
         <div
           id="story"
-          className="lg:w-1/2 text-white md:p-20 md:w-full reno:w-full sm:w-screen xs:w-screen xs:px-10 xs:py-8"
+          className="lg:w-1/2 text-white md:p-20 sm:p-20 md:w-full reno:w-full sm:w-screen xs:w-screen xs:px-10 xs:py-8"
         >
           <h4 className="text-center lg:w-full md:w-full reno:w-full sm:w-full xs:w-full lg:text-6xl reno:text-6xl md:text-6xl sm:text-4xl xs:text-4xl font-bold md:text-4xl">
             Our Story
@@ -301,7 +301,7 @@ export default function Home(props) {
         className="lg:w-full md:w-full reno:w-full sm:w-screen xs:w-screen space-y-14 lg:mt-32 md:mt-32 reno:mt-32 lg:mt-16 lg:mt-16"
       >
         <h1 className="text-center w-full lg:text-6xl md:text-6xl reno:text-6xl sm:text-4xl xs:text-4xl font-semibold text-heading lg:mt-32 md:mt-32 reno:mt-32 lg:mt-16 lg:mt-16">
-          What our Partners Say
+          From Our Partners
         </h1>
         <TestimonialLayout />
       </div>
@@ -342,8 +342,8 @@ export default function Home(props) {
         <h4 className="text-lg text-center text-subheading w-3/4 m-auto">
           Send us a message if you’re interested to partner with us!
         </h4>
-        <div className="flex w-full lg:flex-row md:flex-col reno:flex-col xs:flex-col lg:space-y-0 md:space-y-10 reno:space-y-10 sm:space-y-10 xs:space-y-10 xs:items-center md:justify-around my-16 px-10">
-          <div className="lg:w-1/2 md:w-full reno:w-full xs:w-full self-start 1080:px-20">
+        <div className="flex w-full lg:flex-row md:flex-col reno:flex-col sm:flex-col xs:flex-col lg:space-y-0 md:space-y-10 reno:space-y-10 sm:space-y-10 xs:space-y-10 xs:items-center md:justify-around my-16 px-10">
+          <div className="lg:w-1/2 md:w-full reno:w-full sm:w-full xs:w-full self-start 1080:px-20">
             <form className="space-y-4">
               <div>
                 <label className="text-lg font-bold text-subheading">
@@ -379,7 +379,7 @@ export default function Home(props) {
               />
             </form>
           </div>
-          <div className="lg:w-1/2 md:w-full reno:w-full xs:w-full md:space-y-5 reno:space-y-5 xs:space-y-5 self-start 1080:px-20">
+          <div className="lg:w-1/2 md:w-full reno:w-full xs:w-full md:space-y-5 reno:space-y-5 sm:space-y-5 xs:space-y-5 self-start 1080:px-20">
             <div className="flex items-center text-blue-500">
               <svg
                 className="lg:h-4 lg:w-4 md:h-6 md:w-6 reno:h-6 reno:w-6 sm:h-6 sm:w-6 xs:h-6 xs:w-6"
