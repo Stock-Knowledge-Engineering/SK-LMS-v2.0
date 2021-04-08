@@ -1,4 +1,3 @@
-
 import { useEffect, useCallback, useState } from "react";
 import { useTestimonialHook } from "../../hooks/testimonialHook";
 import TestimonialContent from "./TestimonialContent";
@@ -14,7 +13,11 @@ export default function TestimonialLayout(props) {
 
   useEffect(() => {
     if (testimonials) {
-      settestimonialStatus({ current: 0, next: 1, prev: testimonials.length - 1 });
+      settestimonialStatus({
+        current: 0,
+        next: 1,
+        prev: testimonials.length - 1,
+      });
     }
   }, [testimonials]);
 
@@ -62,19 +65,42 @@ export default function TestimonialLayout(props) {
   };
 
   return (
-    <div className="relative lg:w-3/4 md:w-11/12 xs:w-11/12 xs:mb-60 lg:h-80 reno:h-80 md:h-80 sm:h-auto xs:h-auto m-auto flex lg:flex-row md:flex-col reno:flex-col xs:flex-col items-center rounded-xl">
-    {testimonials && testimonials.length > 0 && (
-      <TestimonialContent
-        testimonials={testimonials}
-        testimonial={testimonials && testimonialStatus && testimonials[testimonialStatus.current]}
-      />
-    )}
-      {/* <TestimonialControl 
+    <>
+      <div className="relative lg:w-3/4 md:w-11/12 sm:w-3/4 xs:11/12 h-auto bg-white m-auto flex items-center rounded-xl shadow border border-gray-100">
+        {testimonials && testimonials.length > 0 && (
+          <TestimonialContent
+            current={testimonialStatus && testimonialStatus.current}
+            testimonials={testimonials}
+            testimonial={
+              testimonials &&
+              testimonialStatus &&
+              testimonials[testimonialStatus.current]
+            }
+          />
+        )}
+      </div>
+      <TestimonialControl
         status={testimonialStatus && testimonialStatus}
         length={testimonials && testimonials.length}
         next={nextTestimonial}
         prev={prevTestimonial}
-      /> */}
-    </div>
+      />
+    </>
+
+    // <div className="relative w-full px-96">
+    //   {testimonials && testimonials.length > 0 && (
+    //     <CarouselContent
+    //       testimonial={testimonials && testimonialStatus && testimonials[testimonialStatus.current]}
+    //     />
+    //   )}
+
+    //   <CarouseControl
+    //     status={testimonialStatus && testimonialStatus}
+    //     length={testimonials && testimonials.length}
+    //     next={nextTestimonial}
+    //     prev={prevTestimonial}
+    //   />
+
+    // </div>
   );
 }

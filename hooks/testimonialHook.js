@@ -21,6 +21,15 @@ export const useTestimonialHook = () => {
         "description": "WebXR Technical Adviser at UNICEF Innovation, New York,and  WebXR Consultant at European Parliament, Belgium",
         "message": "Virtual reality and augmented reality provide exciting new ways to discover and learn. Stock Knowledge on-going efforts to make this radically new kind of content to the widest audience is an example of leadership for the education world!"
       }
+      ,
+      {
+        "id": 2,
+        "image": "images/fayaz.svg",
+        "name": "Fayaz King",
+        "description": "United Nations Asst. Secretary-General",
+        "message": "More gaming, please. Meet Stock Knowledge, a gamified learning platform that helps make the learning happen.",
+        "source": "Twitter"
+      }
     ]
     );
   }, []);
