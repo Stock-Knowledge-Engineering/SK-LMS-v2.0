@@ -5,7 +5,7 @@ export const usePostHttp = (data, endpoint) => {
   const [isSuccess, setSuccess] = useState(false);
 
   useEffect(() => {
-    if (data && !isSuccess) {
+    if (data && !isLoading) {
       setLoading(true);
     }
   }, [data]);
