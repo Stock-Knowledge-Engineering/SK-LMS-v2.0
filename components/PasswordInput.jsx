@@ -1,6 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-export default function PasswordInput(props) {
+export default function PasswordInput({
+  value,
+  setValue,
+  wrapperClassName,
+  textFieldClassName,
+  alert,
+  alertClassName,
+  alertValidStyle,
+  alertInvalidStyle,
+}) {
   const passwordRef = useRef();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -10,6 +21,26 @@ export default function PasswordInput(props) {
   const [containNumber, setContainNumber] = useState(false);
   const [containSpecialCharacter, setContainSpecialCharacter] = useState(false);
   const [containValidLenght, setContainValidLenght] = useState(false);
+
+  const revealEye = (
+    <FontAwesomeIcon
+      onClick={()=>{setShowPassword(!showPassword)}}
+      icon={faEye}
+      size="lg"
+      color="lightGray"
+      className="absolute right-4 top-3 cursor-pointer hover:text-subheading"
+    />
+  );
+
+  const hideEye = (
+    <FontAwesomeIcon
+      onClick={()=>{setShowPassword(!showPassword)}}
+      icon={faEyeSlash}
+      size="lg"
+      color="lightGray"
+      className="absolute right-4 top-3 cursor-pointer hover:text-subheading"
+    />
+  );
 
   useEffect(() => {
     if (/([A-ZÑ])*/.test(passwordRef.current.value)) setContainCapital(true);
@@ -36,28 +67,27 @@ export default function PasswordInput(props) {
     )
       SetValidPassword(true);
     else SetValidPassword(false);
-
-  }, [props.value]);
-
+  }, [value]);
 
   return (
     <>
-      <div className="lg:w-3/4 md:w-3/4 sm:w-full xs:w-3/4 mt-2 flex rounded-xl">
+      <div className={`${wrapperClassName} relative`}>
         <input
           ref={passwordRef}
           type={showPassword ? "text" : "password"}
           name="password"
-          className="w-full block border-none bg-gray-100 rounded-l-xl"
+          className={`w-full ${textFieldClassName}`}
           placeholder="Password"
-          value={props.value}
+          value={value}
           onChange={(e) => {
-            props.setValue(e.target.value);
+            setValue(e.target.value);
           }}
         />
-        <button
+        {!showPassword ? revealEye : hideEye}
+        {/* <button
           onClick={(e) => setShowPassword(!showPassword)}
           type="button"
-          className="border-none bg-gray-100 text-sm flex items-center rounded-r-xl text-gray-700"
+          className="absolute border-none bg-gray-100 text-sm flex items-center rounded-r-xl text-gray-700"
         >
           {showPassword ? (
             <svg
@@ -96,47 +126,46 @@ export default function PasswordInput(props) {
               />
             </svg>
           )}
-        </button>
+        </button> */}
       </div>
-      <br />
-      <div
-        className={`w-3/4 mt-2 px-4 py-3 rounded relative ${
-          validPassword
-            ? "bg-green-100 border border-green-400 text-green-700 "
-            : "bg-red-100 border border-red-400 text-red-700 "
-        }`}
-        role="alert"
-      >
-        <strong className="font-bold">
-          Password Strenght: {validPassword ? "Strong" : "Weak"}
-        </strong>
-        {!validPassword && (
-          <ul className="list-disc text-sm p-2">
-            {!/([A-ZÑ])+/.test(props.value) && (
-              <li>
-                Password must contain atleast 1 upper case letters (A - Z)
-              </li>
-            )}
-            {!/([a-zñ])+/.test(props.value) && (
-              <li>
-                Password must contain atleast 1 lower case letters (a - z)
-              </li>
-            )}
-            {!/\d/.test(props.value) && (
-              <li>Password must contain atleast 1 number (0 - 9)</li>
-            )}
-            {!/\W/.test(props.value) && (
-              <li>
-                Password must contain atleast 1 non-alphanumeric symbol (e.g.
-                '@$%@(|'))
-              </li>
-            )}
-            {!/(\W|\d|\w){8,}/.test(props.value) && (
-              <li>Password must be 8 characters long</li>
-            )}
-          </ul>
-        )}
-      </div>
+      {alert && (
+        <div
+          className={`${alertClassName} relative ${
+            validPassword ? alertValidStyle : alertInvalidStyle
+          }`}
+          role="alert"
+        >
+          <strong className="font-bold">
+            Password Strenght: {validPassword ? "Strong" : "Weak"}
+          </strong>
+          {!validPassword && (
+            <ul className="list-disc text-sm p-2">
+              {!/([A-ZÑ])+/.test(value) && (
+                <li>
+                  Password must contain atleast 1 upper case letters (A - Z)
+                </li>
+              )}
+              {!/([a-zñ])+/.test(value) && (
+                <li>
+                  Password must contain atleast 1 lower case letters (a - z)
+                </li>
+              )}
+              {!/\d/.test(value) && (
+                <li>Password must contain atleast 1 number (0 - 9)</li>
+              )}
+              {!/\W/.test(value) && (
+                <li>
+                  Password must contain atleast 1 non-alphanumeric symbol (e.g.
+                  '@$%@(|'))
+                </li>
+              )}
+              {!/(\W|\d|\w){8,}/.test(value) && (
+                <li>Password must be 8 characters long</li>
+              )}
+            </ul>
+          )}
+        </div>
+      )}
     </>
   );
 }
