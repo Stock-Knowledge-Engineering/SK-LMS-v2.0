@@ -3,26 +3,26 @@ import {useSelector} from 'react-redux';
 
 import FieldAlert from './FieldAlert';
 
-export default function NumberField(props){
+export default function NumberField({value, setValue, placeholder, classNames}){
     const [invalidInput, setInvalidInput] = useState(false);
 
     useEffect(()=>{
-        if(props.value.match(/^[0-9]*/) != props.value)
+        if(value.match(/^[0-9]*/) != value)
             setInvalidInput(true);
         else
             setInvalidInput(false);
 
-    },[props.value])
+    },[value])
 
     return(
         <>
         <input
           type="text"
-          className="lg:w-3/4 sm:w-full md:w-3/4 xs:w-3/4 mt-2 border-none bg-gray-100 rounded-xl"
-          placeholder={props.placeholder}
-          value={props.value} onChange={e => props.setValue(e.target.value)} 
+          className={classNames}
+          placeholder={placeholder}
+          value={value} onChange={e => setValue(e.target.value)} 
           />
-          { invalidInput && <FieldAlert message="Only numbers are accepted in this input." />}
+          { invalidInput && <FieldAlert classNames="w-full mt-2 border border-red-400 text-red-700 px-4 py-3 rounded relative" message="Only numbers are accepted in this input." />}
         </>
     )
 }
