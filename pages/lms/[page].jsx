@@ -8,7 +8,7 @@ import Start from '../../components/Start';
 
 import {useUserManagementHook} from '../../hooks/userManagementHook';
 import { useRouter } from 'next/dist/client/router';
-import SignupFormWrapper from '../../components/HomePage/SignupFormWrapper';
+import FormWrapper from '../../components/HomePage/FormWrapper';
 
 import { SocketContext, socket } from "../../context/socket";
 
@@ -30,10 +30,10 @@ export default function Page(props) {
     <SocketContext.Provider value={socket}>
       <>
         {!user.isLogin && (
-          <SignupFormWrapper defaultForm="signup" code={router.query.code}/>
+          <FormWrapper defaultForm="signup" code={router.query.code}/>
         )}
         {user.data && !user.data.verified && (
-          <SignupFormWrapper defaultForm="verification-code" code={router.query.code}/>
+          <FormWrapper defaultForm="verification-code" code={router.query.code}/>
           )}
         {user.isLogin && user.data.verified && (
           <MainLayout>

@@ -9,7 +9,7 @@ import { SocketContext, socket } from "../../context/socket";
 
 import { useUserManagementHook } from "../../hooks/userManagementHook";
 import { useRouter } from "next/dist/client/router";
-import SignupFormWrapper from "../../components/HomePage/SignupFormWrapper";
+import FormWrapper from "../../components/HomePage/FormWrapper";
 
 export default function Index(props) {
   useUserManagementHook();
@@ -18,6 +18,7 @@ export default function Index(props) {
 
   const user = useSelector((state) => state.UserReducer);
   const router = useRouter();
+
   useEffect(() => {
     if (
       (user.data && user.data.title.toLowerCase() == "teacher") ||
@@ -42,16 +43,14 @@ export default function Index(props) {
     });
   });
 
-   
-
   return (
     <SocketContext.Provider value={socket}>
       <>
         {!user.isLogin && (
-          <SignupFormWrapper defaultForm="login" code={router.query.code}/>
+          <FormWrapper defaultForm="login" code={router.query.code}/>
         )}
         {user.data && !user.data.verified && (
-          <SignupFormWrapper defaultForm="verification-code" code={router.query.code}/>
+          <FormWrapper defaultForm="verification-code" code={router.query.code}/>
           )}
         {user.isLogin && user.data.verified && (
           <MainLayout>
