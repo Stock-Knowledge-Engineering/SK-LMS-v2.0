@@ -17,10 +17,21 @@ const Footer = (props) => {
           <a href="#">Privacy Policy</a>
           <a href="#">Terms</a>
           <div className="flex align-center space-x-4">
-            <img src="/images/facebook.svg" />
-            <img src="/images/twitter.svg" />
-            <img src="/images/instagram.svg" />
-            <img src="/images/youtube.svg" />
+            <a href="https://www.facebook.com/StockKnowledgetool">
+              <img src="/images/facebook.svg" />
+            </a>
+            <a href="https://twitter.com/stockknowledge_">
+              <img src="/images/twitter.svg" />
+            </a>
+            <a href="https://www.instagram.com/stockknowledgetool/">
+              <img src="/images/instagram.svg" />
+            </a>
+            <a href="https://www.linkedin.com/company/stock-knowledge">
+              <img src="/images/linkedin.svg" />
+            </a>
+            <a href="https://stock-knowledge-engineering.github.io/">
+              <img src="/images/github.svg" />
+            </a>
           </div>
         </div>
       </div>
