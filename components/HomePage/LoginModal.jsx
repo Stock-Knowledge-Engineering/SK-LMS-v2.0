@@ -26,7 +26,7 @@ const LoginModal = (props) => {
     if (userData.success) {
       dispatch(DoLogin(true, userData.result[0]));
       setToLogin(false);
-      props.showModal(false);
+      userData.result[0].verified ? props.showModal(false) : props.setForm('account-verification');
     }
     if (typeof userData != "boolean" && !userData.success) {
       // setInvalidCredential(true);
