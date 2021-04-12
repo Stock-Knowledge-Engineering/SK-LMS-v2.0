@@ -35,6 +35,7 @@ export default function Start(props){
               {props.page == 'forgot-password' && props.codeSent == 'true' && <ResetCode />}
               {props.page == 'forgot-password' && props.code && <ResetPassword code={props.code}/>}
               {props.page == 'verify-account' && <VerifyAccount />}
+              {props.page == '/admin/registration' && <SchoolRegistration />}
             </div>
           </div>
         </div>
