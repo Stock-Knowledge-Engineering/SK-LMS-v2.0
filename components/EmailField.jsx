@@ -4,24 +4,25 @@ import { useHttp } from '../hooks/http';
 
 import FieldAlert from './FieldAlert';
 
-export default function EmailField(props){
+export default function EmailField({classNames, placeholder, value, setValue, endpoint, to, alert, setValidEmail, errorMessage}){
     const [invalidInput, setInvalidInput] = useState(false);
-    const [verifyingEmail, validEmail] = useHttp(props.value ? `/register/verify/email?value=${props.value}` : '', [props.value]);
-    
-    useEffect(()=> {
-      props.setEmailExist(validEmail)
+    const [verifyingEmail, validEmail] = useHttp(value ? `${endpoint}${value}` : '', [value]);
+
+    useEffect(()=>{
+      if(setValidEmail)
+        setValidEmail(validEmail)
     },[validEmail])
 
     return(
         <>
         <input
-          className="lg:w-3/4 sm:w-full xs:w-3/4 md:w-3/4 mt-2 mb-2 border-none rounded-xl bg-gray-100"
+          className={classNames}
           type="text"
-          placeholder={props.placeholder}
-          value={props.value} 
-          onChange={e => props.setValue(e.target.value)} 
+          placeholder={placeholder}
+          value={value} 
+          onChange={e => setValue(e.target.value)} 
         />
-          {/* { validEmail && <FieldAlert message="Email already exist!" />} */}
+          { alert && validEmail == to && value != '' && <FieldAlert classNames="w-full mt-2 border border-red-400 text-red-700 px-4 py-3 rounded relative" message={errorMessage} />}
         </>
     )
 }
