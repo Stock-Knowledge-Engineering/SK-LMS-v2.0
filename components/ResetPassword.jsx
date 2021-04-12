@@ -76,31 +76,7 @@ export default function ResetPassword(props) {
           </Link>
         </a>
       </form>
-      {/* <div className="w-full">
-        <h1 className="w-full text-5xl font-bold text-blue-900 text-left">
-          Reset Password
-        </h1>
-        <br />
-        <PasswordInput value={password} setValue={setPassword}/>
-        <br />
-        <input
-          type="password"
-          name="confirmPassword"
-          className="block w-3/4 mt-2 rounded-xl bg-gray-100 border-none"
-          placeholder="Re-enter your password"
-          value={confirmPassword}
-          onChange={e => {setConfirmPassword(e.target.value)}}
-        />
-        {password != confirmPassword && <FieldAlert message="Password does not match!" /> }
-        <br />
-        <button
-          onClick={(e) => setToSubmit(true)}
-          className={`${disableSubmit ? "opacity-50 cursor-not-allowed": "hover:bg-green-700" } bg-green-600 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-green-200`}
-          disabled={disableSubmit}
-        >
-          Submit
-        </button>
-      </div> */}
+
     </>
   );
 }
