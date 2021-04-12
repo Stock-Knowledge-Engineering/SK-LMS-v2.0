@@ -1,9 +1,9 @@
-import SignupFormWrapper from "./SignupFormWrapper";
+import FormWrapper from "./FormWrapper";
 
 const ModalLayout = ({code, showModal}) => {
 
   return (
-      <SignupFormWrapper defaultForm="login" code={code} showModal={showModal}/>
+      <FormWrapper defaultForm="login" code={code} showModal={showModal}/>
   );
 };
 
