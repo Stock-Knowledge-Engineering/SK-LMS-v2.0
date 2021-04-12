@@ -1,7 +1,6 @@
 const initState = {
     isLogin: false,
     data: null,
-    remember: false,
     updatePersonalInformation: false,
     updateShippingInformation: false,
   };
@@ -12,8 +11,7 @@ const initState = {
         return {
           ...state,
           isLogin: action.payload.isLogin,
-          data: action.payload.data,
-          remember: action.payload.remember
+          data: action.payload.data
         };
 
       case 'DO_ACCOUNT_VERIFICATION':

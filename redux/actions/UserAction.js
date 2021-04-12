@@ -1,10 +1,9 @@
-const DoLogin = (isLogin, user, remember) => {
+const DoLogin = (isLogin, user) => {
     return {
       type: "DO_LOGIN",
       payload: {
         isLogin: isLogin,
-        data: user,
-        remember: remember
+        data: user
       },
     };
   };
