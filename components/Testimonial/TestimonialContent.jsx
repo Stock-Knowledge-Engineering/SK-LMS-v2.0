@@ -5,7 +5,7 @@ const TestimonialContent = (props) => {
       {testimonials &&
         testimonials.map((testimonial) => {
           return (
-            <div className={`${testimonial.id == current ? 'block animate__animated animate__fadeIn' :'hidden'} h-auto w-full mx-4 my-12 sm:px-8 xs:p-2 space-y-2 rounded-xl`}>
+            <div key={testimonial.id} className={`${testimonial.id == current ? 'block animate__animated animate__fadeIn' :'hidden'} h-auto w-full mx-4 my-12 sm:px-8 xs:p-2 space-y-2 rounded-xl`}>
               <div className="w-full flex space-x-3 xs:flex-col">
                 <img
                   className="w-16 h-16 rounded-full xs:m-auto"
