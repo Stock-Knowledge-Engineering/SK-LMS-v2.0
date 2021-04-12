@@ -33,7 +33,9 @@ module.exports = {
       ...colors,
       heading: '#2b2b2b',
       subheading: '#616161',
-      skBlue: '#0080F6'
+      skBlue: '#0080F6',
+      skBlueInactive: '#B8DDFF',
+      lightGray: '#B5B5B5'
     },
     extend: {
       width: {
@@ -43,6 +45,7 @@ module.exports = {
   },
   variants: {
     extend: {
+      opacity:['disabled']
     },
   },
   plugins: [
