@@ -8,6 +8,9 @@ import Start from '../../components/Start';
 
 import {useUserManagementHook} from '../../hooks/userManagementHook';
 import { useRouter } from 'next/dist/client/router';
+import SignupFormWrapper from '../../components/HomePage/SignupFormWrapper';
+
+import { SocketContext, socket } from "../../context/socket";
 
 export default function Page(props) {
 
@@ -24,19 +27,23 @@ export default function Page(props) {
   },[user])
 
   return (
-    <>
-    {
-      !user.isLogin && <Start codeSent={router.query.sent} code={router.query.code} page={props.page} status={status} changeStatus={setStatus}/>
-    }
-    {
-      user.data && !user.data.verified && <Start page={props.page} userid={user.data.userid} />
-    }
-    {
-      user.isLogin && user.data.verified && <MainLayout>
-        <h1>Dashboard is in development!</h1>
-      </MainLayout>
-    }
-    </>
+    <SocketContext.Provider value={socket}>
+      <>
+        {!user.isLogin && (
+          <SignupFormWrapper defaultForm="signup" code={router.query.code}/>
+        )}
+        {user.data && !user.data.verified && (
+          <SignupFormWrapper defaultForm="verification-code" code={router.query.code}/>
+          )}
+        {user.isLogin && user.data.verified && (
+          <MainLayout>
+            <h1>
+              Current Online User: <b>{onlineUserCount}</b>
+            </h1>
+          </MainLayout>
+        )}
+      </>
+    </SocketContext.Provider>
   )
 }
 

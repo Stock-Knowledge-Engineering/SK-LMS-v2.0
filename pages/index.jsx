@@ -13,6 +13,7 @@ import TestimonialLayout from "../components/Testimonial/TestimonialLayout";
 import LoginModal from "../components/HomePage/LoginModal";
 import ArticleCarouselLayout from "../components/ArticlesCarousel/ArticleCarouselLayout";
 import Footer from "../components/Footer";
+import ModalLayout from "../components/HomePage/ModalLayout";
 
 export default function Home(props) {
   useUserManagementHook();
@@ -21,6 +22,10 @@ export default function Home(props) {
   const user = useSelector((state) => state.UserReducer);
   const router = useRouter();
 
+  const { code } = router.query;
+
+  useEffect(() => {}, [code]);
+
   return (
     <>
       <Head>
@@ -28,7 +33,9 @@ export default function Home(props) {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      {loginModalOpen && <LoginModal showModal={setLoginModalOpen} />}
+      {loginModalOpen && (
+        <ModalLayout code={code} showModal={setLoginModalOpen} />
+      )}
       <MobileNavBar />
       <div
         className={`md:flex sm:hidden xs:hidden lg:w-full reno:w-full md:w-full sm:w-screen xs:w-screen p-4 h-20 justify-between items-center`}
@@ -71,6 +78,7 @@ export default function Home(props) {
               <a href="/#contactus">Contact Us</a>
             </li>
           </ul>
+
           {!user.isLogin && (
             <button
               onClick={(e) => {

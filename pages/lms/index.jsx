@@ -9,6 +9,7 @@ import { SocketContext, socket } from "../../context/socket";
 
 import { useUserManagementHook } from "../../hooks/userManagementHook";
 import { useRouter } from "next/dist/client/router";
+import SignupFormWrapper from "../../components/HomePage/SignupFormWrapper";
 
 export default function Index(props) {
   useUserManagementHook();
@@ -47,16 +48,11 @@ export default function Index(props) {
     <SocketContext.Provider value={socket}>
       <>
         {!user.isLogin && (
-          <Start
-            code={router.query.code}
-            page="login"
-            status={status}
-            changeStatus={setStatus}
-          />
+          <SignupFormWrapper defaultForm="login" code={router.query.code}/>
         )}
         {user.data && !user.data.verified && (
-          <Start userid={user.data.userid} page={`verify-account`} />
-        )}
+          <SignupFormWrapper defaultForm="verification-code" code={router.query.code}/>
+          )}
         {user.isLogin && user.data.verified && (
           <MainLayout>
             <h1>
