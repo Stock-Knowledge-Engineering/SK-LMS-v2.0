@@ -3,27 +3,27 @@ import {useSelector} from 'react-redux';
 
 import FieldAlert from './FieldAlert';
 
-export default function TextField(props){
+export default function TextField({value, setValue, classNames, placeholder, alert}){
     const [invalidInput, setInvalidInput] = useState(false);
 
     useEffect(()=>{
-        if(props.value.match(/^[A-Za-z ]*/)[0] != props.value){
+        if(value.match(/^[A-Za-z ]*/)[0] != value){
             setInvalidInput(true);
         }
         else
             setInvalidInput(false);
 
-    },[props.value])
+    },[value])
 
     return(
         <>
         <input
           type="text"
-          className="lg:w-3/4 md:w-3/4 sm:w-full xs:w-3/4 border-none mt-2 rounded-xl bg-gray-100"
-          placeholder={props.placeholder}
-          value={props.value} onChange={e => props.setValue(e.target.value)} 
+          className={classNames}
+          placeholder={placeholder}
+          value={value} onChange={e => setValue(e.target.value)} 
           />
-          { invalidInput && <FieldAlert message="Only alphabet are accepted in this input." />}     
+          {alert && invalidInput && <FieldAlert classNames="w-full mt-2 border border-red-400 text-red-700 px-4 py-3 rounded relative" message="Only alphabet are accepted in this input." />}     
         </>
     )
 }
