@@ -30,8 +30,9 @@ const SignupDetailsComponents = ({
 }) => {
   const dispatch = useDispatch();
 
-  const [validEmail, setValidEmail] = useState(false)
-  const [createAccount, setCreateAccount] = useState(false)
+  const [validEmail, setValidEmail] = useState(false);
+  const [createAccount, setCreateAccount] = useState(false);
+  const [userAgree, setUserAgree] = useState(false);
   const [disable, setDisable] = useState(true);
 
   useEffect(() => {
@@ -48,7 +49,8 @@ const SignupDetailsComponents = ({
       school &&
       gradeLevel &&
       favoriteSubject &&
-      careerGoal
+      careerGoal &&
+      userAgree
     )
       setDisable(false);
     else setDisable(true);
@@ -121,6 +123,10 @@ const SignupDetailsComponents = ({
         password={password}
         placeholder="Re-enter your password"
       />
+      <div className="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 flex items-center space-x-2">
+        <input onChange={(e) => setUserAgree(e.target.checked)} type="checkbox" name="useragree" />
+        <label for="useragree" className="text-lightGray hover:text-heading">I agree to the Terms of Service and Privacy Policy</label>
+      </div>
       <button
         disabled={disable ? true : false}
         onClick={() => {

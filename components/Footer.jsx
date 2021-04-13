@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = (props) => {
   return (
     <div
@@ -14,8 +16,12 @@ const Footer = (props) => {
           </h4>
         </a>
         <div className="lg:w-3/4 md:w-3/4 reno:w-3/4 sm:w-full xs:w-full flex items-center lg:justify-end md:justify-end reno:justify-center sm:justify-center xs:justify-center text-md text-white space-x-5">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms</a>
+          <Link href="/terms-and-policy?policy=true">
+            Privacy Policy
+          </Link>
+          <Link href="/terms-and-policy?terms=true">
+            Terms
+          </Link>
           <div className="flex align-center space-x-4">
             <a href="https://www.facebook.com/StockKnowledgetool">
               <img src="/images/facebook.svg" />
