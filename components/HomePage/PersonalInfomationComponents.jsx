@@ -22,10 +22,7 @@ const PersonalInformationComponents = ({
   setStep,
 }) => {
   const [schoolsLoading, schools] = useHttp("/schools", []);
-  const [gradelevelsLoading, gradeLevels] = useHttp(
-    school ? `/grade-levels?school=${school}` : null,
-    [school]
-  );
+  const [gradelevelsLoading, gradeLevels] = useHttp(`/grade-levels?`,[]);
 
   const [disable, setDisable] = useState(true);
 
