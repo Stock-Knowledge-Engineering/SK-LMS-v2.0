@@ -5,6 +5,7 @@ import ForgotPasswordForm from "./ForgotPasswordForm";
 import LoginForm from "./LoginForm";
 
 import SignupForm from "./SignupForm";
+import TermsAndPolicyComponents from "./TermsAndPolicyComponents";
 
 const FormWrapper = ({ defaultForm, code, showModal }) => {
   const user = useSelector((state) => state.UserReducer);
@@ -17,7 +18,7 @@ const FormWrapper = ({ defaultForm, code, showModal }) => {
         style={{ background: "rgba(238, 238, 238, 0.5)" }}
         className="fixed h-screen flex w-full z-50"
       >
-        <div className="w-11/12 bg-white h-4/5 inset-0 m-auto flex rounded-2xl  animate__animated animate__fadeInDown">
+        <div className="w-11/12 bg-white h-4/5 inset-0 m-auto flex rounded-2xl animate__animated animate__fadeInDown">
           <div className="rounded-l-2xl w-1/2 relative overflow-hidden md:block sm:hidden xs:hidden">
             <img
               className="w-full h-full rounded-2xl"
@@ -81,6 +82,7 @@ const FormWrapper = ({ defaultForm, code, showModal }) => {
                       setForm={setForm}
                     />
                   )}
+                  {form === 'term-and-policy' && <TermsAndPolicyComponents />}
                 </div>
               </div>
             </div>
