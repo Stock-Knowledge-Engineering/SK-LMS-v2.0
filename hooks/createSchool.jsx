@@ -14,7 +14,7 @@ export const useCreateSchool = (data) => {
 
   useEffect(() => {
     if (isLoading)
-      fetch(`http://localhost:3001/admin/school/registration`, {
+      fetch(`${process.env.SERVER_DOMAIN}/admin/school/registration`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

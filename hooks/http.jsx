@@ -8,7 +8,7 @@ export const useHttp = (url, dependencies) => {
   useEffect(() => {
     setIsLoading(true);
     // console.log('Sending Http request to URL: ' + url);
-    fetch(`http://localhost:3001${url}`)
+    fetch(`${process.env.SERVER_DOMAIN}${url}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch.');

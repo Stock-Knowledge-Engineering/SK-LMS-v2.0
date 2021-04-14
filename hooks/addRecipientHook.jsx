@@ -7,7 +7,7 @@ export const addRecipientHook = (data, endpoint, dependencies) => {
   useEffect(() => {
     setLoading(true);
     // console.log('Sending Http request to URL: ' + url);
-    fetch(`http://localhost:3001${endpoint}`, {
+    fetch(`${process.env.SERVER_DOMAIN}${endpoint}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -14,7 +14,7 @@ export const useCreateAccount = (data) => {
 
   useEffect(() => {
     if (isLoading)
-      fetch(`http://localhost:3001/register/account`, {
+      fetch(`${process.env.SERVER_DOMAIN}/register/account`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

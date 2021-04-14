@@ -12,7 +12,7 @@ export const usePostHttp = (data, endpoint) => {
 
   useEffect(() => {
     if (isLoading)
-      fetch(`http://localhost:3001${endpoint}`, {
+      fetch(`${process.env.SERVER_DOMAIN}${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
