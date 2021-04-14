@@ -27,12 +27,15 @@ export default function Index(props) {
       router.push("/lms");
     if (user.data && user.data.title.toLowerCase() == "school-admin")
       router.push("/school");
-
   }, [user]);
 
   useEffect(() => {
     if (user.isLogin && user.data) {
-      let data = { id: user.data.id, username: user.data.username, type: user.data.usertype};
+      let data = {
+        id: user.data.id,
+        username: user.data.username,
+        type: user.data.usertype,
+      };
       data ? socket.emit("CONNECT", data) : null;
     }
 
@@ -46,19 +49,28 @@ export default function Index(props) {
   return (
     <SocketContext.Provider value={socket}>
       <>
-        {!user.isLogin && (
-          <FormWrapper defaultForm="login" code={router.query.code}/>
+        {!user.isLogin && !router.query.code && (
+          <FormWrapper defaultForm="login" code={router.query.code} />
         )}
         {user.data && !user.data.verified && (
-          <FormWrapper defaultForm="verification-code" code={router.query.code}/>
-          )}
-        {user.isLogin && user.data.verified && (
+          <FormWrapper
+            defaultForm="verification-code"
+            code={router.query.code}
+          />
+        )}
+        {
+          !user.isLogin && router.query.code && <FormWrapper
+          defaultForm="forgot-password"
+          code={router.query.code}
+        />
+        }
+        {/* {user.isLogin && user.data.verified && (
           <MainLayout>
             <h1>
               Current Online User: <b>{onlineUserCount}</b>
             </h1>
           </MainLayout>
-        )}
+        )} */}
       </>
     </SocketContext.Provider>
   );
