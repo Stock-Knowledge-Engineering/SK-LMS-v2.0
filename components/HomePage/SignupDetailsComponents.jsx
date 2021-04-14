@@ -8,6 +8,8 @@ import { usePostHttp } from "../../hooks/postHttp";
 import { DoLogin } from "../../redux/actions/UserAction";
 import { useDispatch } from "react-redux";
 
+import Link from "next/link";
+
 const SignupDetailsComponents = ({
   email,
   setEmail,
@@ -26,7 +28,7 @@ const SignupDetailsComponents = ({
   gradeLevel,
   favoriteSubject,
   careerGoal,
-  setForm
+  setForm,
 }) => {
   const dispatch = useDispatch();
 
@@ -37,25 +39,25 @@ const SignupDetailsComponents = ({
 
   useEffect(() => {
     if (
-      username,
+      (username,
       password != "" &&
-      password == confirmPassword &&
-      email &&
-      firstName &&
-      middleName &&
-      lastName &&
-      mobileno &&
-      gender &&
-      school &&
-      gradeLevel &&
-      favoriteSubject &&
-      careerGoal &&
-      userAgree
+        password == confirmPassword &&
+        email &&
+        firstName &&
+        middleName &&
+        lastName &&
+        mobileno &&
+        gender &&
+        school &&
+        gradeLevel &&
+        favoriteSubject &&
+        careerGoal &&
+        userAgree)
     )
       setDisable(false);
     else setDisable(true);
   });
-  
+
   const [creatingAccount, userData] = usePostHttp(
     createAccount
       ? {
@@ -70,7 +72,7 @@ const SignupDetailsComponents = ({
           school,
           gradeLevel,
           favoriteSubject,
-          careerGoal
+          careerGoal,
         }
       : null,
     "/register/student"
@@ -79,7 +81,7 @@ const SignupDetailsComponents = ({
   useEffect(() => {
     if (userData.success) {
       dispatch(DoLogin(true, userData.result[0]));
-      setForm('account-verification');
+      setForm("account-verification");
     }
   }, [userData]);
 
@@ -124,8 +126,25 @@ const SignupDetailsComponents = ({
         placeholder="Re-enter your password"
       />
       <div className="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 flex items-center space-x-2">
-        <input onChange={(e) => setUserAgree(e.target.checked)} type="checkbox" name="useragree" />
-        <label for="useragree" className="text-lightGray hover:text-heading">I agree to the Terms of Service and Privacy Policy</label>
+        <input
+          onChange={(e) => setUserAgree(e.target.checked)}
+          type="checkbox"
+          name="useragree"
+        />
+        <label for="useragree" className="text-lightGray hover:text-subheading">
+          I agree to the&nbsp;
+          <Link href="/terms-and-policy?terms=true">
+            <a className="text-skBlueInactive hover:text-skBlue">
+              Terms of Service
+            </a>
+          </Link>
+          &nbsp;and&nbsp;
+          <Link href="/terms-and-policy?policy=true">
+            <a className="text-skBlueInactive hover:text-skBlue">
+              Privacy Policy
+            </a>
+          </Link>
+        </label>
       </div>
       <button
         disabled={disable ? true : false}
