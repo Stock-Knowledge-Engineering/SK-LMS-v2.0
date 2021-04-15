@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useUserManagementHook } from "../hooks/userManagementHook";
 import { useRouter } from "next/dist/client/router";
@@ -14,9 +14,12 @@ import LoginModal from "../components/HomePage/LoginModal";
 import ArticleCarouselLayout from "../components/ArticlesCarousel/ArticleCarouselLayout";
 import Footer from "../components/Footer";
 import ModalLayout from "../components/HomePage/ModalLayout";
+import { UserLogout } from "../redux/actions/UserAction";
 
 export default function Home(props) {
   useUserManagementHook();
+
+  const dispatch = useDispatch();
 
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const user = useSelector((state) => state.UserReducer);
@@ -92,11 +95,11 @@ export default function Home(props) {
           {user.isLogin && (
             <button
               onClick={(e) => {
-                router.push("/lms");
+                dispatch(UserLogout(false));
               }}
               className="bg-skBlue rounded-full font-bold text-base text-white py-2 px-4"
             >
-              LMS
+              Logout
             </button>
           )}
         </div>
@@ -120,23 +123,11 @@ export default function Home(props) {
             <br />
             <br />
             <br />
-            {!user.isLogin && (
-              <Link href="/#contactus">
-                <a className="rounded-full bg-skBlue font-bold xl:text-xl lg:text-xl reno:text-xl md:text-md sm:text-xl xs:text-xl text-white py-4 px-12">
-                  Request a demo
-                </a>
-              </Link>
-            )}
-            {user.isLogin && (
-              <button
-                onClick={(e) => {
-                  router.push("/lms");
-                }}
-                className="rounded-full bg-skBlue font-bold xl:text-xl lg:text-xl reno:text-xl md:text-md sm:text-xl xs:text-xl text-white py-4 px-12"
-              >
-                Go to LMS
-              </button>
-            )}
+            <Link href="/#contactus">
+              <a className="rounded-full bg-skBlue font-bold xl:text-xl lg:text-xl reno:text-xl md:text-md sm:text-xl xs:text-xl text-white py-4 px-12">
+                Request a demo
+              </a>
+            </Link>
           </div>
           <div className="xl:w-1/2 lg:w-1/2 md:w-1/2 reno:w-1/2 sm:w-full xs:w-full md:mt-0 xs:mt-10">
             <img
