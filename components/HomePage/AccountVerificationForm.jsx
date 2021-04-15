@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { usePostHttp } from "../../hooks/postHttp";
-import { DoAccountVerification } from "../../redux/actions/UserAction";
+import {
+  DoAccountVerification,
+  UserLogout,
+} from "../../redux/actions/UserAction";
 import CodeInputField from "../CodeInputField";
 
 const AccountVerificationForm = ({ showModal, setForm, userid }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.UserReducer);
 
   const [code, setCode] = useState("");
   const [validCode, setValidCode] = useState(false);
   const [disable, setDisable] = useState(true);
   const [toSubmit, setToSubmit] = useState(false);
-  
+
   const [validingAccount, accountVerified] = usePostHttp(
     toSubmit ? { code: code, userid } : null,
     "/validate/account"
@@ -30,9 +33,13 @@ const AccountVerificationForm = ({ showModal, setForm, userid }) => {
   }, [accountVerified]);
 
   useEffect(() => {
-    if(user.data.verified && setModal)
-      setModal(false);
+    if (user.data.verified && setModal) setModal(false);
   }, [user.data.verified]);
+
+  const handleClick = () => {
+    dispatch(UserLogout(false));
+    setForm("login");
+  };
 
   return (
     <>
@@ -47,7 +54,6 @@ const AccountVerificationForm = ({ showModal, setForm, userid }) => {
       <div className="w-full flex space-x-2 my-4">
         <div className={`bg-skBlue h-1 w-full rounded-xl`}></div>
       </div>
-      {/* //Make this mudolar */}
       <CodeInputField
         classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         value={code}
@@ -62,7 +68,7 @@ const AccountVerificationForm = ({ showModal, setForm, userid }) => {
       <button
         disabled={disable ? true : false}
         onClick={() => {
-          setToSubmit(true)
+          setToSubmit(true);
         }}
         className="bg-blue-500 text-white text-xl font-semibold w-full mt-10 py-3 rounded-full disabled:opacity-50"
       >
@@ -71,7 +77,7 @@ const AccountVerificationForm = ({ showModal, setForm, userid }) => {
 
       <a
         onClick={() => {
-          setForm("login");
+          handleClick();
         }}
         className="text-gray-500 mt-6 cursor-pointer"
       >
