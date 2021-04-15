@@ -15,7 +15,7 @@ const Footer = (props) => {
             Stock <span className="font-bold">Knowledge</span>
           </h4>
         </a>
-        <div className="lg:w-3/4 md:w-3/4 reno:w-3/4 sm:w-full xs:w-full flex items-center lg:justify-end md:justify-end reno:justify-center sm:justify-center xs:justify-center text-md text-white space-x-5">
+        <div className="lg:w-3/4 md:w-3/4 reno:w-3/4 sm:w-full xs:w-full flex items-center lg:justify-end md:justify-end reno:justify-end sm:justify-center xs:justify-center text-md text-white space-x-5">
           <Link href="/terms-and-policy?policy=true">
             Privacy Policy
           </Link>
