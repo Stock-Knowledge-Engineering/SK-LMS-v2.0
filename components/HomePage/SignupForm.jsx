@@ -23,6 +23,7 @@ const SignupForm = ({setForm}) => {
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
   const [school, setSchool] = useState("");
+  const [other, setOther] = useState('');
   const [mobileno, setMobileNo] = useState('');
   const [gender, setGender] = useState('');
   const [gradeLevel, setGradeLevel] = useState("");
@@ -72,6 +73,7 @@ const SignupForm = ({setForm}) => {
           middleName={middleName}
           lastName={lastName}
           school={school}
+          other={other}
           gradeLevel={gradeLevel}
           mobileno={mobileno}
           gender={gender}
@@ -79,6 +81,7 @@ const SignupForm = ({setForm}) => {
           setMiddleName={setMiddleName}
           setLastName={setLastName}
           setSchool={setSchool}
+          setOther={setOther}
           setGradeLevel={setGradeLevel}
           setMobileNo={setMobileNo}
           setGender={setGender}
@@ -108,6 +111,7 @@ const SignupForm = ({setForm}) => {
           middleName={middleName}
           lastName={lastName}
           school={school}
+          other={other}
           mobileno={mobileno}
           gender={gender}
           gradeLevel={gradeLevel}

@@ -17,6 +17,8 @@ const PersonalInformationComponents = ({
   setMobileNo,
   school,
   setSchool,
+  other, 
+  setOther,
   gradeLevel,
   setGradeLevel,
   setStep,
@@ -28,20 +30,28 @@ const PersonalInformationComponents = ({
 
   useEffect(() => {
     if (
+      firstName &&
+      middleName &&
+      lastName &&
       firstName.match(/^[A-Za-z ]*/)[0] == firstName &&
       middleName.match(/^[A-Za-z ]*/)[0] == middleName &&
       lastName.match(/^[A-Za-z ]*/)[0] == lastName &&
       mobileno.match(/^[0-9]*/) == mobileno &&
       gender &&
-      school &&
+      school != 1 &&
       gradeLevel
     ){
-      console.log('false');
       setDisable(false);
     }
     else setDisable(true);
-    console.log('true');
-  }, [firstName, middleName, lastName, mobileno, gender, school, gradeLevel]);
+  }, [firstName, middleName, lastName, mobileno, gender, school, other, gradeLevel]);
+
+  useEffect(() => {
+    if (other){
+      setDisable(false);
+    }
+    else setDisable(true);
+  }, [other]);
 
   return (
     <>
@@ -62,7 +72,6 @@ const PersonalInformationComponents = ({
       <TextField
         classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         placeholder="Last Name"
-        y
         value={lastName}
         setValue={setLastName}
         alert={true}
@@ -93,6 +102,12 @@ const PersonalInformationComponents = ({
         compare="id"
         placeholder="School"
       />
+      {school == 1 && <TextField
+        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        placeholder="Please Specify"
+        value={other}
+        setValue={setOther}
+      />}
       <Select
         classNames="w-full rounded-xl border border-lightGray mt-2 text-lightGray"
         setValue={setGradeLevel}

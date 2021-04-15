@@ -25,6 +25,7 @@ const SignupDetailsComponents = ({
   mobileno,
   gender,
   school,
+  other,
   gradeLevel,
   favoriteSubject,
   careerGoal,
@@ -70,6 +71,7 @@ const SignupDetailsComponents = ({
           mobileno,
           gender,
           school,
+          other,
           gradeLevel,
           favoriteSubject,
           careerGoal,
@@ -155,30 +157,6 @@ const SignupDetailsComponents = ({
       >
         Submit
       </button>
-      {/* <TextField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
-        placeholder="First Name"
-        value={props.firstName}
-        setValue={props.setFirstName}
-      />
-      <TextField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
-        placeholder="Middle Name"
-        value={props.middleName}
-        setValue={props.setMiddleName}
-      />
-      <TextField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
-        placeholder="Last Name"
-        value={props.lastName}
-        setValue={props.setLastName}
-      />
-      <select className="w-full rounded-xl border border-lightGray mt-2 text-lightGray">
-        <option>School</option>
-      </select>
-      <select className="w-full rounded-xl border border-lightGray mt-2 text-lightGray">
-        <option>Grade Level</option>
-      </select> */}
     </>
   );
 };
