@@ -38,20 +38,13 @@ const PersonalInformationComponents = ({
       lastName.match(/^[A-Za-z ]*/)[0] == lastName &&
       mobileno.match(/^[0-9]*/) == mobileno &&
       gender &&
-      school != 1 &&
+      ((school != 1) || (school == 1 && other)) &&
       gradeLevel
     ){
       setDisable(false);
     }
     else setDisable(true);
   }, [firstName, middleName, lastName, mobileno, gender, school, other, gradeLevel]);
-
-  useEffect(() => {
-    if (other){
-      setDisable(false);
-    }
-    else setDisable(true);
-  }, [other]);
 
   return (
     <>
