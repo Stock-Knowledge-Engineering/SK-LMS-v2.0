@@ -39,7 +39,7 @@ export default function Home(props) {
       {loginModalOpen && (
         <ModalLayout code={code} showModal={setLoginModalOpen} />
       )}
-      <MobileNavBar />
+      <MobileNavBar showModal={setLoginModalOpen} />
       <div
         className={`md:flex sm:hidden xs:hidden lg:w-full reno:w-full md:w-full sm:w-screen xs:w-screen p-4 h-20 justify-between items-center`}
       >
