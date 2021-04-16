@@ -1,8 +1,18 @@
 import {useRef, useState, useEffect, useCallback} from 'react';
 import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import { UserLogout } from '../redux/actions/UserAction';
 const Menu = (props) => {
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.UserReducer);
+
+    const handleClick = () => {
+        localStorage.removeItem('data');
+        dispatch(UserLogout(false));
+    }
+
     return (
-        <ul onClick={e => {props.showMenu(false)}} className="hero top-15 py-8 h-screen w-screen text-center text-4xl text-white uppercase font-bold space-y-6">
+        <ul onClick={e => {props.showMenu(false)}} className="hero top-15 py-8 h-screen w-screen text-center text-2xl text-white uppercase font-bold space-y-6">
             <li>
                 <a href="#home">Home</a>
             </li>
@@ -27,11 +37,12 @@ const Menu = (props) => {
             <li>
                 <a href="#contactus">Contact Us</a>
             </li>
-            <li>
-                <Link href="/lms/login">
-                    <a href="/lms/login">Login</a>
-                </Link>
-            </li>
+            {!user.isLogin && <li>
+                <a className="cursor-pointer" onClick={() => {props.showModal(true)}} >Login</a>
+            </li>}
+            {user.isLogin && <li>
+                <a className="cursor-pointer" onClick={() => {handleClick();}} >Logout</a>
+            </li>}
         </ul>
     )
 }
@@ -63,7 +74,7 @@ const MobileNavbar = (props) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </div>
-            { displayMenu && <Menu showMenu={setDisplayMenu}/>}
+            { displayMenu && <Menu showMenu={setDisplayMenu} showModal={props.showModal} />}
         </div>
     )
 }
