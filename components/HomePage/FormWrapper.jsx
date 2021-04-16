@@ -18,7 +18,7 @@ const FormWrapper = ({ defaultForm, code, showModal }) => {
         style={{ background: "rgba(238, 238, 238, 0.5)" }}
         className="fixed h-screen flex w-full z-50"
       >
-        <div className="w-11/12 bg-white h-4/5 inset-0 m-auto flex rounded-2xl animate__animated animate__fadeInDown">
+        <div className="lg:w-11/12 md:w-11/12 reno:w-11/12 1080:w-11/12 sm:w-full xs:w-full bg-white lg:h-4/5 md:h-4/5 reno:h-4/5 sm:h-full xs:h-full inset-0 m-auto flex rounded-2xl animate__animated animate__fadeInDown">
           <div className="rounded-l-2xl w-1/2 relative overflow-hidden md:block sm:hidden xs:hidden">
             <img
               className="w-full h-full rounded-2xl"

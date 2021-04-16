@@ -19,17 +19,17 @@ const SignupForm = ({ showModal, code, setForm }) => {
 
   return (
     <>
-      <label className="w-full mt-10 text-left font-bold text-4xl text-gray-700">
+      <label className="w-11/12 lg:mt-10 md:mt-10 sm:mt-4 xs:mt-4 text-left font-bold lg:text-4xl md:text-4xl sm:text-xl xs:text-xl text-gray-700">
         Forgot Password
       </label>
-      <div className="flex items-center mt-10 w-full space-x-4">
+      <div className="flex items-center w-11/12 lg:mt-10 md:mt-10 sm:mt-4 xs:mt-4 space-x-4">
         <label className="lg:w-full md:w-3/4 sm:w-full xs:w-3/4 text-left text-lg  font-semibold text-subheading">
           {step == 1 && !code && "Email Detail"}
           {step == 2 && !code && "Verify Code"}
           {(step == 3 || code) && "Reset Password"}
         </label>
       </div>
-      <div className="w-full flex space-x-2 my-4">
+      <div className="w-11/12 flex space-x-2 my-4">
         <div
           className={`${
             step > 0 ? "bg-skBlue" : "bg-skBlueInactive"

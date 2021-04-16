@@ -45,16 +45,17 @@ const LoginForm = ({ showModal, setForm }) => {
         Login
       </label>
       <TextField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-10 rounded-xl border border-lightGray placeholder-lightGray"
+        classNames="w-full mt-10 rounded-xl border border-lightGray placeholder-lightGray"
         placeholder="Username"
         value={username}
         setValue={setUsername}
         alert={false}
       />
       <PasswordInput
-        wrapperClassName="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 flex rounded-xl"
+        wrapperClassName="w-full mt-2 flex rounded-xl"
         textFieldClassName="m-auto border-lightGray rounded-xl placeholder-lightGray"
         classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        iconTop={'top-2'}
         value={password}
         setValue={setPassword}
         placeholder="Password"

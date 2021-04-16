@@ -8,6 +8,7 @@ export default function ConfirmPasswordInput({
   wrapperClassName,
   textFieldClassName,
   placeholder,
+  iconTop,
   value,
   setValue,
   password,
@@ -22,7 +23,7 @@ export default function ConfirmPasswordInput({
       icon={faEye}
       size="lg"
       color="lightGray"
-      className="absolute right-4 top-3 cursor-pointer hover:text-subheading"
+      className={`absolute right-4 lg:top-3 md:top-3 sm:${iconTop} xs:${iconTop} cursor-pointer hover:text-subheading`}
     />
   );
 
@@ -34,7 +35,7 @@ export default function ConfirmPasswordInput({
       icon={faEyeSlash}
       size="lg"
       color="lightGray"
-      className="absolute right-4 top-3 cursor-pointer hover:text-subheading"
+      className={`absolute right-4 lg:top-3 md:top-3 sm:${iconTop} xs:${iconTop} cursor-pointer hover:text-subheading`}
     />
   );
 

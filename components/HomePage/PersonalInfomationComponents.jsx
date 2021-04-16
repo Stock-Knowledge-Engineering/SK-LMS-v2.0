@@ -49,44 +49,44 @@ const PersonalInformationComponents = ({
   return (
     <>
       <TextField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        classNames="lg:w-full md:w-full sm:w-full xs:w-full xs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         placeholder="First Name"
         value={firstName}
         setValue={setFirstName}
         alert={true}
       />
       <TextField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        classNames="lg:w-full md:w-full sm:w-full xs:w-full xs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         placeholder="Middle Name"
         value={middleName}
         setValue={setMiddleName}
         alert={true}
       />
       <TextField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        classNames="lg:w-full md:w-full sm:w-full xs:w-full xs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         placeholder="Last Name"
         value={lastName}
         setValue={setLastName}
         alert={true}
       />
-      <label className="lg:w-full md:w-3/4 sm:w-full xs:w-3/4 text-left text-lg mt-2 font-semibold text-subheading">
+      <label className="lg:w-full md:w-3/4 sm:w-full xs:w-full xs:h-8 text-left text-lg mt-2 font-semibold text-subheading">
         Gender
       </label>
       <div
-        className="lg:w-full md:w-3/4 sm:w-full xs:w-3/4 mt-2 text-subheading"
+        className="lg:w-full md:w-3/4 sm:w-full xs:w-full xs:h-8 mt-2 text-subheading"
         onChange={(e) => setGender(e.target.value)}
       >
         <input type="radio" name="gender" value="male" /> Male &nbsp; &nbsp;
         <input type="radio" name="gender" value="female" /> Female
       </div>
       <NumberField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        classNames="lg:w-full md:w-full sm:w-full xs:w-full xs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         value={mobileno}
         setValue={setMobileNo}
         placeholder="Mobile Number"
       />
       <Select
-        classNames="w-full rounded-xl border border-lightGray mt-2 text-lightGray"
+        classNames="w-full xs:h-8 rounded-xl border border-lightGray mt-2 text-lightGray"
         setValue={setSchool}
         options={schools}
         selected={school}
@@ -96,13 +96,13 @@ const PersonalInformationComponents = ({
         placeholder="School"
       />
       {school == 1 && <TextField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        classNames="lg:w-full md:w-full sm:w-full xs:w-full xs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         placeholder="Please Specify"
         value={other}
         setValue={setOther}
       />}
       <Select
-        classNames="w-full rounded-xl border border-lightGray mt-2 text-lightGray"
+        classNames="w-full xs:h-8 rounded-xl border border-lightGray mt-2 text-lightGray"
         setValue={setGradeLevel}
         options={gradeLevels}
         selected={gradeLevel}
@@ -116,7 +116,7 @@ const PersonalInformationComponents = ({
         onClick={() => {
           setStep(2);
         }}
-        className="bg-blue-500 text-white text-xl font-semibold w-full mt-10 py-3 rounded-full disabled:opacity-50"
+        className="bg-blue-500 text-white text-xl font-semibold w-full mt-2 lg:py-3 1080:py-3 reno:py-3 sm:py-2 xs: py-2 rounded-full disabled:opacity-50"
       >
         Next
       </button>

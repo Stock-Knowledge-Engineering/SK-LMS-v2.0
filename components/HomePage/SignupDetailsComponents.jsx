@@ -90,7 +90,7 @@ const SignupDetailsComponents = ({
   return (
     <>
       <EmailField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        classNames="lg:w-full md:w-full sm:w-full xs:w-11/12 mt-2 xs:h-8 rounded-xl border border-lightGray placeholder-lightGray"
         value={email}
         setValue={setEmail}
         placeholder="Email Address"
@@ -101,39 +101,41 @@ const SignupDetailsComponents = ({
         setValidEmail={setValidEmail}
       />
       <UsernameField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        classNames="lg:w-full md:w-full sm:w-full xs:w-11/12 mt-2 xs:h-8 rounded-xl border border-lightGray placeholder-lightGray"
         value={username}
         setValue={setUsername}
         placeholder="Username"
       />
       <PasswordInput
-        wrapperClassName="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 flex rounded-xl"
-        textFieldClassName="m-auto border-lightGray rounded-xl placeholder-lightGray"
+        wrapperClassName="lg:w-full md:w-full sm:w-full xs:w-11/12 mt-2 xs:h-8 flex rounded-xl"
+        textFieldClassName="m-auto xs:h-8 border-lightGray rounded-xl placeholder-lightGray"
         alert={true}
-        alertClassName="w-full mt-2 px-4 py-3 rounded"
+        alertClassName="lg:w-full md:w-full sm:w-full xs:w-11/12 lg:mt-2 md:mt-2 sm:mt-4 xs:mt-4 px-4 py-3 rounded"
         alertValidStyle="border border-green-400 text-green-700"
         alertInvalidStyle="border border-red-400 text-red-700"
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        iconTop={'top-1'}
+        classNames="lg:w-full md:w-full sm:w-full xs:w-11/12 md:w-full sm:w-full xs:w-11/12 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         value={password}
         setValue={setPassword}
         placeholder="Password"
       />
       <ConfirmPasswordInput
-        wrapperClassName="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 flex rounded-xl"
-        textFieldClassName="m-auto border-lightGray rounded-xl placeholder-lightGray"
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        wrapperClassName="lg:w-full md:w-full sm:w-full xs:w-11/12 mt-2 xs:h-8 flex rounded-xl"
+        textFieldClassName="xs:h-8 m-auto border-lightGray rounded-xl placeholder-lightGray"
+        classNames="lg:w-full md:w-full sm:w-full xs:w-11/12 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        iconTop={'top-1'}
         value={confirmPassword}
         setValue={setConfirmPassword}
         password={password}
         placeholder="Re-enter your password"
       />
-      <div className="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 flex items-center space-x-2">
+      <div className="lg:w-full md:w-full sm:w-full xs:w-11/12 mt-2 xs:h-8 flex items-center space-x-2">
         <input
           onChange={(e) => setUserAgree(e.target.checked)}
           type="checkbox"
           name="useragree"
         />
-        <label for="useragree" className="text-lightGray hover:text-subheading">
+        <label for="useragree" className="text-lightGray xs:text-sm hover:text-subheading">
           I agree to the&nbsp;
           <Link href="/terms-and-policy?terms=true">
             <a className="text-skBlueInactive hover:text-skBlue">
@@ -153,7 +155,7 @@ const SignupDetailsComponents = ({
         onClick={() => {
           setCreateAccount(true);
         }}
-        className="bg-blue-500 text-white text-xl font-semibold w-full mt-10 py-3 rounded-full disabled:opacity-50"
+        className="bg-blue-500 text-white text-xl font-semibold lg:w-full md:w-full sm:w-full xs:w-11/12 lg:mt-10 md:mt-10 sm:mt-2 py-3 rounded-full disabled:opacity-50"
       >
         Submit
       </button>

@@ -41,21 +41,23 @@ const ResetPasswordComponent = ({ showModal, code, setForm }) => {
   return (
     <>
       <PasswordInput
-        wrapperClassName="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 flex rounded-xl"
+        wrapperClassName="w-11/12 mt-2 flex rounded-xl"
         textFieldClassName="m-auto border-lightGray rounded-xl placeholder-lightGray"
         alert={true}
-        alertClassName="w-full mt-2 px-4 py-3 rounded"
+        alertClassName="w-11/12 mt-2 px-4 py-3 rounded"
         alertValidStyle="border border-green-400 text-green-700"
         alertInvalidStyle="border border-red-400 text-red-700"
+        iconTop={'top-2'}
         classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         value={password}
         setValue={setPassword}
         placeholder="Password"
       />
       <ConfirmPasswordInput
-        wrapperClassName="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 flex rounded-xl"
+        wrapperClassName="w-11/12 mt-2 flex rounded-xl"
         textFieldClassName="m-auto border-lightGray rounded-xl placeholder-lightGray"
         classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        iconTop={'top-2'}
         value={confirmPassword}
         setValue={setConfirmPassword}
         password={password}
@@ -66,7 +68,7 @@ const ResetPasswordComponent = ({ showModal, code, setForm }) => {
         onClick={() => {
           setToSubmit(true);
         }}
-        className="bg-blue-500 text-white text-xl font-semibold w-full mt-10 py-3 rounded-full disabled:opacity-50"
+        className="bg-blue-500 text-white text-xl font-semibold w-11/12 mt-10 py-3 rounded-full disabled:opacity-50"
       >
         Submit
       </button>

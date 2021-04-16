@@ -8,14 +8,24 @@ import InterestComponents from "./InterestComponents";
 import SignupDetailsComponents from './SignupDetailsComponents';
 
 const SignupForm = ({setForm}) => {
-  const leftAngleBracket = (
+  const leftAngleBracketLarge = (
     <FontAwesomeIcon
       onClick={() => {
         setStep(step - 1);
       }}
-      className="text-skBlue"
+      className="text-skBlue sm:hidden xs:hidden"
       icon={faAngleLeft}
       size="3x"
+    />
+  );
+  const leftAngleBracketSmall = (
+    <FontAwesomeIcon
+      onClick={() => {
+        setStep(step - 1);
+      }}
+      className="text-skBlue lg:hidden md:hidden"
+      icon={faAngleLeft}
+      size="lg"
     />
   );
 
@@ -39,11 +49,12 @@ const SignupForm = ({setForm}) => {
 
   return (
     <>
-      <label className="w-full mt-10 text-left font-bold text-4xl text-gray-700">
+      <label className="w-full mt-2 text-left font-bold lg:text-4xl md:text-4xl 1080p:text-4xl sm:text-xl xs:text-xl text-gray-700">
         Signup
       </label>
-      <div className="flex items-center mt-10 w-full space-x-4">
-        {step > 1 && leftAngleBracket}
+      <div className="flex items-center mt-2 w-full space-x-4">
+        {step > 1 && leftAngleBracketLarge}
+        {step > 1 && leftAngleBracketSmall}
         <label className="lg:w-full md:w-3/4 sm:w-full xs:w-3/4 text-left text-lg  font-semibold text-subheading">
           {step == 1 && "Personal Infomation"}
           {step == 2 && "Interests"}
