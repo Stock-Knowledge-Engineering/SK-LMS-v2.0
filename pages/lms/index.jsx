@@ -49,7 +49,7 @@ export default function Index(props) {
   return (
     <SocketContext.Provider value={socket}>
       <>
-        {!user.isLogin && !router.query.code && (
+        {/* {!user.isLogin && !router.query.code && (
           <FormWrapper defaultForm="login" code={router.query.code} />
         )}
         {user.data && !user.data.verified && (
@@ -63,7 +63,7 @@ export default function Index(props) {
           defaultForm="forgot-password"
           code={router.query.code}
         />
-        }
+        } */}
         {/* {user.isLogin && user.data.verified && (
           <MainLayout>
             <h1>
@@ -71,6 +71,9 @@ export default function Index(props) {
             </h1>
           </MainLayout>
         )} */}
+        <MainLayout>
+          
+        </MainLayout>
       </>
     </SocketContext.Provider>
   );
