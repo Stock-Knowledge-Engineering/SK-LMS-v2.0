@@ -21,8 +21,8 @@ const FormWrapper = ({ defaultForm, code, showModal }) => {
         <div className="lg:w-11/12 md:w-11/12 reno:w-11/12 1080:w-11/12 sm:w-full xs:w-full bg-white lg:h-4/5 md:h-4/5 reno:h-4/5 sm:h-full xs:h-full inset-0 m-auto flex rounded-2xl animate__animated animate__fadeInDown">
           <div className="rounded-l-2xl w-1/2 relative overflow-hidden md:block sm:hidden xs:hidden">
             <img
-              className="w-full h-full rounded-2xl"
-              src="/images/secondary-hero.svg"
+              className="w-full h-full rounded-2xl object-contain"
+              src="/images/secondary-hero.png"
             />
           </div>
           <div className="lg:w-1/2 md:w-1/2 sm:w-full xs:w-full relative">
