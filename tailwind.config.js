@@ -1,25 +1,9 @@
-const { colors, screens } = require('tailwindcss/defaultTheme');
+const { colors, screens, height, minHeight } = require('tailwindcss/defaultTheme');
 
 module.exports = {
   // purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    left: {
-      '1': '0.1em',
-      '2': '0.2em'
-    },
-    bottom:{
-      '1': '0.1',
-      '2': '0.2',
-      '3': '0.3',
-      '4': '0.4'
-    },
-    top:{
-      '1': '0.1',
-      '2': '0.2',
-      '3': '0.3',
-      '4': '0.4'
-    },
     screens:{
       'xs' : {'min':'375px', 'max':'639px'},
       'sm': {'min':'640px', 'max':'767px'},
@@ -40,12 +24,21 @@ module.exports = {
     extend: {
       width: {
         'height':'100vh'
+      },
+      height: {
+        'content': 'calc(100vh - var(--navbar-height))',
+      },
+      minHeight: {
+        'content': 'calc(100vh - var(--navbar-height))',
+      },
+      top: {
+        'navbar': 'var(--navbar-height))'
       }
     },
   },
   variants: {
     extend: {
-      opacity:['disabled']
+      opacity:['disabled'],
     },
   },
   plugins: [
