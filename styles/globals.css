@@ -47,3 +47,11 @@
   border-top: none;
   border-bottom: none;
 }
+
+body {
+  --navbar-height: 5rem;
+}
+
+.top-navbar-height {
+  top: var(--navbar-height);
+}
