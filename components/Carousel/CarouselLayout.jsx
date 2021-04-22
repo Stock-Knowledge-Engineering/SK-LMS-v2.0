@@ -81,7 +81,6 @@ export default function CarouselLayout(props) {
           slide={slides && carouselStatus && slides[carouselStatus.current]}
         />
       )}
-
       {/* <CarouseControl
         status={carouselStatus && carouselStatus}
         length={slides && slides.length}
