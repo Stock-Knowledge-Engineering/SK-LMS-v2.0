@@ -22,8 +22,21 @@ export default function TestimonialLayout(props) {
   }, [testimonials]);
 
   useEffect(() => {
-    // if (testimonialStatus) console.log(testimonialStatus);
+    let timeOut = null;
+    if(testimonialStatus)
+      timeOut = setTimeout(() => {play(testimonialStatus, testimonials.length-1)}, 3000);
+
+      return () => {
+        clearTimeout(timeOut);
+      }
   }, [testimonialStatus]);
+
+  const play = async (status, length) => {
+    let _current = await getNext(status.current, length);
+    let _next = await getNext(status.next, length);
+    let _prev = await getNext(status.prev, length);
+    settestimonialStatus({ current: _current, next: _next, prev: _prev });
+  }
 
   const nextTestimonial = useCallback(
     async (status, length) => {
