@@ -132,7 +132,7 @@ export default function Home(props) {
           <div className="xl:w-1/2 lg:w-1/2 md:w-1/2 reno:w-1/2 sm:w-full xs:w-full md:mt-0 xs:mt-10">
             <img
               className="md:w-full reno:w-full sm:w-full xs:w-full"
-              src="/images/main-hero(2).svg"
+              src="/images/main-hero.svg"
             />
           </div>
         </div>
