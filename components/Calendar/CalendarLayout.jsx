@@ -18,7 +18,7 @@ const CalendarLayout = (props) => {
   );
 
   return (
-    <div className="w-full h-auto flex flex-col box-border p-2">
+    <div className="w-full h-auto flex flex-col box-border rounded-2xl p-2">
       <CalendarControl date={date} setDate={setDate} />
       <CalendarDaysHeader />
       {calendar &&
