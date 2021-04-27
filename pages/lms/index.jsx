@@ -10,15 +10,21 @@ import { SocketContext, socket } from "../../context/socket";
 import { useUserManagementHook } from "../../hooks/userManagementHook";
 import { useRouter } from "next/dist/client/router";
 import FormWrapper from "../../components/HomePage/FormWrapper";
+import LMSMobileLayout from "../../layouts/LMSMobileLayout";
 
 export default function Index(props) {
   useUserManagementHook();
+  const [device, setDevice] = useState('');
   const [status, setStatus] = useState("login");
   const [onlineUserCount, setOnlineUserCount] = useState(0);
 
   const user = useSelector((state) => state.UserReducer);
   const router = useRouter();
 
+  useEffect(() => {
+    setDevice(window.navigator.userAgent);
+  },[])
+  
   useEffect(() => {
     if (
       (user.data && user.data.title.toLowerCase() == "teacher") ||
@@ -46,6 +52,22 @@ export default function Index(props) {
     });
   });
 
+  const isMobile = () => {
+    const toMatch = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i,
+    ];
+
+    return toMatch.some((toMatchItem) => {
+      return device.match(toMatchItem);
+    });
+  }
+
   return (
     <SocketContext.Provider value={socket}>
       <>
@@ -71,9 +93,7 @@ export default function Index(props) {
             </h1>
           </MainLayout>
         )} */}
-        <MainLayout>
-          
-        </MainLayout>
+        {isMobile() ? <LMSMobileLayout /> : <MainLayout />}
       </>
     </SocketContext.Provider>
   );

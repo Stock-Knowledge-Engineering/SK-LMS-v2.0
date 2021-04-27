@@ -15,7 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faBookmark, faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 import CalendarLayout from "../components/Calendar/CalendarLayout";
-import Menu from "../components/LMS-Menu/Menu";
+import Menu from "../components/LMS/Menu/Menu";
 
 export default function MainLayout(props) {
   const searchIcon = (
