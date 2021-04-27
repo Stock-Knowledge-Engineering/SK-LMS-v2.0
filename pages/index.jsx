@@ -27,7 +27,10 @@ export default function Home(props) {
 
   const { code } = router.query;
 
-  useEffect(() => {}, [code]);
+  useEffect(() => {
+    if(code)
+      setLoginModalOpen(true)
+  }, [code]);
 
   return (
     <>

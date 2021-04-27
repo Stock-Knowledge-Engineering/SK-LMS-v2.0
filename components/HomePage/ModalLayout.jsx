@@ -3,7 +3,7 @@ import FormWrapper from "./FormWrapper";
 const ModalLayout = ({code, showModal}) => {
 
   return (
-      <FormWrapper defaultForm="login" code={code} showModal={showModal}/>
+      <FormWrapper defaultForm={code ? 'forgot-password' : 'login'} code={code} showModal={showModal}/>
   );
 };
 
