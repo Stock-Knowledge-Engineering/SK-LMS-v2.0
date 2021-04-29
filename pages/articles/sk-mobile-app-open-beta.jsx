@@ -93,17 +93,22 @@ const MobileAppOpenBeta = () => {
             to download and install. It is currently available for Android OS
             only.
             <br />
-            <br />
-            A Step-by-Step Manual is available for use. Simply click on this
-            link and follow the easy instructions.
+            <br />A Step-by-Step Manual is available for use. Simply click on
+            this&nbsp;
+            <a className="text-skBlue" href={`https://www.canva.com/design/DAEbwXGKT18/z17lS7aqzhny6hOVW2F9CQ/view?utm_content=DAEbwXGKT18&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton#2`}>
+              link
+            </a>{" "}
+            and follow the easy instructions.
             <br />
             <br />
             Are you ready to level up your learning? We look forward to hearing
             what you think!
-            <img
-              className="mx-auto my-8"
-              src="/images/articles/sk-mobile-app-open-beta/image-1.png"
-            />
+            <a href={`https://www.canva.com/design/DAEbwXGKT18/z17lS7aqzhny6hOVW2F9CQ/view?utm_content=DAEbwXGKT18&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton#2`}>
+              <img
+                className="mx-auto my-8"
+                src="/images/articles/sk-mobile-app-open-beta/image-1.png"
+              />
+            </a>
           </p>
         </div>
       </div>
