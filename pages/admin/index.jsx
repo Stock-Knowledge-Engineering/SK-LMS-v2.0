@@ -43,7 +43,7 @@ export default function Index(props) {
 
   return (
     <>
-      {user.isLogin && user.data.title == "Administrator" ? (
+      {user.isLogin && user.data.title == "admin" ? (
         <SocketContext.Provider value={socket}>
           <div className="box-border flex flex-col w-full">
             <div className="m-auto box-border h-auto lg:w-1/2 md:w-1/2 sm:w-full xs:w-full flex flex-col py-2 px-4 rounded-2xl space-y-2">
