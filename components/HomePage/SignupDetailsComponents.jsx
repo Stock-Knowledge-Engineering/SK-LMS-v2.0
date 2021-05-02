@@ -23,6 +23,9 @@ const SignupDetailsComponents = ({
   middleName,
   lastName,
   mobileno,
+  month,
+  day,
+  year,
   gender,
   school,
   other,
@@ -37,7 +40,7 @@ const SignupDetailsComponents = ({
   const [createAccount, setCreateAccount] = useState(false);
   const [userAgree, setUserAgree] = useState(false);
   const [disable, setDisable] = useState(true);
-
+  console.log(typeof(month))
   useEffect(() => {
     if (
       (username,
@@ -48,6 +51,9 @@ const SignupDetailsComponents = ({
         middleName &&
         lastName &&
         mobileno &&
+        typeof(month) === 'number' &&
+        typeof(day) === 'number' &&
+        typeof(year) === 'number' &&
         gender &&
         school &&
         gradeLevel &&
@@ -70,6 +76,7 @@ const SignupDetailsComponents = ({
           lastName,
           mobileno,
           gender,
+          dateofbirth: `${year}-${month+1}-${day}`,
           school,
           other,
           gradeLevel,
@@ -129,7 +136,7 @@ const SignupDetailsComponents = ({
         password={password}
         placeholder="Re-enter your password"
       />
-      <div className="lg:w-full md:w-full sm:w-full xs:w-11/12 mt-2 xs:h-8 flex items-center space-x-2">
+      <div className="lg:w-full md:w-full sm:w-full xs:w-11/12 mt-2 lg:mb-0 md:mb-0 sm:mb-4 xs:mb-4 xs:h-8 flex items-center space-x-2">
         <input
           onChange={(e) => setUserAgree(e.target.checked)}
           type="checkbox"

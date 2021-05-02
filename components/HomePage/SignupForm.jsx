@@ -3,17 +3,19 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
-import PersonalInformationComponents from "./PersonalInfomationComponents";
+import NameInformationComponents from "./NameInfomationComponents";
 import InterestComponents from "./InterestComponents";
-import SignupDetailsComponents from './SignupDetailsComponents';
+import SignupDetailsComponents from "./SignupDetailsComponents";
+import PersonalInformationComponent from "./PersonalInformationComponents";
+import SchoolInformationComponents from "./SchoolInformationComponents";
 
-const SignupForm = ({setForm}) => {
+const SignupForm = ({ setForm }) => {
   const leftAngleBracketLarge = (
     <FontAwesomeIcon
       onClick={() => {
         setStep(step - 1);
       }}
-      className="text-skBlue sm:hidden xs:hidden"
+      className="text-skBlue lg:inline-block md:inline-block sm:hidden xs:hidden"
       icon={faAngleLeft}
       size="3x"
     />
@@ -23,7 +25,7 @@ const SignupForm = ({setForm}) => {
       onClick={() => {
         setStep(step - 1);
       }}
-      className="text-skBlue lg:hidden md:hidden"
+      className="text-skBlue sm:inline-block xs:inline-block lg:hidden md:hidden"
       icon={faAngleLeft}
       size="lg"
     />
@@ -33,9 +35,12 @@ const SignupForm = ({setForm}) => {
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
   const [school, setSchool] = useState("");
-  const [other, setOther] = useState('');
-  const [mobileno, setMobileNo] = useState('');
-  const [gender, setGender] = useState('');
+  const [other, setOther] = useState("");
+  const [mobileno, setMobileNo] = useState("");
+  const [gender, setGender] = useState("");
+  const [month, setMonth] = useState("");
+  const [day, setDay] = useState("");
+  const [year, setYear] = useState("");
   const [gradeLevel, setGradeLevel] = useState("");
   const [favoriteSubject, setFavoriteSubject] = useState("");
   const [careerGoal, setCareerGoal] = useState("");
@@ -56,9 +61,11 @@ const SignupForm = ({setForm}) => {
         {step > 1 && leftAngleBracketLarge}
         {step > 1 && leftAngleBracketSmall}
         <label className="lg:w-full md:w-3/4 sm:w-full xs:w-3/4 text-left text-lg  font-semibold text-subheading">
-          {step == 1 && "Personal Infomation"}
-          {step == 2 && "Interests"}
-          {step == 3 && "Sign Up Details"}
+          {step == 1 && "Name Infomation"}
+          {step == 2 && "Personal Information"}
+          {step == 3 && "School Information"}
+          {step == 4 && "Interest"}
+          {step == 5 && "Sign Up Details"}
         </label>
       </div>
       <div className="w-full flex space-x-2 my-4">
@@ -77,29 +84,55 @@ const SignupForm = ({setForm}) => {
             step > 2 ? "bg-skBlue" : "bg-skBlueInactive"
           } h-1 w-full rounded-xl`}
         ></div>
+        <div
+          className={`${
+            step > 3 ? "bg-skBlue" : "bg-skBlueInactive"
+          } h-1 w-full rounded-xl`}
+        ></div>
+        <div
+          className={`${
+            step > 4 ? "bg-skBlue" : "bg-skBlueInactive"
+          } h-1 w-full rounded-xl`}
+        ></div>
       </div>
       {step === 1 && (
-        <PersonalInformationComponents
+        <NameInformationComponents
           firstName={firstName}
           middleName={middleName}
           lastName={lastName}
-          school={school}
-          other={other}
-          gradeLevel={gradeLevel}
-          mobileno={mobileno}
-          gender={gender}
           setFirstName={setFirstName}
           setMiddleName={setMiddleName}
           setLastName={setLastName}
-          setSchool={setSchool}
-          setOther={setOther}
-          setGradeLevel={setGradeLevel}
-          setMobileNo={setMobileNo}
-          setGender={setGender}
           setStep={setStep}
         />
       )}
       {step === 2 && (
+        <PersonalInformationComponent
+          month={month}
+          day={day}
+          year={year}
+          setMonth={setMonth}
+          setDay={setDay}
+          setYear={setYear}
+          gender={gender}
+          setGender={setGender}
+          mobileno={mobileno}
+          setMobileNo={setMobileNo}
+          setStep={setStep}
+        />
+      )}
+      {step === 3 && (
+        <SchoolInformationComponents
+          school={school}
+          other={other}
+          gradeLevel={gradeLevel}
+          setSchool={setSchool}
+          setOther={setOther}
+          setGradeLevel={setGradeLevel}
+          setStep={setStep}
+        />
+      )}
+      {step === 4 && (
         <InterestComponents
           favoriteSubject={favoriteSubject}
           careerGoal={careerGoal}
@@ -108,7 +141,7 @@ const SignupForm = ({setForm}) => {
           setStep={setStep}
         />
       )}
-      {step === 3 && (
+      {step === 5 && (
         <SignupDetailsComponents
           email={email}
           username={username}
@@ -124,6 +157,9 @@ const SignupForm = ({setForm}) => {
           school={school}
           other={other}
           mobileno={mobileno}
+          month={parseInt(month)}
+          day={parseInt(day)}
+          year={parseInt(year)}
           gender={gender}
           gradeLevel={gradeLevel}
           favoriteSubject={favoriteSubject}

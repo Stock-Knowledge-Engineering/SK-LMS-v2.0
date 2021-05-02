@@ -38,7 +38,7 @@ const InterestComponents = ({
       <button
         disabled={disable ? true : false}
         onClick={() => {
-          setStep(3);
+          setStep(5);
         }}
         className="bg-blue-500 text-white text-xl font-semibold w-full mt-10 py-3 rounded-full disabled:opacity-50"
       >
