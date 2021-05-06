@@ -15,6 +15,7 @@ import ArticleCarouselLayout from "../components/ArticlesCarousel/ArticleCarouse
 import Footer from "../components/Footer";
 import ModalLayout from "../components/HomePage/ModalLayout";
 import { UserLogout } from "../redux/actions/UserAction";
+import { usePostHttp } from "../hooks/postHttp";
 
 export default function Home(props) {
   useUserManagementHook();
@@ -26,6 +27,16 @@ export default function Home(props) {
   const router = useRouter();
 
   const { code } = router.query;
+
+  const [width, setWidth] = useState("");
+  const [height, setHeight] = useState("");
+
+  const [screenLoading, screenData] = usePostHttp(width && height ? { width, height } : '', "/screen");
+
+  useEffect(() => {
+    if (window.screen.width) setWidth(window.screen.width);
+    if (window.screen.height) setHeight(window.screen.height);
+  }, []);
 
   useEffect(() => {
     if(code)
