@@ -5,7 +5,7 @@ const CarouselControl = (props) => {
 
       <div
         onClick={async () => prev(status, length - 1)}
-        className="absolute top-0 left-0 w-10 h-10 ml-10 p-2 flex justify-center items-center bg-gray-100 rounded-full text-heading cursor-pointer lg:flex reno:hidden md:hidden sm:hidden xs:hidden"
+        className="absolute top-0 left-0 w-10 h-10 ml-10 p-2 flex justify-center items-center bg-gray-100 rounded-full text-heading cursor-pointer lg:flex reno:hidden md:hidden sm:hidden xs:hidden xxs:hidden"
       >
         <svg
           className="h-5 w-5 m-auto"
@@ -24,7 +24,7 @@ const CarouselControl = (props) => {
       </div>
       <div
         onClick={() => next(status, length - 1)}
-        className="absolute top-0 right-0 w-10 h-10 mr-10 p-2 justify-center items-center bg-gray-100 rounded-full text-heading cursor-pointer lg:flex reno:hidden md:hidden sm:hidden xs:hidden"
+        className="absolute top-0 right-0 w-10 h-10 mr-10 p-2 justify-center items-center bg-gray-100 rounded-full text-heading cursor-pointer lg:flex reno:hidden md:hidden sm:hidden xs:hidden xxs:hidden"
       >
         <svg
           className="h-5 w-5"

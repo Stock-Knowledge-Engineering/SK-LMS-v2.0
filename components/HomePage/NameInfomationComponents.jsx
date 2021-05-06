@@ -38,21 +38,21 @@ const NameInfomationComponents = ({
   return (
     <>
       <TextField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-full xs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        classNames="lg:w-full md:w-full sm:w-full xs:w-full xxs:w-full xs:h-8 xxs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         placeholder="First Name"
         value={firstName}
         setValue={setFirstName}
         alert={true}
       />
       <TextField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-full xs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        classNames="lg:w-full md:w-full sm:w-full xs:w-full xxs:w-full xs:h-8 xxs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         placeholder="Middle Name"
         value={middleName}
         setValue={setMiddleName}
         alert={true}
       />
       <TextField
-        classNames="lg:w-full md:w-full sm:w-full xs:w-full xs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        classNames="lg:w-full md:w-full sm:w-full xs:w-full xxs:w-full xs:h-8 xxs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         placeholder="Last Name"
         value={lastName}
         setValue={setLastName}
@@ -63,7 +63,7 @@ const NameInfomationComponents = ({
         onClick={() => {
           setStep(2);
         }}
-        className="bg-blue-500 text-white text-xl font-semibold w-full mt-2 lg:py-3 1080:py-3 reno:py-3 sm:py-2 xs: py-2 rounded-full disabled:opacity-50"
+        className="bg-blue-500 text-white text-xl font-semibold w-full mt-2 lg:py-3 1080:py-3 reno:py-3 sm:py-2 xs:py-2 xxs:py-2 rounded-full disabled:opacity-50"
       >
         Next
       </button>

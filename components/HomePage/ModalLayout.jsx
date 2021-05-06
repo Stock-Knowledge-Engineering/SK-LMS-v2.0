@@ -1,9 +1,15 @@
 import FormWrapper from "./FormWrapper";
 
-const ModalLayout = ({code, showModal}) => {
+const ModalLayout = ({signup, code, showModal}) => {
 
   return (
-      <FormWrapper defaultForm={code ? 'forgot-password' : 'login'} code={code} showModal={showModal}/>
+    <>
+          {!code && !signup && <FormWrapper defaultForm={'login'} code={code} showModal={showModal}/>}
+          {code && <FormWrapper defaultForm={'forgot-password'} code={code} showModal={showModal}/>}
+          {signup && <FormWrapper defaultForm={'signup'} code={code} showModal={showModal}/>}
+    </>
+
+
   );
 };
 

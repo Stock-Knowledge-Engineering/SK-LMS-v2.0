@@ -58,12 +58,12 @@ export default function ArticleCarouselLayout(props) {
 
   return (
     <>
-      <h1 className="text-center lg:w-full md:w-full reno:w-full sm:w-screen xs:w-sceen lg:text-6xl md:text-6xl reno:text-6xl sm:text-4xl xs:text-4xl font-semibold text-heading lg:mt-32 md:mt-32 reno:mt-32 sm:mt-16 xs:mt-16 mb-16">
+      <h1 className="text-center lg:w-full md:w-full reno:w-full sm:w-screen xs:w-sceen xxs:w-screen lg:text-6xl md:text-6xl reno:text-6xl sm:text-4xl xs:text-4xl xxs:text-4xl font-semibold text-heading lg:mt-32 md:mt-32 reno:mt-32 sm:mt-16 xs:mt-16 xxs:mt-16 mb-16">
         {/* // className="text-center md:w-full xs:w-height text-6xl font-semibold text-heading mt-20 mb-10">
           Articles */}
         Articles
       </h1>
-      <div className="lg:mb-32 reno:mb-0 md:mb-0 sm:mb-0 xs:mb-0 relative lg:w-full md:w-full reno:w-full sm:w-screen xs:w-sceen lg:px-64 reno:px-24 md:px-2">
+      <div className="lg:mb-32 reno:mb-0 md:mb-0 sm:mb-0 xs:mb-0 xxs:mb-0 relative lg:w-full md:w-full reno:w-full sm:w-screen xs:w-sceen xxs:w-screen lg:px-64 reno:px-24 md:px-2">
         {articles && articles.length > 0 && (
           <ArticleCarouselContent
             slide={
@@ -79,7 +79,7 @@ export default function ArticleCarouselLayout(props) {
           prev={prevSlide}
         />
       </div>
-      <div className="w-full mt-6 mb-16 reno:flex md:flex sm:flex xs:flex justify-center items-center space-x-6 lg:hidden">
+      <div className="w-full mt-6 mb-16 reno:flex md:flex sm:flex xs:flex xxs:flex justify-center items-center space-x-6 lg:hidden">
         <div onClick={e => {nextSlide(carouselStatus, articles.length-1)}} className="p-2 bg-gray-100 rounded-full text-heading cursor-pointer">
           <svg
             className="h-5 w-5"

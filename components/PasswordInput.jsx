@@ -29,7 +29,7 @@ export default function PasswordInput({
       icon={faEye}
       size="lg"
       color="lightGray"
-      className={`absolute right-4 lg:top-3 md:top-3 sm:${iconTop} xs:${iconTop} cursor-pointer hover:text-subheading`}
+      className={`absolute right-4 lg:top-3 md:top-3 sm:${iconTop} xs:${iconTop} xxs:${iconTop} cursor-pointer hover:text-subheading`}
     />
   );
 
@@ -39,7 +39,7 @@ export default function PasswordInput({
       icon={faEyeSlash}
       size="lg"
       color="lightGray"
-      className={`absolute right-4 lg:top-3 md:top-3 sm:${iconTop} xs:${iconTop} cursor-pointer hover:text-subheading`}
+      className={`absolute right-4 lg:top-3 md:top-3 sm:${iconTop} xs:${iconTop} xxs:${iconTop} cursor-pointer hover:text-subheading`}
     />
   );
 

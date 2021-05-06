@@ -64,7 +64,7 @@ const MobileNavbar = (props) => {
     },[])
 
     return (
-        <div ref={ref} className={`${float ? 'fixed' : ''} bg-white flex flex-col items-center md:hidden xs:block sm:w-full xs:w-full z-50`}>
+        <div ref={ref} className={`${float ? 'fixed' : ''} bg-white flex flex-col items-center md:hidden xs:block sm:w-full xs:w-full xxs:w-full z-50`}>
             <div className="w-full px-2 py-4 flex text-white justify-between">
                 <a href="#home" className="flex items-center text-2xl text-white space-x-2">
                     <img className="w-14" src="/images/logo.png" />

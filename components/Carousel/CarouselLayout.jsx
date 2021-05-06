@@ -73,7 +73,7 @@ export default function CarouselLayout(props) {
   };
 
   return (
-    <div className="lg:mt-32 reno:mt-32 md:mt-32 sm:mt-16 xs:mt-16 relative w-full lg:px-64 md:px-20">
+    <div className="lg:mt-32 reno:mt-32 md:mt-32 sm:mt-16 xs:mt-16 xxs:mt-16 relative w-full lg:px-64 md:px-20">
       {slides && slides.length > 0 && (
         <CarouselContent
           current={carouselStatus && carouselStatus.current}

@@ -54,7 +54,7 @@ const LoginForm = ({ showModal, setForm }) => {
       <PasswordInput
         wrapperClassName="w-full mt-2 flex rounded-xl"
         textFieldClassName="m-auto border-lightGray rounded-xl placeholder-lightGray"
-        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
+        classNames="lg:w-full md:w-full sm:w-full xs:w-3/4 xxs:w-3/4 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         iconTop={'top-2'}
         value={password}
         setValue={setPassword}
