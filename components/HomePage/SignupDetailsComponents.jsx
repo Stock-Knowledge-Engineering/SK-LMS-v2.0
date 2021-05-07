@@ -9,6 +9,7 @@ import { DoLogin } from "../../redux/actions/UserAction";
 import { useDispatch } from "react-redux";
 
 import Link from "next/link";
+import { useRouter } from "next/dist/client/router";
 
 const SignupDetailsComponents = ({
   email,
@@ -34,6 +35,7 @@ const SignupDetailsComponents = ({
   careerGoal,
   setForm,
 }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
 
   const [validEmail, setValidEmail] = useState(false);
@@ -89,8 +91,9 @@ const SignupDetailsComponents = ({
 
   useEffect(() => {
     if (userData.success) {
-      dispatch(DoLogin(true, userData.result[0]));
-      setForm("account-verification");
+      // dispatch(DoLogin(true, userData.result[0]));
+      // setForm("account-verification");
+      router.push('https://drive.google.com/drive/folders/1JAKiumWmxsYbFoz5p97DtG9y3mzUDYxy');
     }
   }, [userData]);
 
