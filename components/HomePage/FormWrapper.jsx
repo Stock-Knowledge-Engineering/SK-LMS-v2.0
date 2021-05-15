@@ -67,7 +67,7 @@ const FormWrapper = ({ defaultForm, code, showModal }) => {
                     />
                   )}
 
-                  {user.isLogin && !user.data.verified && (
+                  {user.isLogin && (
                     <AccountVerificationForm
                       userid={user.data.userid}
                       showModal={showModal}

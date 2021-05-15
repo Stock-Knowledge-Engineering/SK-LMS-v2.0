@@ -91,9 +91,9 @@ const SignupDetailsComponents = ({
 
   useEffect(() => {
     if (userData.success) {
-      // dispatch(DoLogin(true, userData.result[0]));
-      // setForm("account-verification");
-      router.push('https://drive.google.com/drive/folders/1JAKiumWmxsYbFoz5p97DtG9y3mzUDYxy');
+      dispatch(DoLogin(true, userData.result[0]));
+      setForm("account-verification");
+      // router.push('https://drive.google.com/drive/folders/1JAKiumWmxsYbFoz5p97DtG9y3mzUDYxy');
     }
   }, [userData]);
 
