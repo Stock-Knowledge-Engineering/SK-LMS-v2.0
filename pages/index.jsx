@@ -48,6 +48,11 @@ export default function Home(props) {
       setLoginModalOpen(true)
   }, [signup]);
 
+  useEffect(() => {
+    if(user.data && !user.data.verified)
+      setLoginModalOpen(true)
+  },[user])
+
   return (
     <>
       <Head>
