@@ -1,14 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
-import CalendarLayout from "../components/Calendar/CalendarLayout";
+
 import Menu from "../components/Admin/Menu/Menu";
 import Home from "../components/Admin/Home/Home";
-import SecondaryMenu from "../components/LMS/SecondaryMenu";
-import Search from "../components/LMS/Search/Search";
-import BrandLogo from "../components/LMS/BrandLogo/BrandLogo";
+
 import { useRouter } from "next/dist/client/router";
 import { useSelector } from "react-redux";
+
 import Subjects from "../components/Admin/Subject/Subjects";
+import BrandLogo from "../components/NavBar/BrandLogo/BrandLogo";
+import Search from '../components/NavBar/Search/Search';
+import SecondaryMenu from '../components/NavBar/SecondaryMenu';
 
 const AdminLayout = (props) => {
   const router = useRouter();
