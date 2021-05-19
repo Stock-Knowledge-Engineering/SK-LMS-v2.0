@@ -26,7 +26,7 @@ export default function Home(props) {
   const user = useSelector((state) => state.UserReducer);
   const router = useRouter();
 
-  const { code, signup } = router.query;
+  const { code, signup, forgotpassword } = router.query;
 
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
@@ -53,6 +53,14 @@ export default function Home(props) {
       setLoginModalOpen(true)
   },[user])
 
+  useEffect(() => {
+    if(forgotpassword)
+      setLoginModalOpen(true)
+  },[forgotpassword])
+
+
+  
+
   return (
     <>
       <Head>
@@ -61,7 +69,7 @@ export default function Home(props) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       {loginModalOpen && (
-        <ModalLayout signup={signup} code={code} showModal={setLoginModalOpen} />
+        <ModalLayout signup={signup} code={code} forgotpassword={forgotpassword} showModal={setLoginModalOpen} />
       )}
       <MobileNavBar showModal={setLoginModalOpen} />
       <div
