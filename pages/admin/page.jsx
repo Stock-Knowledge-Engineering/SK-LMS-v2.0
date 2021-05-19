@@ -25,14 +25,14 @@ export default function Page(props) {
 
   return (
     <>
-    {
+    {/* {
       !user.isLogin && <Start page={props.page} status={status} changeStatus={setStatus}/>
     }
     {
       user.isLogin && <MainLayout>
         <h1>Dashboard is in development!</h1>
       </MainLayout>
-    }
+    } */}
     </>
   )
 }
