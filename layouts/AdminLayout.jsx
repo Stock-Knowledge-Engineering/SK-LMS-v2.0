@@ -8,9 +8,6 @@ import Search from "../components/LMS/Search/Search";
 import BrandLogo from "../components/LMS/BrandLogo/BrandLogo";
 import { useRouter } from "next/dist/client/router";
 import { useSelector } from "react-redux";
-import Courses from "../components/LMS/Courses/Courses";
-import Course from "../components/LMS/Course/Course";
-import CourseTopic from "../components/LMS/CourseTopic/CourseTopic";
 import Subjects from "../components/Admin/Subject/Subjects";
 
 const AdminLayout = (props) => {

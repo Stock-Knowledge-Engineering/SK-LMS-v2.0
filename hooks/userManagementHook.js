@@ -44,4 +44,11 @@ export const useUserManagementHook = () => {
       localStorage.setItem("remember", false);
     }
   }, [user]);
+
+  useEffect(() => {
+    if (!user.isLogin) {
+      localStorage.removeItem("user");
+      localStorage.removeItem("isLogin");
+    }
+  });
 };
