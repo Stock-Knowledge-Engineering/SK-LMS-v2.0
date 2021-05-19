@@ -1,6 +1,6 @@
 import { faBell, faCog, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import MiniProfile from "../LMS/MiniProfile";
+import MiniProfile from "./MiniProfile";
 
 const SecondaryMenu = () => {
     const questionMarkIcon = (
