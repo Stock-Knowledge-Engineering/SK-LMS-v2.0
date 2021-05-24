@@ -3,7 +3,7 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import CalendarLayout from "../components/Calendar/CalendarLayout";
 import Menu from "../components/LMS/Menu/Menu";
 import Home from "../components/LMS/Home/Home";
-import SecondaryMenu from "../components/LMS/SecondaryMenu";
+import SecondaryMenu from "../components/NavBar/SecondaryMenu";
 import Search from "../components/LMS/Search/Search";
 import BrandLogo from "../components/LMS/BrandLogo/BrandLogo";
 import { useRouter } from "next/dist/client/router";
