@@ -2,7 +2,7 @@ import { useState } from "react";
 import Start from "../../components/Start";
 import { useSelector } from "react-redux";
 
-import SchoolAdminLayout from "../../layouts/SchoolAdminLayout";
+import SchoolAdminLayout from "../../layouts/SchoolLayout";
 import { useUserManagementHook } from "../../hooks/userManagementHook";
 import RoomTable from "../../components/RoomTable";
 import RoomAddModal from '../../components/RoomAddModal';
