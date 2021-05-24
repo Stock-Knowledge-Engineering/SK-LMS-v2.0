@@ -1,15 +1,10 @@
-import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
-import MainLayout from "../../layouts/MainLayout";
-
-import Start from "../../components/Start";
 
 import { useUserManagementHook } from "../../hooks/userManagementHook";
 import { useRouter } from "next/dist/client/router";
 import { socket, SocketContext } from "../../context/socket";
-import ModalLayout from "../../components/HomePage/ModalLayout";
 import AdminLayout from "../../layouts/AdminLayout";
 import FormWrapper from "../../components/HomePage/FormWrapper";
 import LMSMobileLayout from "../../layouts/LMSMobileLayout";
