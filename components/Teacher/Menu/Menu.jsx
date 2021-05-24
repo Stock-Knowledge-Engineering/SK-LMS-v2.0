@@ -92,7 +92,7 @@ const Menu = (props) => {
         }`}
       >
         {bookmarkIcon}
-        <p className="text-lightGray">Courses</p>
+        <p>Courses</p>
       </div>
       <div className="flex items-center w-full h-16 pl-10 space-x-4">
         {calendarIcon}
