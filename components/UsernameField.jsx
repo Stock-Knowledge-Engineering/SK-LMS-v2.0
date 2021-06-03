@@ -11,6 +11,7 @@ export default function UsernameField({classNames, placeholder, value, setValue}
     return(
         <>
         <input
+          id="username"
           className={classNames}
           type="text"
           placeholder={placeholder}
