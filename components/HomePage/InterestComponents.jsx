@@ -21,6 +21,7 @@ const InterestComponents = ({
   return (
     <>
       <TextField
+        id="favorite-subject"
         classNames="lg:w-full md:w-full sm:w-full xs:w-full mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         placeholder="What is your favorite Subject?"
         value={favoriteSubject}
@@ -28,6 +29,7 @@ const InterestComponents = ({
         alert={true}
       />
       <TextArea
+        id="career-goal"
         value={careerGoal}
         setValue={setCareerGoal}
         classNames="lg:w-full md:w-full sm:w-full xs:w-full mt-2 rounded-xl border border-lightGray placeholder-lightGray"

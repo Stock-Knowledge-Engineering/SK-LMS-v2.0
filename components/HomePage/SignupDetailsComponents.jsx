@@ -141,6 +141,7 @@ const SignupDetailsComponents = ({
       />
       <div className="lg:w-full md:w-full sm:w-full xs:w-11/12 xxs:w-11/12 mt-2 lg:mb-0 md:mb-0 sm:mb-4 xs:mb-4 xs:h-8 xxs:h-8 flex items-center space-x-2">
         <input
+          id="agree"
           onChange={(e) => setUserAgree(e.target.checked)}
           type="checkbox"
           name="useragree"

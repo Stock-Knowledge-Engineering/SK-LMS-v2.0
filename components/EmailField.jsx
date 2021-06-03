@@ -4,7 +4,7 @@ import { useHttp } from '../hooks/http';
 
 import FieldAlert from './FieldAlert';
 
-export default function EmailField({classNames, placeholder, value, setValue, endpoint, to, alert, setValidEmail, errorMessage}){
+export default function EmailField({ id, classNames, placeholder, value, setValue, endpoint, to, alert, setValidEmail, errorMessage}){
     const [invalidInput, setInvalidInput] = useState(false);
     const [verifyingEmail, validEmail] = useHttp(value ? `${endpoint}${value}` : '', [value]);
 
@@ -16,6 +16,7 @@ export default function EmailField({classNames, placeholder, value, setValue, en
     return(
         <>
         <input
+          id="email"
           className={classNames}
           type="text"
           placeholder={placeholder}

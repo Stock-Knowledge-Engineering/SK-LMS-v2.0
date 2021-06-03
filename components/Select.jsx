@@ -1,6 +1,7 @@
-const Select = ({classNames, selected, setValue, placeholder, label, compare, value, options}) => {
+const Select = ({id, classNames, selected, setValue, placeholder, label, compare, value, options}) => {
     return (
       <select
+        id={id}
         className={classNames}
         defaultValue={selected}
         onChange={(e) => setValue(e.target.value)}

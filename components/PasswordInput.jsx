@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 export default function PasswordInput({
+  id,
   value,
   setValue,
   wrapperClassName,
@@ -74,6 +75,7 @@ export default function PasswordInput({
     <>
       <div className={`${wrapperClassName} relative`}>
         <input
+          id="password"
           ref={passwordRef}
           type={showPassword ? "text" : "password"}
           name="password"

@@ -43,6 +43,7 @@ export default function ConfirmPasswordInput({
     <>
       <div className={`${wrapperClassName} relative`}>
         <input
+          id="confirm-password"
           type={showPassword ? "text" : "password"}
           name="confirmPassword"
           className={`w-full ${textFieldClassName}`}

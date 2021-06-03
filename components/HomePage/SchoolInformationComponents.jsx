@@ -26,6 +26,7 @@ const SchoolInformationComponents = ({
   return (
     <>
       <Select
+        id="school"
         classNames="w-full xs:h-8 rounded-xl border border-lightGray mt-2 text-lightGray"
         setValue={setSchool}
         options={schools}
@@ -37,6 +38,7 @@ const SchoolInformationComponents = ({
       />
       {school == 'other' && (
         <TextField
+          id="other"
           classNames="lg:w-full md:w-full sm:w-full xs:w-full xs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
           placeholder="Please Specify"
           value={other}
@@ -44,6 +46,7 @@ const SchoolInformationComponents = ({
         />
       )}
       <Select
+        id="gradelevel"
         classNames="w-full xs:h-8 rounded-xl border border-lightGray mt-2 text-lightGray"
         setValue={setGradeLevel}
         options={gradeLevels}

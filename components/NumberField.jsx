@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 
 import FieldAlert from './FieldAlert';
 
-export default function NumberField({value, setValue, placeholder, classNames}){
+export default function NumberField({id, value, setValue, placeholder, classNames}){
     const [invalidInput, setInvalidInput] = useState(false);
 
     useEffect(()=>{
@@ -17,6 +17,7 @@ export default function NumberField({value, setValue, placeholder, classNames}){
     return(
         <>
         <input
+            id={id}
           type="text"
           className={classNames}
           placeholder={placeholder}

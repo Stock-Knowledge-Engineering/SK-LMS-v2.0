@@ -1,6 +1,7 @@
-const TextArea = ({ classNames, value, setValue, placeholder }) => {
+const TextArea = ({ id, classNames, value, setValue, placeholder }) => {
   return (
     <textarea
+      id={id}
       type="text"
       className={classNames}
       placeholder={placeholder}

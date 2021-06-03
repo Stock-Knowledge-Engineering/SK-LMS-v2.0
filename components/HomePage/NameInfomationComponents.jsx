@@ -29,15 +29,12 @@ const NameInfomationComponents = ({
     ) {
       setDisable(false);
     } else setDisable(true);
-  }, [
-    firstName,
-    middleName,
-    lastName,
-  ]);
+  }, [firstName, middleName, lastName]);
 
   return (
     <>
       <TextField
+        id="firstname"
         classNames="lg:w-full md:w-full sm:w-full xs:w-full xxs:w-full xs:h-8 xxs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         placeholder="First Name"
         value={firstName}
@@ -45,6 +42,7 @@ const NameInfomationComponents = ({
         alert={true}
       />
       <TextField
+        id="middlename"
         classNames="lg:w-full md:w-full sm:w-full xs:w-full xxs:w-full xs:h-8 xxs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         placeholder="Middle Name"
         value={middleName}
@@ -52,6 +50,7 @@ const NameInfomationComponents = ({
         alert={true}
       />
       <TextField
+        id="lastname"
         classNames="lg:w-full md:w-full sm:w-full xs:w-full xxs:w-full xs:h-8 xxs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         placeholder="Last Name"
         value={lastName}

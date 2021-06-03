@@ -57,12 +57,14 @@ const PersonalInformationComponent = ({
         Date of Birth
       </label>
       <NumberField
+        id="year"
         classNames="lg:w-full md:w-full sm:w-full xs:w-full xxs:w-full xs:h-8 xxs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         value={year}
         setValue={setYear}
         placeholder="Year"
       />
       <select
+        id="month"
         className="w-full xs:h-8 xxs:h-8 rounded-xl border border-lightGray mt-2 text-lightGray"
         defaultValue={month}
         onChange={(e) => setMonth(e.target.value)}
@@ -80,6 +82,7 @@ const PersonalInformationComponent = ({
         })}
       </select>
       <select
+        id="day"
         className="w-full xs:h-8 xxs:h-8 rounded-xl border border-lightGray mt-2 text-lightGray"
         defaultValue={day}
         onChange={(e) => setDay(e.target.value)}
@@ -107,6 +110,7 @@ const PersonalInformationComponent = ({
         <input type="radio" name="gender" value="female" /> Female
       </div>
       <NumberField
+        id="mobileno"
         classNames="lg:w-full md:w-full sm:w-full xs:w-full xxs:w-full xs:h-8 xxs:h-8 mt-2 rounded-xl border border-lightGray placeholder-lightGray"
         value={mobileno}
         setValue={setMobileNo}
