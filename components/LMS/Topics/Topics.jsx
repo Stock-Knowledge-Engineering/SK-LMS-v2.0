@@ -9,14 +9,12 @@ const Topics = () => {
 
   const [topicsLoading, topics] = useHttp(`/topics`, [slug[1]])
 
-  console.log(topics);
-
   return (
     <>
     {
       topics && topics.map(elm => {
         return (
-          <TopicsItem id={elm.id} subject={elm.subject} title={elm.title} type={elm.type}/>
+          <TopicsItem id={elm.id} subject={elm.subject} title={elm.title} color={elm.color} type={elm.type} icon={elm.icon}/>
         )
       })
     }

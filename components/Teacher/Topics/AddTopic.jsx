@@ -8,9 +8,9 @@ import Select from "../../Select";
 
 const AddTopic = () => {
   const router = useRouter();
-  const user = useSelector(state => state.UserReducer);
+  const user = useSelector((state) => state.UserReducer);
 
-  const [subjectsLoading, subjects] = useHttp('/subjects',[router.query])
+  const [subjectsLoading, subjects] = useHttp("/subjects", [router.query]);
 
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("");
@@ -19,12 +19,23 @@ const AddTopic = () => {
 
   const [subject, setSubject] = useState("");
 
-  const [type, setType] = useState("")
-  const types = useState([{id: 1, name: "AR"}, {id:2, name: "VR"}, {id:3, name: "WebXR 1.0"}, {id:4, name: "WebXR 2.0"}]);
-  
-  const [mode, setMode] = useState("")
-  const modes = useState([{id: 1, name: "Mode 1"}, {id:2, name: "Mode 2"}, {id:3, name: "Mode 3"}]);
-  
+  const [type, setType] = useState("");
+  const types = useState([
+    { id: 1, name: "AR" },
+    { id: 2, name: "VR" },
+    { id: 3, name: "WebXR 1.0" },
+    { id: 4, name: "WebXR 2.0" },
+  ]);
+
+  const [mode, setMode] = useState("");
+  const modes = useState([
+    { id: 1, name: "Mode 1" },
+    { id: 2, name: "Mode 2" },
+    { id: 3, name: "Mode 3" },
+  ]);
+
+  const [content, setContent] = useState("");
+
   const [formData, setFormData] = useState(null);
   const [toSubmit, setToSubmit] = useState(false);
 
@@ -35,7 +46,7 @@ const AddTopic = () => {
 
   useEffect(() => {
     let formData = new FormData();
-    
+
     formData.append("title", title);
     formData.append("color", color);
     formData.append("description", description);
@@ -44,10 +55,10 @@ const AddTopic = () => {
     formData.append("type", type);
     formData.append("mode", mode);
     formData.append("userid", user.data.userid);
+    formData.append("content", content);
 
     setFormData(formData);
-
-  }, [title, description, color, icon, subject, type, mode]);
+  }, [title, description, color, icon, subject, type, mode, content]);
 
   useEffect(() => {
     if (data)
@@ -56,7 +67,7 @@ const AddTopic = () => {
         shallow: true,
       });
   }, [data]);
-  
+
   return (
     <div className="relative box-border flex flex-col overflow-hidden sticky w-1/4 min-h-content top-navbar-height space-y-4 py-10">
       <button
@@ -140,6 +151,33 @@ const AddTopic = () => {
         compare="name"
         placeholder="Mode"
       />
+      {type == "WebXR 1.0" && (
+        <>
+          <label>Link</label>
+          <input
+            value={content}
+            onChange={(e) => {
+              setContent(e.target.value);
+            }}
+            className="w-full"
+            type="text"
+            name="content"
+          />
+        </>
+      )}
+      {(type == "WebXR 2.0" || type == "AR") && (
+        <>
+          <label>Content</label>
+          <input
+            onChange={(e) => {
+              setContent(e.target.files[0]);
+            }}
+            className="w-full"
+            type="file"
+            name="content"
+          />
+        </>
+      )}
       <button
         onClick={() => {
           setToSubmit(true);

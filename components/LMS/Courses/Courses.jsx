@@ -21,14 +21,14 @@ const Courses = () => {
         </h1>
         <div className="border-box w-full h-auto relative flex flex-row items-center justify-around">
           <button
-            className={`box-border px-4 border-b-2 ${slug && slug[0] == 'courses' && slug[1] == 'all' ? "border-skBlue text-skBlue" : "text-subheading"}`}
+            className={`box-border px-4 border-b-2 ${slug && slug[0] == 'courses' && !slug[1] ? "border-skBlue text-skBlue" : "text-subheading"}`}
           >
             All
           </button>
-          <button className={`box-border border px-4`}>Science</button>
-          <button className={`box-border border px-4`}>Technology</button>
-          <button className={`box-border border px-4`}>Engineering</button>
-          <button className={`box-border border px-4`}>Mathematics</button>
+          <button className={`box-border px-4`}>Science</button>
+          <button className={`box-border px-4`}>Technology</button>
+          <button className={`box-border px-4`}>Engineering</button>
+          <button className={`box-border px-4`}>Mathematics</button>
         </div>
         <div className="w-full flex flex-wrap">
           <Topics />
