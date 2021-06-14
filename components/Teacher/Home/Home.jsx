@@ -29,7 +29,7 @@ const Home = () => {
   // });
 
   return (
-    <div className="relative w-1/2 p-10 flex flex-col border min-h-content bg-blue-50 space-y-4">
+    <div className="relative w-full p-10 flex flex-col border min-h-content bg-blue-50 space-y-4">
       <div className="box-border flex flex-col w-full">
         <div className="m-auto box-border h-auto lg:w-1/2 md:w-1/2 sm:w-full xs:w-full flex flex-col py-2 px-4 rounded-2xl space-y-2">
           <div className="w-full bg-skBlue rounded-2xl text-white box-border flex flex-col items-end justify-between p-4 space-y-2">
