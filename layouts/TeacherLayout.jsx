@@ -39,10 +39,10 @@ const TeacherLayout = (props) => {
           <div className="relative flex flex-col min-h-content top-navbar-height box-border">
             <div className="relative flex flex-col min-h-content box-border">
               <div className="relative box-border min-h-content flex flex-row flex-nowrap items-stretch justify-center">
-                <div className="box-border w-full max-w-full flex-nowrap items-start relative flex flex-row justify-around">
+                <div className="box-border w-full max-w-full flex-nowrap items-start relative flex flex-row">
                   <div
-                    className={`box-border overflow-hidden sticky w-1/6 min-h-content top-navbar-height space-y-4 py-10`}
-                  >
+                    className={`box-border overflow-hidden sticky w-1/4 min-h-content top-navbar-height space-y-4 py-10`}
+                    >
                     <Menu />
                   </div>
                   {!slug && <Home />}
