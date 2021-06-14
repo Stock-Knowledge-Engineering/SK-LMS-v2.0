@@ -40,6 +40,8 @@ module.exports = {
   variants: {
     extend: {
       opacity:['disabled'],
+      backgroundColor: ['disabled'],
+      display: ['hover', 'group-hover']
     },
   },
   plugins: [
