@@ -31,7 +31,10 @@ export default function Home(props) {
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
 
-  const [screenLoading, screenData] = usePostHttp(width && height ? { width, height } : '', "/screen");
+  const [screenLoading, screenData] = usePostHttp(
+    width && height ? { width, height } : "",
+    "/screen"
+  );
 
   useEffect(() => {
     if (window.screen.width) setWidth(window.screen.width);
@@ -39,27 +42,20 @@ export default function Home(props) {
   }, []);
 
   useEffect(() => {
-    if(code)
-      setLoginModalOpen(true)
+    if (code) setLoginModalOpen(true);
   }, [code]);
 
   useEffect(() => {
-    if(signup)
-      setLoginModalOpen(true)
+    if (signup) setLoginModalOpen(true);
   }, [signup]);
 
   useEffect(() => {
-    if(user.data && !user.data.verified)
-      setLoginModalOpen(true)
-  },[user])
+    if (user.data && !user.data.verified) setLoginModalOpen(true);
+  }, [user]);
 
   useEffect(() => {
-    if(forgotpassword)
-      setLoginModalOpen(true)
-  },[forgotpassword])
-
-
-  
+    if (forgotpassword) setLoginModalOpen(true);
+  }, [forgotpassword]);
 
   return (
     <>
@@ -69,7 +65,12 @@ export default function Home(props) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       {loginModalOpen && (
-        <ModalLayout signup={signup} code={code} forgotpassword={forgotpassword} showModal={setLoginModalOpen} />
+        <ModalLayout
+          signup={signup}
+          code={code}
+          forgotpassword={forgotpassword}
+          showModal={setLoginModalOpen}
+        />
       )}
       <MobileNavBar showModal={setLoginModalOpen} />
       <div
@@ -140,6 +141,8 @@ export default function Home(props) {
               }           */}
       </div>
       <div id="home" className="sm:w-screen xs:w-screen">
+
+
         <div className="flex lg:flex-row reno:flex-row md:flex-row sm:flex-col xs:flex-col xxs:flex-col reno:w-full md:w-full sm:w-screen xs:w-screen xxs:w-screen h-1/2 lg:mt-20 xs:mt-0 xxs:mt-0">
           <div className="lg:w-1/2 md:w-1/2 reno:w-1/2 sm:w-screen xs:w-screen xxs:w-screen lg:pl-10 lg:pt-10 md:pl-10 md:pt-10 reno:pl-10 reno:pt-10 sm:pl-10 xs:pl-10 sm:pt-10 xs:pt-10 xxs:pt-10">
             <h1 className="lg:text-8xl font-bold text-heading md:text-6xl reno:text-6xl sm:text-5xl xs:text-5xl xxs:text-5xl">
@@ -157,7 +160,7 @@ export default function Home(props) {
             <br />
             <Link href="/#contactus">
               <a className="rounded-full bg-skBlue font-bold xl:text-xl lg:text-xl reno:text-xl md:text-md sm:text-xl xs:text-xl xxs:text-xl text-white py-4 px-12">
-                Request a demo
+                REQUEST A DEMO
               </a>
             </Link>
           </div>
@@ -183,6 +186,14 @@ export default function Home(props) {
           Our solutions aim to fulfill the needs of next generation learners in
           the country and across the globe
         </h4>
+        <br />
+        <div className="w-full flex items-center justify-center">
+          <Link href="/solution">
+            <a className="text-center rounded-full bg-skBlue font-bold xl:text-xl lg:text-xl reno:text-xl md:text-md sm:text-xl xs:text-xl xxs:text-xl text-white py-4 px-12">
+              LEARN MORE ABOUT OUR OFFER
+            </a>
+          </Link>
+        </div>
         <br />
       </div>
       <div className="md:w-full xs:w-screen xxs:w-screen md:flex-row xs:flex-col xxs:flex-col p-6 h-1/4 flex items-center">

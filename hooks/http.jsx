@@ -1,13 +1,13 @@
 import {useState, useEffect} from 'react';
 
 export const useHttp = (url, dependencies) => {
-
+  
   const [isLoading, setIsLoading] = useState(false);
   const [fetchedData, setFetchedData] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
-    // console.log('Sending Http request to URL: ' + url);
+
     fetch(`${process.env.SERVER_DOMAIN}${url}`)
       .then(response => {
         if (!response.ok) {
