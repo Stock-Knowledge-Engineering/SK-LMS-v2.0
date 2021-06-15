@@ -95,4 +95,4 @@ const LoginForm = ({ showModal, setForm }) => {
   );
 };
 
-export default React.memo(LoginForm);
+export default LoginForm;

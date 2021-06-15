@@ -64,4 +64,4 @@ const SignupForm = ({ showModal, code, setForm }) => {
   );
 };
 
-export default React.memo(SignupForm);
+export default SignupForm;

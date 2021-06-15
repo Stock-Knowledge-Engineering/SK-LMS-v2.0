@@ -70,4 +70,4 @@ const NameInfomationComponents = ({
   );
 };
 
-export default React.memo(NameInfomationComponents);
+export default NameInfomationComponents;

@@ -9,4 +9,4 @@ const CarouselContent = (props) => {
     </div>
   );
 };
-export default React.memo(CarouselContent);
+export default CarouselContent;

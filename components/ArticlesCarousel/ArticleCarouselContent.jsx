@@ -34,4 +34,4 @@ const ArticleCarouselContent = (props) => {
     </div>
   );
 };
-export default React.memo(ArticleCarouselContent);
+export default ArticleCarouselContent;

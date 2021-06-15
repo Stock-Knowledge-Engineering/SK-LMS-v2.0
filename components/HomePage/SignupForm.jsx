@@ -180,4 +180,4 @@ const SignupForm = ({ setForm }) => {
   );
 };
 
-export default React.memo(SignupForm);
+export default SignupForm;

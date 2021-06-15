@@ -46,4 +46,4 @@ const TestimonialContent = (props) => {
     </>
   );
 };
-export default React.memo(TestimonialContent);
+export default TestimonialContent;
