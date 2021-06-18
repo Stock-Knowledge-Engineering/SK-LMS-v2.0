@@ -2,7 +2,7 @@ import { useState } from "react";
 import ArticleCarouselLayout from "../../components/ArticlesCarousel/ArticleCarouselLayout";
 import Footer from "../../components/Footer";
 import LoginModal from "../../components/HomePage/LoginModal";
-import MobileNavbar from "../../components/MobileNavBar";
+import MobileNavbar from "../../components/HomePage/NavBar/MobileNavBar";
 import NavBar from "../../components/NavBar";
 
 export default function StockKnowledgeAtRISE() {

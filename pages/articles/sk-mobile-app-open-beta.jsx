@@ -1,11 +1,20 @@
+import { useState } from "react";
 import ArticleCarouselLayout from "../../components/ArticlesCarousel/ArticleCarouselLayout";
 import Footer from "../../components/Footer";
-import MobileNavbar from "../../components/MobileNavBar";
+import MobileNavbar from "../../components/HomePage/NavBar/MobileNavBar";
 import NavBar from "../../components/NavBar";
+import { useUserManagementHook } from "../../hooks/userManagementHook";
+import LoginModal from "../../components/HomePage/LoginModal";
 
 const MobileAppOpenBeta = () => {
+  useUserManagementHook();
+
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
+
   return (
     <>
+      {loginModalOpen && <LoginModal showModal={setLoginModalOpen} />}
+
       <MobileNavbar />
       <NavBar
         page="article"

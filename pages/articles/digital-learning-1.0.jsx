@@ -1,16 +1,31 @@
 import ArticleCarouselLayout from "../../components/ArticlesCarousel/ArticleCarouselLayout";
 import Footer from "../../components/Footer";
-import MobileNavbar from "../../components/MobileNavBar";
-import NavBar from "../../components/NavBar";
+import MobileNavbar from "../../components/HomePage/NavBar/MobileNavBar";
+import ArticleNavbar from "../../components/NavBar";
+import ModalLayout from "../../components/HomePage/ModalLayout";
+import { useState } from "react";
+import { useUserManagementHook } from "../../hooks/userManagementHook";
 
 export default function DigitalLearning1() {
+  useUserManagementHook();
+
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
+
   return (
     <>
       <MobileNavbar />
-      <NavBar
+      <ArticleNavbar
+        showModal={setLoginModalOpen}
         page="article"
         path="New look, same goals– here’s Stock Knowledge’s promise to the future"
       />
+
+      {loginModalOpen && (
+        <ModalLayout
+          showModal={setLoginModalOpen}
+        />
+      )}
+
       <div className="hero text-white px-20 py-10 space-y-2 md:w-full xs:w-screen">
         <h1 className="xl:text-6xl lg:text-6xl md:text-6xl sm:text-xl xs:text-xl xl:w-3/4 lg:w-3/4 md:w-full reno:w-full sm:w-full xs:w-full font-bold">
           Digital Learning 1.0

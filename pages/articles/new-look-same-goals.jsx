@@ -2,11 +2,15 @@ import { useState } from "react";
 import ArticleCarouselLayout from "../../components/ArticlesCarousel/ArticleCarouselLayout";
 import Footer from "../../components/Footer";
 import LoginModal from "../../components/HomePage/LoginModal";
-import MobileNavbar from "../../components/MobileNavBar";
+import MobileNavbar from "../../components/HomePage/NavBar/MobileNavBar";
 import NavBar from "../../components/NavBar";
+import { useUserManagementHook } from "../../hooks/userManagementHook";
 
 export default function NewLookSameGoal() {
+  useUserManagementHook();
+
   const [loginModalOpen, setLoginModalOpen] = useState(false);
+  
   return (
     <>
       {loginModalOpen && <LoginModal showModal={setLoginModalOpen} />}
