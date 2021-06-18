@@ -1,8 +1,10 @@
+import { useRouter } from 'next/dist/client/router';
+import Router from 'next/dist/next-server/server/router';
 import {useRef, useState, useEffect, useCallback} from 'react';
-import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { UserLogout } from '../redux/actions/UserAction';
+import { UserLogout } from '../../../redux/actions/UserAction';
 const Menu = (props) => {
+    const router = useRouter();
     const dispatch = useDispatch();
     const user = useSelector(state => state.UserReducer);
 
@@ -37,6 +39,12 @@ const Menu = (props) => {
             <li>
                 <a href="#contactus">Contact Us</a>
             </li>
+            {user.isLogin && <li>
+                <a className="cursor-pointer" onClick={() => {router.push(`/lms`)}} >LMS</a>
+            </li>}
+            {user.isLogin && <li>
+                <a className="cursor-pointer" onClick={() => {router.push(`/orders`, undefined, {shallow: true, scroll: false})}} >Orders</a>
+            </li>}
             {!user.isLogin && <li>
                 <a className="cursor-pointer" onClick={() => {props.showModal(true)}} >Login</a>
             </li>}
@@ -61,6 +69,10 @@ const MobileNavbar = (props) => {
 
     useEffect(()=>{
         window.addEventListener('scroll', handler);
+
+        return () => {
+            window.removeEventListener('scroll', handler);
+        }
     },[])
 
     return (
