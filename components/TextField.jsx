@@ -10,6 +10,7 @@ export default function TextField({
   classNames,
   placeholder,
   alert,
+  disabled
 }) {
   const [invalidInput, setInvalidInput] = useState(false);
 
@@ -28,6 +29,7 @@ export default function TextField({
         placeholder={placeholder}
         value={value}
         onChange={(e) => setValue(e.target.value)}
+        disabled={disabled ? disabled : false}
       />
       {alert && invalidInput && (
         <FieldAlert
