@@ -6,16 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useUserManagementHook } from "../hooks/userManagementHook";
 import { useRouter } from "next/dist/client/router";
-import NavBar from "../components/NavBar";
-import MobileNavBar from "../components/MobileNavBar";
+import NavBar from "../components/HomePage/NavBar/NavBar";
+import MobileNavBar from "../components/HomePage/NavBar/MobileNavBar";
 import CarouselLayout from "../components/Carousel/CarouselLayout";
 import TestimonialLayout from "../components/Testimonial/TestimonialLayout";
-import LoginModal from "../components/HomePage/LoginModal";
 import ArticleCarouselLayout from "../components/ArticlesCarousel/ArticleCarouselLayout";
 import Footer from "../components/Footer";
 import ModalLayout from "../components/HomePage/ModalLayout";
-import { UserLogout } from "../redux/actions/UserAction";
 import { usePostHttp } from "../hooks/postHttp";
+
 
 export default function Home(props) {
   useUserManagementHook();
@@ -73,73 +72,7 @@ export default function Home(props) {
         />
       )}
       <MobileNavBar showModal={setLoginModalOpen} />
-      <div
-        className={`xxs:hidden md:flex sm:hidden xs:hidden lg:w-full reno:w-full md:w-full sm:w-screen xs:w-screen p-4 h-20 justify-between items-center`}
-      >
-        <a
-          href="/"
-          className="lg:w-1/4 flex items-center text-xl text-heading md:w-2/12 space-x-2"
-        >
-          <img className="w-12" src="/images/logo.png" />
-          <h4 className="lg:flex md:hidden">
-            Stock &nbsp;<span className="font-bold text-skBlue">Knowledge</span>
-          </h4>
-        </a>
-        <div
-          className={`lg:w-3/4 md:w-full flex items-center text-subheading text-3xl font-bold`}
-        >
-          <ul className="flex justify-around w-full lg:text-base md:text-xs">
-            <li>
-              <a href="/#home">Home</a>
-            </li>
-            <li>
-              <a href="/#solution">Solutions</a>
-            </li>
-            <li>
-              <a href="/#story">Story</a>
-            </li>
-            <li>
-              <a href="/#team">Team</a>
-            </li>
-            <li>
-              <a href="/#testimonial">Testimonials</a>
-            </li>
-            <li>
-              <a href="/#partners">Partners</a>
-            </li>
-            <li>
-              <a href="/#articles">Articles</a>
-            </li>
-            <li>
-              <a href="/#contactus">Contact Us</a>
-            </li>
-          </ul>
-
-          {!user.isLogin && (
-            <button
-              onClick={(e) => {
-                setLoginModalOpen(true);
-              }}
-              className="bg-skBlue rounded-full font-bold text-base text-white py-2 px-4"
-            >
-              Login
-            </button>
-          )}
-          {user.isLogin && (
-            <button
-              onClick={(e) => {
-                dispatch(UserLogout(false));
-              }}
-              className="bg-skBlue rounded-full font-bold text-base text-white py-2 px-4"
-            >
-              Logout
-            </button>
-          )}
-        </div>
-        {/* {visibility < 0.3 && 
-                <button className="bg-yellow-400 text-white text-xl font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-yellow-200">Register</button>
-              }           */}
-      </div>
+      <NavBar showModal={setLoginModalOpen} />
       <div id="home" className="sm:w-screen xs:w-screen">
 
 
@@ -188,7 +121,7 @@ export default function Home(props) {
         </h4>
         <br />
         <div className="w-full flex items-center justify-center">
-          <Link href="/solution">
+          <Link href="/solutions">
             <a className="text-center rounded-full bg-skBlue font-bold xl:text-xl lg:text-xl reno:text-xl md:text-md sm:text-xl xs:text-xl xxs:text-xl text-white py-4 px-12">
               LEARN MORE ABOUT OUR OFFER
             </a>
