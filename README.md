@@ -1,3 +1,5 @@
+This repo contains LMS that can host webXR contents
+
 # Set-up a local copy
 
 
