@@ -1,3 +1,5 @@
+This repo contains LMS that can host webXR contents
+
 # Set-up a local copy
 
 
@@ -36,7 +38,7 @@ and Command Prompt for Windows then run
     npm run dev
     
 ### Ready for deployment?
-You want to deploy it, right? Ok, you need to build the project first. Run this command and wait until it finnish to compile
+You want to deploy it, right? Ok, you need to build the project first. Run this command and wait until it finish to compile
 
     npm run build
  
