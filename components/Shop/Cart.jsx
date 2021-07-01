@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { isMobile } from "../../Utilities";
 
-const Cart = ({ quantity, setQuantity }) => {
+const Cart = ({showModal, quantity, setQuantity }) => {
+  const user = useSelector((state) => state.UserReducer);
   const increase = () => {
     setQuantity(quantity + 1);
   };
@@ -162,11 +164,17 @@ const Cart = ({ quantity, setQuantity }) => {
             </td>
           </tr>
         </table>
-        <Link href="/checkout">
-          <a className="xl:w-1/4 lg:w-1/4 md:w-1/2 sm:w-full xs:-w-full xl:self-end lg:self-end md:self-end text-center rounded-full bg-skBlue font-bold xl:text-xl lg:text-xl reno:text-xl md:text-md sm:text-xl xs:text-xl xxs:text-xl text-white py-4 px-12">
-            Checkout
-          </a>
-        </Link>
+        {user && !user.isLogin ? (
+          <button onClick={() => showModal(true)} className="xl:w-1/4 lg:w-1/4 md:w-1/2 sm:w-full xs:-w-full xl:self-end lg:self-end md:self-end text-center rounded-full bg-skBlue font-bold xl:text-xl lg:text-xl reno:text-xl md:text-md sm:text-xl xs:text-xl xxs:text-xl text-white py-4 px-12">
+            Login
+          </button>
+        ) : (
+          <Link href="/checkout">
+            <a className="xl:w-1/4 lg:w-1/4 md:w-1/2 sm:w-full xs:-w-full xl:self-end lg:self-end md:self-end text-center rounded-full bg-skBlue font-bold xl:text-xl lg:text-xl reno:text-xl md:text-md sm:text-xl xs:text-xl xxs:text-xl text-white py-4 px-12">
+              Checkout
+            </a>
+          </Link>
+        )}
       </div>
     </div>
   );
