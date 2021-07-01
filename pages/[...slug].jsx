@@ -80,7 +80,7 @@ const Slug = () => {
       <MobileNavbar showModal={setLoginModalOpen} />
       <NavBar showModal={setLoginModalOpen} />
       <div id="home" className="sm:w-screen xs:w-screen">
-        {router.query.slug == 'cart' && <Cart quantity={quantity} setQuantity={setQuantity} />}
+        {router.query.slug == 'cart' && <Cart showModal={setLoginModalOpen} quantity={quantity} setQuantity={setQuantity} />}
         {router.query.slug == 'checkout' && <Checkout quantity={quantity} setQuantity={setQuantity} />}
         {router.query.slug == 'order' && router.query.orderid && <OrderDetails userid={user.data.userid} orderid={router.query.orderid} />}
         {router.query.slug == 'orders' && <Orders userid={user.data.userid} />}
