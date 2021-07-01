@@ -1,4 +1,7 @@
-import { faChevronDown, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronDown,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/dist/client/router";
 import { useRef, useState, useEffect, useCallback } from "react";
@@ -13,7 +16,16 @@ const NavBar = ({ showModal }) => {
   const router = useRouter();
 
   const chevronDown = <FontAwesomeIcon icon={faChevronDown} />;
-  const cartIcon = <FontAwesomeIcon onClick={() => {router.push('/cart', undefined, {shallow: true, scroll: true})}} icon={faShoppingCart} size="lg" className="text-skBlue cursor-pointer"/>
+  const cartIcon = (
+    <FontAwesomeIcon
+      onClick={() => {
+        router.push("/cart", undefined, { shallow: true, scroll: true });
+      }}
+      icon={faShoppingCart}
+      size="lg"
+      className="text-skBlue cursor-pointer"
+    />
+  );
 
   return (
     <div
@@ -56,16 +68,62 @@ const NavBar = ({ showModal }) => {
           <li>
             <a href="/#contactus">Contact Us</a>
           </li>
-          <li>
-            {cartIcon}
-          </li>
+          <li>{cartIcon}</li>
           <li>
             {user.isLogin ? (
               <div className="group relative flex items-center space-x-2">
                 <MiniProfile />
                 {chevronDown}
                 <div className="hidden absolute top-12 right-0 w-auto h-auto px-4 py-2 bg-white rounded-lg shadow font-semibold group-hover:block">
-                  <div onClick={() => router.push(`/orders`, undefined, {shallow: true, scroll: false})} className="py-2 cursor-pointer">Orders</div>
+                  <div
+                    onClick={() =>
+                      router.push(`/orders`, undefined, {
+                        shallow: true,
+                        scroll: false,
+                      })
+                    }
+                    className="py-2 cursor-pointer"
+                  >
+                    Orders
+                  </div>
+                  <div
+                    onClick={() =>
+                      router.push(`/lms`, undefined, {
+                        shallow: true,
+                        scroll: false,
+                      })
+                    }
+                    className="py-2 cursor-pointer"
+                  >
+                    LMS
+                  </div>
+                  {(user.data.title == "teacher" ||
+                    user.data.title == "admin") && (
+                    <div
+                      onClick={() =>
+                        router.push(`/teacher`, undefined, {
+                          shallow: true,
+                          scroll: false,
+                        })
+                      }
+                      className="py-2 cursor-pointer"
+                    >
+                      Teacher
+                    </div>
+                  )}
+                  {user.data.title == "admin" && (
+                    <div
+                      onClick={() =>
+                        router.push(`/admin`, undefined, {
+                          shallow: true,
+                          scroll: false,
+                        })
+                      }
+                      className="py-2 cursor-pointer"
+                    >
+                      Admin
+                    </div>
+                  )}
                   <div
                     onClick={() => dispatch(UserLogout(false))}
                     className="py-2 cursor-pointer"
