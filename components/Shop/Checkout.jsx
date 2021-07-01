@@ -47,11 +47,13 @@ const Checkout = ({ quantity, setQuantity }) => {
   );
 
   useEffect(() => {
-    setFirstname(user.data.firstname);
-    setLastname(user.data.lastname);
-    setMobileNo(user.data.mobile);
-    setEmail(user.data.email);
-    setAddress("");
+    if (user && user.data) {
+      setFirstname(user.data.firstname);
+      setLastname(user.data.lastname);
+      setMobileNo(user.data.mobile);
+      setEmail(user.data.email);
+      setAddress("");
+    }
   }, []);
 
   useEffect(() => {
@@ -79,7 +81,7 @@ const Checkout = ({ quantity, setQuantity }) => {
     <div className="box-border px-16 py-20">
       <h1 className="text-heading text-2xl font-bold">Checkout</h1>
       <br />
-      {isMobile && (
+      {isMobile() && (
         <table className="w-full text-subheading">
           <thead>
             <tr>
@@ -114,16 +116,16 @@ const Checkout = ({ quantity, setQuantity }) => {
               </td>
               <td>
                 <div className="flex items-center justify-center">
-                <input
-                  value={quantity}
-                  onChange={(e) => {
-                    setQuantity(e.target.value);
-                  }}
-                  className="w-16 h-8 text-center"
-                  type="text"
-                  name="quantity"
-                  disabled={true}
-                />
+                  <input
+                    value={quantity}
+                    onChange={(e) => {
+                      setQuantity(e.target.value);
+                    }}
+                    className="w-16 h-8 text-center"
+                    type="text"
+                    name="quantity"
+                    disabled={true}
+                  />
                 </div>
               </td>
             </tr>
@@ -133,7 +135,7 @@ const Checkout = ({ quantity, setQuantity }) => {
           </tbody>
         </table>
       )}
-      {!isMobile && (
+      {!isMobile() && (
         <table className="w-full border text-subheading">
           <tr>
             <th>Product</th>
