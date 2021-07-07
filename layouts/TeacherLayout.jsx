@@ -7,10 +7,13 @@ import Home from "../components/Teacher/Home/Home";
 import { useRouter } from "next/dist/client/router";
 import { useSelector } from "react-redux";
 
+import Topic from "../components/Teacher/Topic/Topic";
 import Topics from "../components/Teacher/Topics/Topics";
 import BrandLogo from "../components/NavBar/BrandLogo/BrandLogo";
 import Search from '../components/NavBar/Search/Search';
 import SecondaryMenu from '../components/NavBar/SecondaryMenu';
+
+import TopicMaintenance from '../components/Teacher/Maintenance/Topics/Topics';
 
 const TeacherLayout = (props) => {
   const router = useRouter();
@@ -46,9 +49,12 @@ const TeacherLayout = (props) => {
                     <Menu />
                   </div>
                   {!slug && <Home />}
-                  {slug && slug[0] != "courses" && <Home />}
+                  {slug && (slug[0] != "courses" && slug[0] != "maintenance") && <Home />}
                   {/* COURSES HOME */}
-                  {slug && slug[0] == "courses" && <Topics />}
+                  {slug && slug[0] == "courses" && !slug[1] && <Topics />}
+                  {slug && slug[0] == "courses" && slug[1] == 'add' && <Topics />}
+                  {slug && slug[0] == "courses" && (slug[1] != 'add' || slug[1] == 'edit') && slug[2] && <Topic />}
+                  {slug && slug[0] == 'maintenance' && slug[1] == 'topics' && <TopicMaintenance />}
                 </div>
               </div>
             </div>
