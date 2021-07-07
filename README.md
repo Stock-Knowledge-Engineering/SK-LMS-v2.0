@@ -45,3 +45,6 @@ You want to deploy it, right? Ok, you need to build the project first. Run this 
 Now, it is now ready for deployment, so hit
 
     npm run start
+    
+### **COPYRIGHTED CONTENTS**
+Images, videos, and text contents that are unique to Stock Knowledge are copyrighted. Please ask permission if you wish to use them.
