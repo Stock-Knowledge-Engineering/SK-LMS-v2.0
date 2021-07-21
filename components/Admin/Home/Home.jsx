@@ -15,6 +15,11 @@ const Home = () => {
     []
   );
 
+  const [studentFavoriteSubjectCountLoading, studentFavoriteSubjectCount] = useHttp(
+    "/analytics/count/student/favoritesubject",
+    []
+  );
+
   const [registeredUserCountLoading, registeredUserCount] = useHttp(
     "/analytics/count/student/all",
     []
@@ -101,6 +106,26 @@ const Home = () => {
               studentWithSchoolsCount &&
               studentWithSchoolsCount.success &&
               studentWithSchoolsCount.result
+            }
+            onClick={e => console.log(e)}
+          >
+            <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+            <Tooltip />
+            <XAxis dataKey="name" />
+            <YAxis dataKey="count" />
+            <Bar dataKey="count" fill="rgba(0, 128, 246, var(--tw-bg-opacity))" />
+          </BarChart>
+        </div>
+        <div className="bg-white box-border h-auto lg:w-auto md:w-auto sm:w-full xs:w-full flex flex-col py-2 px-4 rounded-2xl space-y-2">
+          <h1 className="text-heading font-semibold text-xl">Student Favorite Subject</h1>
+          <BarChart
+            className="m-auto w-auto h-auto"
+            height={250}
+            width={800}
+            data={
+              studentFavoriteSubjectCount &&
+              studentFavoriteSubjectCount.success &&
+              studentFavoriteSubjectCount.result
             }
             onClick={e => console.log(e)}
           >
