@@ -92,9 +92,9 @@ const PersonalInformationComponent = ({
           return (
             <option
               key={index}
-              value={index}
+              value={index+1}
             >
-              {index}
+              {index+1}
             </option>
           );
         })}

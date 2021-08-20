@@ -19,30 +19,30 @@ export default function Index(props) {
   const user = useSelector((state) => state.UserReducer);
   const router = useRouter();
 
-  useEffect(() => {
-    setDevice(window.navigator.userAgent);
+  // useEffect(() => {
+  //   setDevice(window.navigator.userAgent);
 
-    let data = {
-      id: 1,
-      username: "admin",
-      type: "1",
-    };
-    data ? socket.emit("CONNECT", data) : null;
-  }, []);
+  //   let data = {
+  //     id: 1,
+  //     username: "admin",
+  //     type: "1",
+  //   };
+  //   data ? socket.emit("CONNECT", data) : null;
+  // }, []);
 
-  useEffect(() => {
-    socket.emit("ONLINE_USER_COUNT");
+  // useEffect(() => {
+  //   socket.emit("ONLINE_USER_COUNT");
 
-    socket.on("ONLINE_USER_COUNT", (data) => {
-      setOnlineUserCount(data);
-    });
+  //   socket.on("ONLINE_USER_COUNT", (data) => {
+  //     setOnlineUserCount(data);
+  //   });
 
-    socket.emit("REGISTERED_USER_COUNT");
+  //   socket.emit("REGISTERED_USER_COUNT");
 
-    socket.on("REGISTERED_USER_COUNT", (data) => {
-      setRegisteredUserCount(data);
-    });
-  });
+  //   socket.on("REGISTERED_USER_COUNT", (data) => {
+  //     setRegisteredUserCount(data);
+  //   });
+  // });
 
   const isMobile = () => {
     const toMatch = [
@@ -61,16 +61,14 @@ export default function Index(props) {
   };
 
   return (
-    <SocketContext.Provider value={socket}>
-      <>
-        {isMobile() && user.isLogin && user.data.title == "admin" && (
-          <LMSMobileLayout />
-        )}
-        {!isMobile() && user.isLogin && user.data.title == "admin" && (
-          <AdminLayout />
-        )}
-        {!user.isLogin && <FormWrapper defaultForm={"login"} />}
-      </>
-    </SocketContext.Provider>
+    <>
+    {isMobile() && user.isLogin && user.data.title == "admin" && (
+      <LMSMobileLayout />
+    )}
+    {!isMobile() && user.isLogin && user.data.title == "admin" && (
+      <AdminLayout />
+    )}
+    {!user.isLogin && <FormWrapper defaultForm={"login"} />}
+  </>
   );
 }

@@ -102,7 +102,7 @@ const Editor = (props) => {
     placeholder: "Create your content here. :)",
   });
 
-  const [delta, setDelta] = useState('');
+  const [delta, setDelta] = useState(props.delta);
 
   useEffect(() => {
     if (quill){ 
@@ -110,6 +110,11 @@ const Editor = (props) => {
       quill.on('text-change', () => {
         setDelta(quill.getContents());
       });
+    }
+
+    if(quill && delta){
+      console.log(delta);
+      quill.setContents(delta);
     }
   }, [quill]);
 
@@ -126,35 +131,3 @@ const Editor = (props) => {
 };
 
 export default Editor;
-// const modules = {
-//   toolbar: {
-//     container: "#toolbar",
-//   },
-//   clipboard: {
-//     // toggle to add extra line breaks when pasting HTML:
-//     matchVisual: false,
-//   },
-// };
-
-// const formats = [
-//   "header",
-//   "font",
-//   "bold",
-//   "italic",
-//   "underline",
-//   "strike",
-//   "blockquote",
-//   "list",
-//   "bullet",
-//   "indent",
-//   "link",
-//   "image",
-//   "video",
-//   "size",
-//   "color",
-//   "code-block",
-//   "background",
-//   "direction",
-//   "align",
-//   "script",
-// ];

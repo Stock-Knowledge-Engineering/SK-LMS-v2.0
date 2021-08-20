@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHttp } from "../../../hooks/http";
 
 import TopicOutline from "./TopicOutline";
@@ -38,7 +38,16 @@ const Topic = (props) => {
     setLessons(updateLessons);
   }
 
-  // console.log(lessons);
+  useEffect(() => {
+    console.log(lessons);
+  },[lessons])
+
+  useEffect(() => {
+    if(topic){
+      const content = JSON.parse(topic[0].content);
+      setLessons(content);
+    }
+  },[topic])
 
   return (
     <div className="relative w-full py-10 px-5 flex flex-col border min-h-content bg-blue-50 space-y-4">
@@ -58,7 +67,7 @@ const Topic = (props) => {
               onClick={() => {
                 startEdit();
               }}
-              className="w-52 h-8 rounded-full shadow bg-skBlue text-white"
+              className="mt-4 w-52 h-8 rounded-full shadow bg-skBlue text-white"
             >
               Add New Lesson
             </button>

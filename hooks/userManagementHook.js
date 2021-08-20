@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/client";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -49,6 +50,7 @@ export const useUserManagementHook = () => {
     if (!user.isLogin) {
       localStorage.removeItem("user");
       localStorage.removeItem("isLogin");
+      signOut({redirect: false, callbackUrl:'/'})
     }
   });
 };

@@ -19,7 +19,7 @@ const Profile = () => {
     <div className="box-border h-screen w-full bg-blue-50 flex flex-col py-2 space-y-2">
       <div className="box-border relative w-full flex flex-row items-center justify-center">
         <div className="box-border relative w-1/2 rounded-full">
-          <img src={`${process.env.ASSETS_DOMAIN}/avatar.png`} />
+          <img src={`${process.env.ASSETS_DOMAIN}/public/avatar.png`} />
           <div
             className={`absolute bottom-5 right-5 bg-blue-50 h-8 w-8 rounded-full`}
           >

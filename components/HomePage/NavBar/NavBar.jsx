@@ -70,7 +70,7 @@ const NavBar = ({ showModal }) => {
           </li>
           <li>{cartIcon}</li>
           <li>
-            {user.isLogin ? (
+            {user.isLogin && user.data.verified ? (
               <div className="group relative flex items-center space-x-2">
                 <MiniProfile />
                 {chevronDown}

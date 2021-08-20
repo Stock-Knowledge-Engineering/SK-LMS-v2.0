@@ -14,12 +14,15 @@ import ArticleCarouselLayout from "../components/ArticlesCarousel/ArticleCarouse
 import Footer from "../components/Footer";
 import ModalLayout from "../components/HomePage/ModalLayout";
 import { usePostHttp } from "../hooks/postHttp";
-
+import { providers, useSession } from "next-auth/client";
+import { DoLogin } from "../redux/actions/UserAction";
 
 export default function Home(props) {
   useUserManagementHook();
 
   const dispatch = useDispatch();
+
+  const [session, loading] = useSession();
 
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const user = useSelector((state) => state.UserReducer);
@@ -27,8 +30,16 @@ export default function Home(props) {
 
   const { code, signup, forgotpassword } = router.query;
 
+  const [toLogin, setToLogin] = useState(false);
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
+
+  const [authLoginLoading, authData] = usePostHttp(
+    !user.isLogin && session && toLogin
+      ? { name: session.user.name, email: session.user.email }
+      : null,
+    toLogin ? "/login/auth" : null
+  );
 
   const [screenLoading, screenData] = usePostHttp(
     width && height ? { width, height } : "",
@@ -39,6 +50,19 @@ export default function Home(props) {
     if (window.screen.width) setWidth(window.screen.width);
     if (window.screen.height) setHeight(window.screen.height);
   }, []);
+
+  useEffect(() => {
+    if (session) {
+      setToLogin(true);
+    }
+  }, [session]);
+
+  useEffect(() => {
+    if (authData.success) {
+      setLoginModalOpen(false);
+      dispatch(DoLogin(true, authData.result));
+    }
+  }, [authData]);
 
   useEffect(() => {
     if (code) setLoginModalOpen(true);
@@ -65,6 +89,7 @@ export default function Home(props) {
       </Head>
       {loginModalOpen && (
         <ModalLayout
+          providers={props.providers}
           signup={signup}
           code={code}
           forgotpassword={forgotpassword}
@@ -74,8 +99,6 @@ export default function Home(props) {
       <MobileNavBar showModal={setLoginModalOpen} />
       <NavBar showModal={setLoginModalOpen} />
       <div id="home" className="sm:w-screen xs:w-screen">
-
-
         <div className="flex lg:flex-row reno:flex-row md:flex-row sm:flex-col xs:flex-col xxs:flex-col reno:w-full md:w-full sm:w-screen xs:w-screen xxs:w-screen h-1/2 lg:mt-20 xs:mt-0 xxs:mt-0">
           <div className="lg:w-1/2 md:w-1/2 reno:w-1/2 sm:w-screen xs:w-screen xxs:w-screen lg:pl-10 lg:pt-10 md:pl-10 md:pt-10 reno:pl-10 reno:pt-10 sm:pl-10 xs:pl-10 sm:pt-10 xs:pt-10 xxs:pt-10">
             <h1 className="lg:text-8xl font-bold text-heading md:text-6xl reno:text-6xl sm:text-5xl xs:text-5xl xxs:text-5xl">
@@ -419,4 +442,8 @@ export default function Home(props) {
       <Footer />
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  return { props: { providers: await providers(context) } };
 }

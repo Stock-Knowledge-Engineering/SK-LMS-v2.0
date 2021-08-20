@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import AccountVerificationForm from "./AccountVerificationForm";
 import ForgotPasswordForm from "./ForgotPasswordForm";
@@ -7,7 +7,7 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import TermsAndPolicyComponents from "./TermsAndPolicyComponents";
 
-const FormWrapper = ({ defaultForm, code, showModal }) => {
+const FormWrapper = ({ defaultForm, providers, session, code, showModal }) => {
   const user = useSelector((state) => state.UserReducer);
 
   const [form, setForm] = useState(defaultForm);
@@ -56,8 +56,11 @@ const FormWrapper = ({ defaultForm, code, showModal }) => {
                   {!user.isLogin && form === "signup" && (
                     <SignupForm setForm={setForm} />
                   )}
+                  {
+                    user.isLogin && !user.data.username && !user.data.verified && <SignupForm setForm={setForm} />
+                  }
                   {!user.isLogin && form === "login" && (
-                    <LoginForm showModal={showModal} setForm={setForm} />
+                    <LoginForm providers={providers} session={session} showModal={showModal} setForm={setForm} />
                   )}
                   {!user.isLogin && form === "forgot-password" && (
                     <ForgotPasswordForm
@@ -67,7 +70,7 @@ const FormWrapper = ({ defaultForm, code, showModal }) => {
                     />
                   )}
 
-                  {user.isLogin && (
+                  {user.isLogin && user.data.username && !user.data.verified && (
                     <AccountVerificationForm
                       userid={user.data.userid}
                       showModal={showModal}
