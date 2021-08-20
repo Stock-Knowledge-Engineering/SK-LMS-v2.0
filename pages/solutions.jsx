@@ -94,6 +94,12 @@ const Solutions = () => {
         </div>
         <div className="md:w-full xs:w-screen xxs:w-screen md:flex-row xs:flex-col-reverse xxs:flex-col-reverse p-6 h-1/4 flex items-center">
           <div className="md:w-1/2 px-14 md:text-right xs:text-center xxs:text-center">
+            <p>
+              <a href="https://play.google.com/store/apps/details?id=com.StockKnowledge.StockKnowledgeApp" className="text-lg text-subheading">
+                Download Stock Knowledge VR on google playstore
+              </a>
+            </p>
+            <br />
             <h4 className="text-4xl font-bold text-blue-500">XR Mobile App</h4>
             <p className="text-xl">
               Augmented Reality (AR) & Virtual Reality (VR) learning contents
@@ -105,6 +111,21 @@ const Solutions = () => {
               example, by exploring the subatomic world, studying parts of the
               body, exploring lava inside a volcano{" "}
             </p>
+            <br />
+            <p href="#" className="text-lg text-subheading">
+              DOWNLOAD THE APK FOR AR AND VR CONTENTS
+            </p>
+            <ul className="text-subheading">
+              <li>
+                <a href="https://drive.google.com/file/d/1_lbZ5IhXlcnUOk5XozQsPVApJGMmEq4Q/view?usp=sharing">Version 13-6</a>
+              </li>
+              <li>
+                <a href="https://drive.google.com/file/d/1O9hFuADXEK7pwtNonSIO3MKex7hQCfjv/view?usp=sharing">Version 14-7</a>
+              </li>
+              <li>
+                <a href="https://drive.google.com/file/d/1m4OHXbySpCaP9--vupA6dHnqkf61-SrR/view?usp=sharing">Version 14-8</a>
+              </li>
+            </ul>
           </div>
           <div className="md:w-1/2 px-14">
             <img src={`${process.env.ASSETS_DOMAIN}/public/02 - XR.png`} />
@@ -130,8 +151,7 @@ const Solutions = () => {
         </div>
         <div className="md:w-full xs:w-screen xxs:w-screen md:flex-row xs:flex-col-reverse xxs:flex-col-reverse p-6 h-1/4 flex items-center">
           <div className="md:w-1/2 px-14 md:text-right xs:text-center xxs:text-center">
-            <h4 className="text-4xl font-bold text-blue-500">XR Mobile App</h4>
-            <p className="text-xl">Adaptive Learning</p>
+            <p className="text-4xl font-bold text-blue-500">Adaptive Learning</p>
             <p className="text-xl"> that uses Artificial Intelligence</p>
 
             <br />
