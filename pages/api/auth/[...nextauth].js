@@ -12,9 +12,6 @@ const options = {
         //     clientSecret: " "
         // })
     ],
-    pages: {
-        signIn: '/'
-    }
 }
 
 export default (req, res) => NextAuth(req, res, options);
