@@ -23,7 +23,7 @@ export default function Login(props) {
   const [invalidCredential, setInvalidCredential] = useState(false);
 
   const dispatch = useDispatch();
-    
+
   useEffect(() => {
     switch (props.status) {
       case "admin-login":
@@ -58,7 +58,10 @@ export default function Login(props) {
 
   return (
     <>
-      <form onSubmit={e => e.preventDefault()} className="w-full flex items-center flex-col overflow-y-auto">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="w-full flex items-center flex-col overflow-y-auto"
+      >
         <div className="lg:w-96 md:w-80 flex items-center">
           <img className="w-16 " src="/images/logo.png" />
           <p className="text-gray-500 text-3xl">
@@ -68,7 +71,9 @@ export default function Login(props) {
         <label className="lg:w-full md:w-full self-start xs:px-4 mt-10 text-left font-bold text-4xl text-gray-700">
           Login
         </label>
-        {invalidCredential && <FieldAlert message="Invalid Username or Password" />}
+        {invalidCredential && (
+          <FieldAlert message="Invalid Username or Password" />
+        )}
         <input
           onChange={(e) => {
             setUsername(e.target.value);
@@ -102,7 +107,7 @@ export default function Login(props) {
           className="bg-skBlue text-white text-2xl font-bold w-11/12 mt-10 py-3 rounded-full "
           type="submit"
           value="Login"
-          onClick={e => setToLogin(true)}
+          onClick={(e) => setToLogin(true)}
         />
         <a className="text-gray-500 mt-6">
           Don't have an account?{" "}
