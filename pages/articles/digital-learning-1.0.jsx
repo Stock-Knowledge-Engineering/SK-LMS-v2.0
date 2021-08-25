@@ -5,6 +5,9 @@ import ArticleNavbar from "../../components/NavBar";
 import ModalLayout from "../../components/HomePage/ModalLayout";
 import { useState } from "react";
 import { useUserManagementHook } from "../../hooks/userManagementHook";
+import Head from "next/head";
+import { FacebookIcon, FacebookShareButton } from "react-share";
+import { env } from "../../next.config";
 
 export default function DigitalLearning1() {
   useUserManagementHook();
@@ -13,6 +16,24 @@ export default function DigitalLearning1() {
 
   return (
     <>
+      <Head>
+        <title>Digital Learning 1.0 - Stock Knowledge</title>
+        <meta
+          property="og:url"
+          content={`${process.env.WEBSITE_DOMAIN}/articles/digital-learning-1.0`}
+        />
+        <meta property="og:type" content="article" />
+        <meta property="fb:app_id" content={process.env.FACEBOOK_ID} />
+        <meta
+          property="og:title"
+          content={`Digital Learning 1.0 - ${process.env.WEBSITE_NAME}`}
+        />
+        <meta property="og:description" content="Digital Learning 1.0" />
+        <meta
+          property="og:image"
+          content={`${process.env.WEBSITE_DOMAIN}/images/articles/digital-learning-1.0/header-img.svg`}
+        />
+      </Head>
       <MobileNavbar />
       <ArticleNavbar
         showModal={setLoginModalOpen}
@@ -20,11 +41,7 @@ export default function DigitalLearning1() {
         path="New look, same goals– here’s Stock Knowledge’s promise to the future"
       />
 
-      {loginModalOpen && (
-        <ModalLayout
-          showModal={setLoginModalOpen}
-        />
-      )}
+      {loginModalOpen && <ModalLayout showModal={setLoginModalOpen} />}
 
       <div className="hero text-white px-20 py-10 space-y-2 md:w-full xs:w-screen">
         <h1 className="xl:text-6xl lg:text-6xl md:text-6xl sm:text-xl xs:text-xl xl:w-3/4 lg:w-3/4 md:w-full reno:w-full sm:w-full xs:w-full font-bold">
@@ -42,14 +59,17 @@ export default function DigitalLearning1() {
         <div className="xl:w-1/4 lg:w-1/4 md:w-1/4 reno:w-1/4 sm:w-full xs:w-full">
           <p>Share this article</p>
           <div className="w-full h-10 flex items-center text-blue space-x-2">
-            <img
+            <FacebookShareButton url="http://localhost:3000/articles/digital-learning-1.0">
+              <FacebookIcon size={36} />
+            </FacebookShareButton>
+            {/* <img
               className="w-8 h-8 p-1 bg-blue-400 rounded-full inline-block"
               src="/images/share/facebook.svg"
             />
             <img
               className="w-8 h-8 p-1 bg-blue-400 rounded-full inline-block"
               src="/images/share/twitter.svg"
-            />
+            /> */}
           </div>
         </div>
         <div className="xl:w-11/12 lg:w-11/12 md:w-11/12 reno:w-11/12 sm:w-full xs:w-full leading-relaxed">
@@ -102,4 +122,8 @@ export default function DigitalLearning1() {
       <Footer />
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  return { props: { providers: await providers(context) } };
 }
