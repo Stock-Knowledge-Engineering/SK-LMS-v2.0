@@ -12,6 +12,17 @@ const FormWrapper = ({ defaultForm, providers, session, code, showModal }) => {
 
   const [form, setForm] = useState(defaultForm);
 
+  useEffect(() => {
+    if (
+      user.isLogin &&
+      user.data &&
+      user.data.username &&
+      user.data.verified &&
+      showModal
+    )
+      showModal(false);
+  }, [user.data]);
+
   return (
     <>
       <div
@@ -56,29 +67,36 @@ const FormWrapper = ({ defaultForm, providers, session, code, showModal }) => {
                   {!user.isLogin && form === "signup" && (
                     <SignupForm setForm={setForm} />
                   )}
-                  {
-                    user.isLogin && !user.data.username && !user.data.verified && <SignupForm setForm={setForm} />
-                  }
+                  {user.isLogin &&
+                    !user.data.username &&
+                    !user.data.verified && <SignupForm setForm={setForm} />}
                   {!user.isLogin && form === "login" && (
-                    <LoginForm providers={providers} session={session} showModal={showModal} setForm={setForm} />
-                  )}
-                  {!user.isLogin && form === "forgot-password" && (
-                    <ForgotPasswordForm
+                    <LoginForm
+                      providers={providers}
+                      session={session}
                       showModal={showModal}
-                      code={code} 
                       setForm={setForm}
                     />
                   )}
-
-                  {user.isLogin && user.data.username && !user.data.verified && (
-                    <AccountVerificationForm
-                      userid={user.data.userid}
+                  {!user.isLogin && form === "forgot-password" && (
+                    <ForgotPasswordForm
                       showModal={showModal}
                       code={code}
                       setForm={setForm}
                     />
                   )}
-                  {form === 'term-and-policy' && <TermsAndPolicyComponents />}
+
+                  {user.isLogin &&
+                    user.data.username &&
+                    !user.data.verified && (
+                      <AccountVerificationForm
+                        userid={user.data.userid}
+                        showModal={showModal}
+                        code={code}
+                        setForm={setForm}
+                      />
+                    )}
+                  {form === "term-and-policy" && <TermsAndPolicyComponents />}
                 </div>
               </div>
             </div>

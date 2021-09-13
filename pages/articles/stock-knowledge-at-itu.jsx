@@ -1,16 +1,80 @@
-import { useState } from "react";
+import { providers, useSession } from "next-auth/client";
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { FacebookIcon, FacebookShareButton } from "react-share";
 import ArticleCarouselLayout from "../../components/ArticlesCarousel/ArticleCarouselLayout";
 import Footer from "../../components/Footer";
 import LoginModal from "../../components/HomePage/LoginModal";
+import ModalLayout from "../../components/HomePage/ModalLayout";
 import MobileNavbar from "../../components/HomePage/NavBar/MobileNavBar";
 import NavBar from "../../components/NavBar";
+import { usePostHttp } from "../../hooks/postHttp";
+import { useUserManagementHook } from "../../hooks/userManagementHook";
+import { DoLogin } from "../../redux/actions/UserAction";
 
-export default function StockKnowledgeAtITU() {
+export default function StockKnowledgeAtITU(props) {
+  useUserManagementHook();
+  const dispatch = useDispatch();
+
+  const [session, loading] = useSession();
+
   const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const user = useSelector((state) => state.UserReducer);
+
+  const [toLogin, setToLogin] = useState(false);
+
+  const [authLoginLoading, authData] = usePostHttp(
+    !user.isLogin && session && toLogin
+      ? { name: session.user.name, email: session.user.email }
+      : null,
+    toLogin ? "/login/auth" : null
+  );
+
+  useEffect(() => {
+    if (session) {
+      setToLogin(true);
+    }
+  }, [session]);
+
+  useEffect(() => {
+    if (authData.success) {
+      setLoginModalOpen(false);
+      dispatch(DoLogin(true, authData.result));
+    }
+  }, [authData]);
+
+  useEffect(() => {
+    if (user.data && !user.data.verified) setLoginModalOpen(true);
+  }, [user]);
 
   return (
     <>
-      {loginModalOpen && <LoginModal showModal={setLoginModalOpen} />}
+      <Head>
+        <title>Stock Knowledge at ITU</title>
+        <meta
+          property="og:url"
+          content={`${process.env.WEBSITE_DOMAIN}/articles/learning-in-the-digital-age`}
+        />
+        <meta property="og:type" content="article" />
+        <meta property="fb:app_id" content={process.env.FACEBOOK_ID} />
+        <meta
+          property="og:title"
+          content={`Stock Knowledge at ITU - ${process.env.WEBSITE_NAME}`}
+        />
+        <meta property="og:description" content="Stock Knowledge at ITU" />
+        <meta
+          property="og:image"
+          content={`${process.env.WEBSITE_DOMAIN}/images/articles/stock-knowledge-at-itu/header-img.svg`}
+        />
+      </Head>
+      {loginModalOpen && (
+        <ModalLayout
+          providers={props.providers}
+          showModal={setLoginModalOpen}
+        />
+      )}
+
       <MobileNavbar />
       <NavBar
         page="article"
@@ -33,14 +97,9 @@ export default function StockKnowledgeAtITU() {
         <div className="xl:w-1/4 lg:w-1/4 md:w-1/4 reno:w-1/4 sm:w-full xs:w-full">
           <p>Share this article</p>
           <div className="w-full h-10 flex items-center text-blue space-x-2">
-            <img
-              className="w-8 h-8 p-1 bg-blue-400 rounded-full inline-block"
-              src="/images/share/facebook.svg"
-            />
-            <img
-              className="w-8 h-8 p-1 bg-blue-400 rounded-full inline-block"
-              src="/images/share/twitter.svg"
-            />
+            <FacebookShareButton url="http://localhost:3000/articles/stock-knowledge-at-itu">
+              <FacebookIcon size={36} />
+            </FacebookShareButton>
           </div>
         </div>
         <div className="xl:w-11/12 lg:w-11/12 md:w-11/12 reno:w-11/12 sm:w-full xs:w-full leading-relaxed">
@@ -93,4 +152,8 @@ export default function StockKnowledgeAtITU() {
       <Footer />
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  return { props: { providers: await providers(context) } };
 }

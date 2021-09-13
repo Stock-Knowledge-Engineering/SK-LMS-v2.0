@@ -34,11 +34,21 @@ export default function Home(props) {
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
 
+  const [toSubmit, setToSubmit] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
   const [authLoginLoading, authData] = usePostHttp(
     !user.isLogin && session && toLogin
       ? { name: session.user.name, email: session.user.email }
       : null,
     toLogin ? "/login/auth" : null
+  );
+
+  const [requestLoading, requestData] = usePostHttp(
+    toSubmit ? { name: name, email: email, message: message } : null,
+    toSubmit ? "/request/demo" : null
   );
 
   const [screenLoading, screenData] = usePostHttp(
@@ -73,8 +83,19 @@ export default function Home(props) {
   }, [signup]);
 
   useEffect(() => {
-    if (user.data && !user.data.verified) setLoginModalOpen(true);
+    if (user.isLogin && user.data && !user.data.verified)
+      setLoginModalOpen(true);
   }, [user]);
+
+  useEffect(() => {
+    if (requestData) {
+      setToSubmit(false);
+      setName("");
+      setEmail("");
+      setMessage("");
+      alert("Our representative will contact you soon. Thank you.");
+    }
+  }, [requestData]);
 
   useEffect(() => {
     if (forgotpassword) setLoginModalOpen(true);
@@ -342,12 +363,14 @@ export default function Home(props) {
         </h4>
         <div className="flex w-full lg:flex-row md:flex-col reno:flex-col sm:flex-col xs:flex-col xxs:flex-col lg:space-y-0 md:space-y-10 reno:space-y-10 sm:space-y-10 xs:space-y-10 xxs:space-y-10 xs:items-center xxs:items-center md:justify-around my-16 px-10">
           <div className="lg:w-1/2 md:w-full reno:w-full sm:w-full xs:w-full xxs:w-full self-start 1080:px-20">
-            <form className="space-y-4">
+            <div className="space-y-4">
               <div>
                 <label className="text-lg font-bold text-subheading">
                   Name:
                 </label>
                 <input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="w-full text-subheading"
                   type="text"
                   placeholder="Ex. Juan Dela Cruz"
@@ -358,6 +381,8 @@ export default function Home(props) {
                   Email:
                 </label>
                 <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full border-subheading"
                   type="text"
                   placeholder="something@website.com"
@@ -368,14 +393,21 @@ export default function Home(props) {
                   Message:
                 </label>
                 <br />
-                <textarea className="w-full text-subheading"></textarea>
+                <textarea
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="w-full text-subheading"
+                ></textarea>
               </div>
               <input
+                onClick={() => {
+                  setToSubmit(true);
+                }}
                 className="w-full h-10 bg-blue-500 rounded-full text-white uppercase"
                 type="submit"
-                value="Send a message"
+                value={toSubmit ? "Sending your request..." : "Send a message"}
               />
-            </form>
+            </div>
           </div>
           <div className="lg:w-1/2 md:w-full reno:w-full xs:w-full xxs:w-full md:space-y-5 reno:space-y-5 sm:space-y-5 xs:space-y-5 xxs:space-y-5 self-start 1080:px-20">
             <div className="flex items-center text-blue-500">

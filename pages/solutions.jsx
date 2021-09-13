@@ -70,7 +70,7 @@ const Solutions = () => {
       <NavBar showModal={setLoginModalOpen} />
       <div id="home" className="sm:w-screen xs:w-screen">
         <div className="hero text-white px-20 py-10 space-y-2 md:w-full xs:w-screen">
-          <h1 className="text-center xl:text-6xl lg:text-6xl md:text-6xl sm:text-xl xs:text-xl xl:w-3/4 lg:w-3/4 md:w-full reno:w-full sm:w-full xs:w-full font-bold">
+          <h1 className="text-center xl:text-6xl lg:text-6xl md:text-6xl sm:text-xl xs:text-xl xl:w-full lg:w-full md:w-full reno:w-full sm:w-full xs:w-full font-bold">
             Our Offers
           </h1>
         </div>
@@ -95,8 +95,11 @@ const Solutions = () => {
         <div className="md:w-full xs:w-screen xxs:w-screen md:flex-row xs:flex-col-reverse xxs:flex-col-reverse p-6 h-1/4 flex items-center">
           <div className="md:w-1/2 px-14 md:text-right xs:text-center xxs:text-center">
             <p>
-              <a href="https://play.google.com/store/apps/details?id=com.StockKnowledge.StockKnowledgeApp" className="text-lg text-subheading">
-                Download Stock Knowledge VR on google playstore
+              <a
+                href="https://play.google.com/store/apps/details?id=com.StockKnowledge.StockKnowledgeApp"
+                className="text-lg text-subheading hover:text-skBlue"
+              >
+                Download Stock Knowledge VR on Google Play
               </a>
             </p>
             <br />
@@ -117,13 +120,28 @@ const Solutions = () => {
             </p>
             <ul className="text-subheading">
               <li>
-                <a href="https://drive.google.com/file/d/1_lbZ5IhXlcnUOk5XozQsPVApJGMmEq4Q/view?usp=sharing">Version 13-6</a>
+                <a
+                  className=" hover:text-skBlue"
+                  href="https://drive.google.com/file/d/1_lbZ5IhXlcnUOk5XozQsPVApJGMmEq4Q/view?usp=sharing"
+                >
+                  Version 13-6
+                </a>
               </li>
               <li>
-                <a href="https://drive.google.com/file/d/1O9hFuADXEK7pwtNonSIO3MKex7hQCfjv/view?usp=sharing">Version 14-7</a>
+                <a
+                  className=" hover:text-skBlue"
+                  href="https://drive.google.com/file/d/1O9hFuADXEK7pwtNonSIO3MKex7hQCfjv/view?usp=sharing"
+                >
+                  Version 14-7
+                </a>
               </li>
               <li>
-                <a href="https://drive.google.com/file/d/1m4OHXbySpCaP9--vupA6dHnqkf61-SrR/view?usp=sharing">Version 14-8</a>
+                <a
+                  className=" hover:text-skBlue"
+                  href="https://drive.google.com/file/d/1m4OHXbySpCaP9--vupA6dHnqkf61-SrR/view?usp=sharing"
+                >
+                  Version 14-8
+                </a>
               </li>
             </ul>
           </div>
@@ -151,7 +169,9 @@ const Solutions = () => {
         </div>
         <div className="md:w-full xs:w-screen xxs:w-screen md:flex-row xs:flex-col-reverse xxs:flex-col-reverse p-6 h-1/4 flex items-center">
           <div className="md:w-1/2 px-14 md:text-right xs:text-center xxs:text-center">
-            <p className="text-4xl font-bold text-blue-500">Adaptive Learning</p>
+            <p className="text-4xl font-bold text-blue-500">
+              Adaptive Learning
+            </p>
             <p className="text-xl"> that uses Artificial Intelligence</p>
 
             <br />

@@ -3,16 +3,49 @@ import Footer from "../../components/Footer";
 import MobileNavbar from "../../components/HomePage/NavBar/MobileNavBar";
 import ArticleNavbar from "../../components/NavBar";
 import ModalLayout from "../../components/HomePage/ModalLayout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUserManagementHook } from "../../hooks/userManagementHook";
 import Head from "next/head";
 import { FacebookIcon, FacebookShareButton } from "react-share";
-import { env } from "../../next.config";
+import { providers, useSession } from "next-auth/client";
+import { useDispatch, useSelector } from "react-redux";
+import { DoLogin } from "../../redux/actions/UserAction";
+import { usePostHttp } from "../../hooks/postHttp";
 
-export default function DigitalLearning1() {
+export default function DigitalLearning1(props) {
   useUserManagementHook();
+  const dispatch = useDispatch();
+
+  const [session, loading] = useSession();
 
   const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const user = useSelector((state) => state.UserReducer);
+
+  const [toLogin, setToLogin] = useState(false);
+
+  const [authLoginLoading, authData] = usePostHttp(
+    !user.isLogin && session && toLogin
+      ? { name: session.user.name, email: session.user.email }
+      : null,
+    toLogin ? "/login/auth" : null
+  );
+
+  useEffect(() => {
+    if (session) {
+      setToLogin(true);
+    }
+  }, [session]);
+
+  useEffect(() => {
+    if (authData.success) {
+      setLoginModalOpen(false);
+      dispatch(DoLogin(true, authData.result));
+    }
+  }, [authData]);
+
+  useEffect(() => {
+    if (user.data && !user.data.verified) setLoginModalOpen(true);
+  }, [user]);
 
   return (
     <>
@@ -41,7 +74,12 @@ export default function DigitalLearning1() {
         path="New look, same goals– here’s Stock Knowledge’s promise to the future"
       />
 
-      {loginModalOpen && <ModalLayout showModal={setLoginModalOpen} />}
+      {loginModalOpen && (
+        <ModalLayout
+          providers={props.providers}
+          showModal={setLoginModalOpen}
+        />
+      )}
 
       <div className="hero text-white px-20 py-10 space-y-2 md:w-full xs:w-screen">
         <h1 className="xl:text-6xl lg:text-6xl md:text-6xl sm:text-xl xs:text-xl xl:w-3/4 lg:w-3/4 md:w-full reno:w-full sm:w-full xs:w-full font-bold">
@@ -62,14 +100,6 @@ export default function DigitalLearning1() {
             <FacebookShareButton url="http://localhost:3000/articles/digital-learning-1.0">
               <FacebookIcon size={36} />
             </FacebookShareButton>
-            {/* <img
-              className="w-8 h-8 p-1 bg-blue-400 rounded-full inline-block"
-              src="/images/share/facebook.svg"
-            />
-            <img
-              className="w-8 h-8 p-1 bg-blue-400 rounded-full inline-block"
-              src="/images/share/twitter.svg"
-            /> */}
           </div>
         </div>
         <div className="xl:w-11/12 lg:w-11/12 md:w-11/12 reno:w-11/12 sm:w-full xs:w-full leading-relaxed">
