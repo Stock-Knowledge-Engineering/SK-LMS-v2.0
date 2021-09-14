@@ -28,9 +28,7 @@ const NavBar = ({ showModal }) => {
   );
 
   return (
-    <div
-      className={`xxs:hidden md:flex sm:hidden xs:hidden lg:w-full reno:w-full md:w-full sm:w-screen xs:w-screen p-4 h-20 justify-between items-center`}
-    >
+    <div className="hidden container md:flex md:w-full p-4 h-20 justify-between items-center">
       <a
         href="/"
         className="lg:w-1/4 md:w-1/12 flex items-center text-xl text-heading space-x-2"
@@ -54,14 +52,9 @@ const NavBar = ({ showModal }) => {
             <a href="/#story">Story</a>
           </li>
           <li>
-            <a href="/#team">Team</a>
-          </li>
-          <li>
             <a href="/#testimonial">Testimonials</a>
           </li>
-          <li>
-            <a href="/#partners">Partners</a>
-          </li>
+
           <li>
             <a href="/#articles">Articles</a>
           </li>

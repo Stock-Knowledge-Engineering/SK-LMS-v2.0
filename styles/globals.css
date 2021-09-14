@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Avenir";
+  src: url("/AvenirLTStd-Roman.otf");
+}
+
+html,
+body {
+  @apply font-avenir;
+}
+
 #dash-menu {
   background: #173245;
 }
