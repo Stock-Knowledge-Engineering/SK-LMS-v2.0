@@ -5,16 +5,21 @@ import Menu from "../components/Admin/Menu/Menu";
 import Home from "../components/Admin/Home/Home";
 
 import { useRouter } from "next/dist/client/router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Subjects from "../components/Admin/Subject/Subjects";
 import BrandLogo from "../components/NavBar/BrandLogo/BrandLogo";
 import Search from '../components/NavBar/Search/Search';
 import SecondaryMenu from '../components/NavBar/SecondaryMenu';
+import { useEffect } from "react";
+import { usePostHttp } from "../hooks/postHttp";
 
 const AdminLayout = (props) => {
+  const [validTokenLoading, validToken] = usePostHttp(null, '/auth/validate');
+
   const router = useRouter();
   const user = useSelector((state) => state.UserReducer);
+  const dispatch = useDispatch();
 
   const { slug } = router.query;
 
@@ -26,6 +31,11 @@ const AdminLayout = (props) => {
       className={`cursor-pointer hover:text-subheading`}
     />
   );
+
+  useEffect(() => {
+    if(validToken && !validToken.success)
+      dispatch(UserLogout(false))
+  },[validToken])
 
   return (
     <>

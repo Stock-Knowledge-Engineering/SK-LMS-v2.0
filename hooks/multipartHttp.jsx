@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
 
 export const useMultipartHttp = (data, endpoint) => {
+  const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState(false);
 
@@ -11,10 +13,16 @@ export const useMultipartHttp = (data, endpoint) => {
   }, [data]);
 
   useEffect(() => {
-    if (isLoading)
+    if (isLoading) {
+      console.log(data);
       fetch(`${process.env.SERVER_DOMAIN}${endpoint}`, {
         method: "POST",
-        body: data
+        credentials: "include",
+        headers: {
+          "Access-Control-Allow-Origin": process.env.WEBSITE_DOMAIN,
+          token: cookies["token"],
+        },
+        body: data,
       })
         .then((res) => {
           try {
@@ -28,6 +36,7 @@ export const useMultipartHttp = (data, endpoint) => {
         .then((res) => {
           setSuccess(res);
         });
+    }
   }, [isLoading]);
 
   useEffect(() => {

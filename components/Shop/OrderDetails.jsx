@@ -2,16 +2,17 @@ import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHttp } from "../../hooks/http";
 import { useMultipartHttp } from "../../hooks/multipartHttp";
 import { usePostHttp } from "../../hooks/postHttp";
+import { UserLogout } from "../../redux/actions/UserAction";
 import { isMobile } from "../../Utilities";
 
 const OrderDetails = () => {
   const router = useRouter();
   const user = useSelector((state) => state.UserReducer);
-
+  const dispatch = useDispatch();
   const { orderid } = router.query;
 
   const [proof, setProof] = useState(null);
@@ -56,6 +57,9 @@ const OrderDetails = () => {
   useEffect(() => {
     if (updateOrderData && updateOrderData.result && updateOrderData.result.success)
       setToUpdateOrder(false);
+
+    if(!updateOrderData.success && updateOrderData.result == 'Invalid token')
+      dispatch(UserLogout(false));  
   }, [updateOrderData]);
 
   return (

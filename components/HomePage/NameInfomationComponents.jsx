@@ -13,8 +13,6 @@ const NameInfomationComponents = ({
   setLastName,
   setStep,
 }) => {
-  const [schoolsLoading, schools] = useHttp("/schools", []);
-  const [gradelevelsLoading, gradeLevels] = useHttp(`/grade-levels?`, []);
 
   const [disable, setDisable] = useState(true);
 

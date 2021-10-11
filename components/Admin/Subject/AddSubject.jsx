@@ -1,11 +1,13 @@
 import { useRouter } from "next/dist/client/router";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useMultipartHttp } from "../../../hooks/multipartHttp";
+import { UserLogout } from "../../../redux/actions/UserAction";
 
 const AddSubject = () => {
   const router = useRouter();
-
+  const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("");
   const [description, setDescription] = useState("");
@@ -16,7 +18,6 @@ const AddSubject = () => {
   const [isLoading, data] = useMultipartHttp(toSubmit ? formData : null, `/subject/add`)
 
   useEffect(() => {
-
     let formData = new FormData();
 
     formData.append('title', title)
@@ -25,12 +26,13 @@ const AddSubject = () => {
     formData.append('icon', icon)
 
     setFormData(formData);
-
   },[title, description, color, icon])
 
   useEffect(() => {
-    if(data)
+    if(data.success)
       router.push('/admin/courses', undefined, {scroll: false, shallow: true});
+    if(!data.success && data.result == 'Invalid token')
+      dispatch(UserLogout(false));
   },[data])
 
   return (

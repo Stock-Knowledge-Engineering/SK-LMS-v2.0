@@ -10,9 +10,6 @@ import { usePostHttp } from "../hooks/postHttp";
 import { useUserManagementHook } from "../hooks/userManagementHook";
 import Checkout from "../components/Shop/Checkout";
 import OrderDetails from "../components/Shop/OrderDetails";
-import MiniProfile from "../components/NavBar/MiniProfile";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "../components/HomePage/NavBar/NavBar";
 import Orders from "../components/Shop/Orders";
 

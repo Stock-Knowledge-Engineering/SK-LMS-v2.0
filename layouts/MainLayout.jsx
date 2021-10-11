@@ -7,14 +7,20 @@ import SecondaryMenu from "../components/NavBar/SecondaryMenu";
 import Search from "../components/NavBar/Search/Search";
 import BrandLogo from "../components/NavBar/BrandLogo/BrandLogo";
 import { useRouter } from "next/dist/client/router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Courses from "../components/LMS/Courses/Courses";
 import Course from "../components/LMS/Course/Course";
 import CourseTopic from "../components/LMS/CourseTopic/CourseTopic";
+import { usePostHttp } from "../hooks/postHttp";
+import { useEffect } from "react";
+import { UserLogout } from "../redux/actions/UserAction";
 
 export default function MainLayout(props) {
+  const [validTokenLoading, validToken] = usePostHttp(null, '/auth/validate');
+  
   const router = useRouter();
   const user = useSelector((state) => state.UserReducer);
+  const dispatch = useDispatch();
 
   const { slug } = router.query;
 
@@ -26,6 +32,12 @@ export default function MainLayout(props) {
       className={`cursor-pointer hover:text-subheading`}
     />
   );
+
+  useEffect(() => {
+    if(validToken && !validToken.success)
+      dispatch(UserLogout(false))
+  },[validToken])
+
   return (
     <>
       <div className="relative">

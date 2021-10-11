@@ -1,23 +1,33 @@
 import { useRouter } from "next/dist/client/router";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHttp } from "../../hooks/http";
+import { UserLogout } from "../../redux/actions/UserAction";
 import { isMobile } from "../../Utilities";
 
 const Orders = () => {
   const router = useRouter();
   const user = useSelector((state) => state.UserReducer);
+  const dispatch = useDispatch();
 
   const { orderid } = router.query;
   const [ordersLoading, orders] = useHttp(`/orders?creatorid=${user.data.id}`, [
     orderid,
   ]);
 
+  useEffect(()=> {
+    if(orders && !orders.success && orders.data == 'Invalid token'){
+      // dispatch(UserLogout(false));
+    }
+  },[orders])
+
+
   return (
     <div className="box-border px-16 py-20">
       <h1 className="text-heading text-2xl font-bold">Orders</h1>
       <br />
       {isMobile() &&
-        orders &&
+        orders && orders.success &&
         orders.result.map((elm) => {
           return (
             <table onClick={() => router.push(`/order?orderid=${elm.id}`)} key={elm.key} className="w-full text-subheading cursor-pointer mb-4">
@@ -81,7 +91,7 @@ const Orders = () => {
             </tr>
           </thead>
           <tbody>
-            {orders &&
+            {orders && orders.success &&
               orders.result.map((elm) => {
                 return (
                   <tr

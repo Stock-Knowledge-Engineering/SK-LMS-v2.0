@@ -1,11 +1,19 @@
 import { useRouter } from "next/dist/client/router";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useHttp } from "../../../hooks/http";
 import TopicsTableRow from "./TopicsTableRow";
 
 const TopicsTable = () => {
   const router = useRouter();
-
+  const dispatch = useDispatch();
   const [topicsLoading, topics] = useHttp('/topics',[router.query])
+
+  useEffect(() => {
+    if(topics && topics.success == false && topics.result == 'Invalid token'){
+      dispatch(UserLogout(false));
+    }
+  },[topics])
 
   return (
     <>
@@ -18,7 +26,7 @@ const TopicsTable = () => {
           </tr>
         </thead>
         <tbody>
-          {topics && topics.map(elm => {
+          {topics && topics.success && topics.result.map(elm => {
             return (
               <TopicsTableRow subject={elm} />
             )

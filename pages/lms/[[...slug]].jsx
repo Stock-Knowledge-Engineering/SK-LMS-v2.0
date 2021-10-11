@@ -3,14 +3,11 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import MainLayout from "../../layouts/MainLayout";
 
-import Start from "../../components/Start";
-
 import { SocketContext, socket } from "../../context/socket";
 
 import { useUserManagementHook } from "../../hooks/userManagementHook";
 import { useRouter } from "next/dist/client/router";
 import LMSMobileLayout from "../../layouts/LMSMobileLayout";
-import ModalLayout from "../../components/HomePage/ModalLayout";
 import FormWrapper from "../../components/HomePage/FormWrapper";
 
 export default function Index(props) {

@@ -5,7 +5,7 @@ import Menu from "../components/Teacher/Menu/Menu";
 import Home from "../components/Teacher/Home/Home";
 
 import { useRouter } from "next/dist/client/router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Topic from "../components/Teacher/Topic/Topic";
 import Topics from "../components/Teacher/Topics/Topics";
@@ -14,10 +14,15 @@ import Search from '../components/NavBar/Search/Search';
 import SecondaryMenu from '../components/NavBar/SecondaryMenu';
 
 import TopicMaintenance from '../components/Teacher/Maintenance/Topics/Topics';
+import { useEffect } from "react";
+import { usePostHttp } from "../hooks/postHttp";
 
 const TeacherLayout = (props) => {
+  const [validTokenLoading, validToken] = usePostHttp(null, '/auth/validate');
+
   const router = useRouter();
   const user = useSelector((state) => state.UserReducer);
+  const dispatch = useDispatch();
 
   const { slug } = router.query;
 
@@ -29,6 +34,11 @@ const TeacherLayout = (props) => {
       className={`cursor-pointer hover:text-subheading`}
     />
   );
+
+  useEffect(() => {
+    if(validToken && !validToken.success)
+      dispatch(UserLogout(false))
+  },[validToken])
 
   return (
     <>

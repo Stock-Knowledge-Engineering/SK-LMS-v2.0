@@ -32,7 +32,11 @@ const AccountVerificationForm = ({ showModal, setForm, userid }) => {
   useEffect(() => {
     if (accountVerified.success) {
       dispatch(DoAccountVerification(accountVerified.success));
-    } else setToSubmit(false);
+    } else{ 
+      setToSubmit(false);
+      dispatch(UserLogout(false));
+      setForm("login");
+    }
   }, [accountVerified]);
 
   useEffect(() => {

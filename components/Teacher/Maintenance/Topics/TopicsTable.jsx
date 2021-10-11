@@ -18,7 +18,7 @@ const TopicsTable = () => {
           </tr>
         </thead>
         <tbody>
-          {topics && topics.map(elm => {
+        {topics && topics.success && topics.result.map(elm => {
             return (
               <TopicsTableRow subject={elm} />
             )

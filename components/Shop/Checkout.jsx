@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { usePostHttp } from "../../hooks/postHttp";
+import { UserLogout } from "../../redux/actions/UserAction";
 import { isMobile } from "../../Utilities";
 import EmailField from "../EmailField";
 import NumberField from "../NumberField";
@@ -13,7 +14,7 @@ import TextField from "../TextField";
 const Checkout = ({ quantity, setQuantity }) => {
   const router = useRouter();
   const user = useSelector((state) => state.UserReducer);
-
+  const dispatch = useDispatch();
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [mobileno, setMobileNo] = useState("");
@@ -74,6 +75,10 @@ const Checkout = ({ quantity, setQuantity }) => {
     if (payData.success) {
       setSubmit(false);
       router.push(`/order?orderid=${payData.result.orderid}`);
+    }
+    
+    if(!payData.success && payData.result == 'Invalid token'){
+      dispatch(UserLogout(false))
     }
   }, [payData]);
 

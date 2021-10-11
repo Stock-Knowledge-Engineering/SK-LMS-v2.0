@@ -4,7 +4,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/dist/client/router";
-import { useRef, useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UserLogout } from "../../../redux/actions/UserAction";
 
@@ -28,7 +27,9 @@ const NavBar = ({ showModal }) => {
   );
 
   return (
-    <div className="hidden container md:flex md:w-full p-4 h-20 justify-between items-center">
+    <div
+      className={`xxs:hidden md:flex sm:hidden xs:hidden lg:w-full reno:w-full md:w-full sm:w-screen xs:w-screen p-4 h-20 justify-between items-center`}
+    >
       <a
         href="/"
         className="lg:w-1/4 md:w-1/12 flex items-center text-xl text-heading space-x-2"
@@ -52,9 +53,14 @@ const NavBar = ({ showModal }) => {
             <a href="/#story">Story</a>
           </li>
           <li>
+            <a href="/#team">Team</a>
+          </li>
+          <li>
             <a href="/#testimonial">Testimonials</a>
           </li>
-
+          <li>
+            <a href="/#partners">Partners</a>
+          </li>
           <li>
             <a href="/#articles">Articles</a>
           </li>
@@ -70,10 +76,7 @@ const NavBar = ({ showModal }) => {
                 <div className="hidden absolute top-12 right-0 w-auto h-auto px-4 py-2 bg-white rounded-lg shadow font-semibold group-hover:block">
                   <div
                     onClick={() =>
-                      router.push(`/orders`, undefined, {
-                        shallow: true,
-                        scroll: false,
-                      })
+                      router.push(`/orders`)
                     }
                     className="py-2 cursor-pointer"
                   >
@@ -81,10 +84,7 @@ const NavBar = ({ showModal }) => {
                   </div>
                   <div
                     onClick={() =>
-                      router.push(`/lms`, undefined, {
-                        shallow: true,
-                        scroll: false,
-                      })
+                      router.push(`/lms`)
                     }
                     className="py-2 cursor-pointer"
                   >
@@ -94,10 +94,7 @@ const NavBar = ({ showModal }) => {
                     user.data.title == "admin") && (
                     <div
                       onClick={() =>
-                        router.push(`/teacher`, undefined, {
-                          shallow: true,
-                          scroll: false,
-                        })
+                        router.push(`/teacher`)
                       }
                       className="py-2 cursor-pointer"
                     >
@@ -107,10 +104,7 @@ const NavBar = ({ showModal }) => {
                   {user.data.title == "admin" && (
                     <div
                       onClick={() =>
-                        router.push(`/admin`, undefined, {
-                          shallow: true,
-                          scroll: false,
-                        })
+                        router.push(`/admin`)
                       }
                       className="py-2 cursor-pointer"
                     >

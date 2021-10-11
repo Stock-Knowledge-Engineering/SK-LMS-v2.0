@@ -3,8 +3,12 @@ import { socket, SocketContext } from "../../../context/socket";
 import { useHttp } from "../../../hooks/http";
 
 import { BarChart, XAxis, YAxis, Bar, Tooltip, CartesianGrid } from "recharts";
+import { useDispatch } from "react-redux";
+import { UserLogout } from "../../../redux/actions/UserAction";
 
 const Home = () => {
+  const dispatch = useDispatch()
+
   const [studentPerSchoolsCountLoading, studentPerSchoolCount] = useHttp(
     "/analytics/count/student/school",
     []
@@ -25,28 +29,10 @@ const Home = () => {
     []
   );
 
-  const [onlineUserCount, setOnlineUserCount] = useState(0);
-
-
   useEffect(() => {
-    // let data = {
-    //   id: 1,
-    //   username: "admin",
-    //   type: "1",
-    // };
-    // data ? socket.emit("CONNECT", data) : null;
-  }, []);
-
-  useEffect(() => {
-    // socket.emit("ONLINE_USER_COUNT");
-    // socket.on("ONLINE_USER_COUNT", (data) => {
-    //   setOnlineUserCount(data);
-    // });
-    // socket.emit("REGISTERED_USER_COUNT");
-    // socket.on("REGISTERED_USER_COUNT", (data) => {
-    //   setRegisteredUserCount(data);
-    // });
-  });
+    if(studentPerSchoolCount && studentWithSchoolsCount && studentFavoriteSubjectCount && registeredUserCount && !studentPerSchoolCount.success && !studentWithSchoolsCount.success && !studentFavoriteSubjectCount.success && !registeredUserCount.success)
+      dispatch(UserLogout(false))
+  },[studentPerSchoolCount, studentWithSchoolsCount, studentFavoriteSubjectCount, registeredUserCount])
 
   return (
     <div className="relative w-full p-10 flex flex-col border min-h-content bg-blue-50 space-y-4">

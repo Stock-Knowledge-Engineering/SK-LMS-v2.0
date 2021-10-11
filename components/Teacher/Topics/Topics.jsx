@@ -2,7 +2,6 @@ import { useRouter } from "next/dist/client/router";
 import AddTopic from "./AddTopic";
 import EditTopic from "./EditTopic";
 import TopicsPortal from "../../Portal";
-import TopicsSideNav from "./TopicsSideNav";
 import TopicsTable from "./TopicsTable";
 
 const Topics = () => {
