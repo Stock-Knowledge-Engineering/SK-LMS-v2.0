@@ -44,7 +44,7 @@ const TermsAndPolicyComponents = (props) => {
             <span>Privacy Policy</span>
           </div>
         </div>
-        <div className="overflow-y-scroll h-96">
+        <div className="overflow-y-scroll scrollbar h-96">
           {article == "terms" && <TermsOfUseArticle />}
           {article == "policy" && <PrivacyPolicyArticle />}
         </div>
