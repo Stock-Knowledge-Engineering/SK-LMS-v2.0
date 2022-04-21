@@ -4,8 +4,12 @@ import {
   faCheckDouble,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  
+  const user = useSelector((state) => state.UserReducer);
+
   const pieChartIcon = (
     <FontAwesomeIcon
       icon={faChartPie}
