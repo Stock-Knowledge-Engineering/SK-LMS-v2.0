@@ -16,12 +16,9 @@ const Footer = (props) => {
           </h4>
         </a>
         <div className="lg:w-3/4 md:w-3/4 reno:w-3/4 sm:w-full xs:w-full xxs:w-full flex items-center lg:justify-end md:justify-end reno:justify-end sm:justify-center xs:justify-center xxs:justify-center text-md text-white space-x-5">
-          <Link className="text-sm" href="/terms-and-policy?policy=true">
-            Privacy Policy
-          </Link>
-          <Link href="/terms-and-policy?terms=true">
-            Terms
-          </Link>
+          <a className="text-sm" href="/terms-and-policy" target="_blank" >
+            Privacy Policy & Terms
+          </a>
           <div className="flex align-center space-x-4">
             <a href="https://www.facebook.com/StockKnowledgetool">
               <img src="/images/facebook.svg" />
@@ -70,7 +67,7 @@ const Footer = (props) => {
           </li>
         </ul>
         <div className="lg:w-1/4 md:w-full reno:w-full xs:w-full xxs:w-full flex align-center lg:justify-end md:justify-center reno:justify-center sm:justify-center xs:justify-center xxs:justify-center sm:text-sm xs:text-sm xxs:text-sm">
-          <p className="">© 2021 Stock Knowledge. All rights reserved.</p>
+          <p className="">© 2022 Stock Knowledge. All rights reserved.</p>
         </div>
       </div>
     </div>
