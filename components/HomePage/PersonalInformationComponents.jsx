@@ -44,6 +44,10 @@ const PersonalInformationComponent = ({
       setDisable(false);
     if (mobileno.match(/^[0-9]*/) <= 1)
       setDisable(true); 
+    if (gender == 1)
+      setDisable(false);
+    if (gender == 0)
+      setDisable(true);
   }, [gender, mobileno]);
 
   useEffect(() => {
