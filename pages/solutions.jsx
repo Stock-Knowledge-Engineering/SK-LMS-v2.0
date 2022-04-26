@@ -117,7 +117,7 @@ const Solutions = () => {
             </p>
             <br />
             <p href="#" className="text-lg text-subheading">
-              Download the APK for AR AND VR contents:
+              Download the APK for AR and VR contents:
             </p>
             <ul className="text-subheading">
               <li>
