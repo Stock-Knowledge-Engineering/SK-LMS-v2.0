@@ -69,13 +69,20 @@ const Solutions = () => {
       <MobileNavbar showModal={setLoginModalOpen} />
       <NavBar showModal={setLoginModalOpen} />
       <div id="home" className="sm:w-screen xs:w-screen">
-        <div className="hero text-white px-20 py-10 space-y-2 md:w-full xs:w-screen">
+        <div className="text-white px-20 py-44 space-y-2 md:w-full xs:w-screen"
+            style={{
+              background:
+                "url('images/Our_Offers.png') no-repeat",
+              backgroundSize: "cover"
+            }}>
           <h1 className="text-center xl:text-6xl lg:text-6xl md:text-6xl sm:text-xl xs:text-xl xl:w-full lg:w-full md:w-full reno:w-full sm:w-full xs:w-full font-bold">
             Our Offers
           </h1>
         </div>
+        <br />
+        <br />
         <div className="md:w-full xs:w-screen xxs:w-screen md:flex-row xs:flex-col xxs:flex-col p-6 h-1/4 flex items-center">
-          <div className="md:w-1/2 flex justify-end px-14">
+          <div className="md:w-1/2 flex justify-end px-14 transform hover:bg-white transition duration-500 hover:scale-105">
             <img src={`${process.env.ASSETS_DOMAIN}/public/01-lms.png`} />
           </div>
           <div className="md:w-1/2 px-14 md:text-left xs:text-center xxs:text-center">
@@ -117,7 +124,7 @@ const Solutions = () => {
             </p>
             <br />
             <p href="#" className="text-lg text-subheading">
-              Download the APK for AR and VR contents:
+              Download the APK for AR AND VR contents:
             </p>
             <ul className="text-subheading">
               <li>
@@ -158,12 +165,12 @@ const Solutions = () => {
               </li>
             </ul>
           </div>
-          <div className="md:w-1/2 px-14">
+          <div className="md:w-1/2 px-14 transform hover:bg-white transition duration-500 hover:scale-105">
             <img src={`${process.env.ASSETS_DOMAIN}/public/02 - XR.png`} />
           </div>
         </div>
         <div className="md:w-full xs:w-screen xxs:w-screen md:flex-row xs:flex-col xxs:flex-col p-6 h-1/4 flex items-center">
-          <div className="md:w-1/2 flex justify-end px-14">
+          <div className="md:w-1/2 flex justify-end px-14 transform hover:bg-white transition duration-500 hover:scale-105">
             <img
               src={`${process.env.ASSETS_DOMAIN}/public/03 - gamified.png`}
             />
@@ -193,14 +200,14 @@ const Solutions = () => {
               personalized studying
             </p>
           </div>
-          <div className="md:w-1/2 px-14">
+          <div className="md:w-1/2 px-14 transform hover:bg-white transition duration-500 hover:scale-105">
             <img
               src={`${process.env.ASSETS_DOMAIN}/public/04 - adaptive.png`}
             />
           </div>
         </div>
         <div className="md:w-full xs:w-screen xxs:w-screen md:flex-row xs:flex-col xxs:flex-col p-6 h-1/4 flex items-center">
-          <div className="md:w-1/2 flex justify-end px-14">
+          <div className="md:w-1/2 flex justify-end px-14 transform hover:bg-white transition duration-500 hover:scale-105">
             <img src={`${process.env.ASSETS_DOMAIN}/public/05 - tech.png`} />
           </div>
           <div className="md:w-1/2 px-14 md:text-left xs:text-center xxs:text-center">
@@ -223,7 +230,7 @@ const Solutions = () => {
               Needed to enjoy Stock Knowledge XR and webXR contents
             </p>
           </div>
-          <div className="md:w-1/2 px-14">
+          <div className="md:w-1/2 px-14 transform hover:bg-white transition duration-500 hover:scale-105">
             <img src={`${process.env.ASSETS_DOMAIN}/public/06 - vrbox.png`} />
           </div>
         </div>
