@@ -7,10 +7,10 @@ const options = {
             clientId: process.env.FACEBOOK_ID,
             clientSecret: process.env.FACEBOOK_SECRET
         }),
-        // Providers.Google({
-        //     clientId: "",
-        //     clientSecret: " "
-        // })
+        Providers.Google({
+            clientId: "",
+            clientSecret: " "
+        })
     ],
     pages: {
         signIn: '/'
