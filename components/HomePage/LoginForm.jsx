@@ -70,7 +70,7 @@ const LoginForm = ({ providers, session, showModal, setForm }) => {
                   onClick={() => {
                     signIn(provider.id);
                   }}
-                  className="w-44 flex items-center justify-center border text-xl text-subheading p-4 rounded-full"
+                  className="w-40 flex items-center justify-center border text-xl text-subheading p-4 rounded-full"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -82,7 +82,7 @@ const LoginForm = ({ providers, session, showModal, setForm }) => {
                 </button>
               );
           })}
-        {/* {providers &&
+        {providers &&
           Object.values(providers).map((provider) => {
             if (provider.name === "Google")
             return (
@@ -91,7 +91,7 @@ const LoginForm = ({ providers, session, showModal, setForm }) => {
                   onClick= {() => {
                     signIn(provider.id);
                   }}
-                  className="w-44 flex items-center text-center justify-center border text-xl text-subheading p-2 rounded-full">
+                  className="w-40 flex items-center text-center justify-center border text-xl text-subheading p-2 rounded-full">
                   <svg
                     className="w-8 h-8"
                     viewBox="0 0 24 24"
@@ -197,7 +197,7 @@ const LoginForm = ({ providers, session, showModal, setForm }) => {
                   Google
                 </button>
             )
-         })} */}
+         })}
       </div>
       <p className="mt-5 text-xl text-subheading">or</p>
       <TextField
