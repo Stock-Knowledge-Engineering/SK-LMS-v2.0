@@ -235,7 +235,7 @@ const Solutions = () => {
           </div>
         </div>
         <div className="md:w-full xs:w-screen xxs:w-screen md:flex-row xs:flex-col xxs:flex-col p-6 h-1/4 flex items-center">
-          <div className="md:w-1/2 flex justify-end iframe-container">
+          <div className="md:w-1/2 flex justify-end iframe-container border-box border-8 border-skBlue">
             <iframe width="570" height="325" src="https://www.youtube.com/embed/Q-NHEO2IS3s?controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
           </div>
           <div className="md:w-1/2 px-14 md:text-left xs:text-center xxs:text-center">
@@ -260,7 +260,7 @@ const Solutions = () => {
               management of employees anytime, anywhere.
             </p>
           </div>
-          <div className="md:w-1/2 iframe-container">
+          <div className="md:w-1/2 iframe-container border-box border-8 border-skBlue">
             <iframe width="570" height="325" src="https://www.youtube.com/embed/iqcDXUMro9c?controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
           </div>
         </div>
