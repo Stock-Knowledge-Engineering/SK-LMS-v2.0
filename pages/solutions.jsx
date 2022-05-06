@@ -255,7 +255,7 @@ const Solutions = () => {
             <br />
             <p className="text-xl text-subheading">
               Stock Knowledge provides cutting-edge products and services to Enterprise customers for their digital training needs. The customized gamified, 
-              fully immersive content via web and mobile extended reality (XR- AR, VR, MR) applications enables companies to upskill and <br /> reskill their 
+              fully immersive content via web and mobile extended reality (XR- AR, VR, MR) applications enables companies to upskill and reskill their 
               employees effectively and efficiently. The applications offer 70-100% improved employee performance, cost-efficient, and 80% better 
               management of employees anytime, anywhere.
             </p>
