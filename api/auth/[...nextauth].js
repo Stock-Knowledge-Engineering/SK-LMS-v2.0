@@ -8,8 +8,8 @@ const options = {
             clientSecret: process.env.FACEBOOK_SECRET
         }),
         Providers.Google({
-            clientId: "",
-            clientSecret: " "
+            clientId: process.env.GOOGLE_ID,
+            clientSecret: process.env.GOOGLE_SECRET
         })
     ],
     pages: {
